@@ -1,0 +1,14 @@
+*{
+    border: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.welcome{
+    border: solid;
+}
+.login{
+    border: solid;
+}
+.boxLogin{
+    border:solid;
+}
