@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: Rubik, Verdana, Geneva, Tahoma;
 }
 
 html, body{
@@ -10,36 +11,78 @@ html, body{
 }
 /* welcome */
 
-.welcome{
-    width:100%;
-    min-height: 100%;
-    margin: 0;
-    border: solid;
+.messageWelcome{
+    margin: 2rem;
+    padding: 3rem 2rem;
+    text-align: center;
+    /* border: black solid; */
+}
+.messageWelcome>h1{
+    color: #A181FF;;
+}
+
+.inputWelcome{
+    margin: 2rem;
+    padding: 1rem 0;
+    /* border: black solid; */
 }
 
 .imgWelcome{
-    position: absolute;
-    bottom: 0;
+    /* position: absolute; */
     text-align: center;
-    background-image: url("img/The\ Movement\ -\ City\ Purple.png") ;
-    background-repeat: no-repeat;
-    background-size: 90%;
+    align-content: center;
+    width: 100%;
+    /* background-image: url("img/The\ Movement\ -\ City\ Purple.png");
+    background-color: transparent;
+    background-repeat: no-repeat; 
+    border: black solid;*/
 }
 
-/* .btnJoin{
- 
-} */
+.btnJoin{
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+
+    background: #FFFFFF;
+    border: 3px solid #000000;
+    box-sizing: border-box;
+    box-shadow: 10px 10px 0px #A181FF;
+
+/* Unete a nuestra comunidad */
+    width: 25rem;
+    height: 3rem;
+
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1.5rem;
+    line-height: 3rem;
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    /* Inside Auto Layout */
+    order: 0;
+    flex-grow: 0;
+}
 
 .hidden{
     display: none;
 }
 
-/* Small devices (landscape phones, 576px and up) */
-
 @media screen and (max-width:376px) and (min-width:360px) {
-    .welcome{
-        width:100%;
-        min-height: 100vh;
-    }
+ section{
+    display: inline-block;
+ }
+ .welcome{
+    width: 100%;
+    align-items: center;
+ }
+ .messageWelcome{
+    margin: 0 auto;
 }
 
+.btnJoin{  
+    width: 100%;
+    font-size: 1rem;
+}
+}
