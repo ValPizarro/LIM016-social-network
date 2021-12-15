@@ -11,76 +11,77 @@
 </head>
 <body>
   <main>
-  <section id="welcome" class="welcome">
-      <div class="messageWelcome">
-      <h1>Queer Place</h1> 
-      <br> 
-      <p>Somos una comunidad inclusiva donde podrás encontrar lugares seguros libres de discriminación.
-      </p>
+
+    <section id="welcome" class="flexSection ">
+      <div  class="flexBox welcome">
+        <div class="messageWelcome">
+          <div class="recordTitle">
+          <h1>Queer Place</h1> 
+          </div>
+
+          <p>Somos una comunidad inclusiva donde podrás encontrar lugares seguros libres de discriminación.
+          </p>
+        </div>
+
+        <div class="inputWelcome">
+          <button id="btnJoin" class="button">Únete a nuestra comunidad</button>
+        </div>
+        <div class="imgBox">
+            <img src="./img/The Movement - Together.png" alt="img Welcome">
+        </div>
       </div>
-      <div class="inputWelcome">
-        <button id="btnJoin" class="btnJoin">Únete a nuestra comunidad</button>
-      </div>
-      <div class="imgWelcome">
-        <img src="./img/The Movement - Together.png" alt="img Welcome">
+    </section>
+  
+    <section id="login" class="flexSection register hidden">   
+      <div class="flexBox">
+
+        <div id="loginBox" class="loginBox">
+          <div class="box">
+            <p>¡BIENVENIDX!</p> <br><br>
+            <input type="text" id="input" placeholder="correo electrónico"><br><br>
+            <input type="text" id="input" placeholder="contraseña"><br>
+          </div>
+          <button id="btnLog" class="button">Inicia sesión</button><br>
+          <button id="btnSignUp" class="button">Crear cuenta nueva</button><br>
+          <a href="">iniciar sesión con google</a>
+          <div class="imgBox">
+            <img src="./img/CB2.png" alt="img Welcome">
+          </div>
+        </div>
+        <div>
+
+        </div>
       </div>
     </section>
 
-    <section id="login" class="login hidden">
-      <div id="boxLogin" class="boxLogin">
-        <div class="box">
-        <p>¡BIENVENIDX!</p> <br><br>
-        <input type="text" id="input" placeholder="correo electronico"><br><br>
-        <input type="text" id="input" placeholder="contraseña"><br>
-        </div>
-        <button id="btnLog">Inicia sesión</button><br>
-        <button id="btnSignUp">Crear cuenta nueva</button><br>
-        <a href="">iniciar sesión con google</a>
-        <div class="img2">
-          <img src="./img/CB2.png" alt="img Welcome">
-        </div>
-      </div>
-      <div>
-
-      </div>
-    </section>
-
-
-    <div  id="register" class="registrationGeneral hidden">
-
-      <section class="registrationSection">
+    <section id="register" class="flexSection register hidden">
+      <div class="flexBox">
 
         <div class="recordTitle">
           <h1>Queer Place</h1>
         </div>
-        <form  class="formRegistration" action="">
-          <button class="btnStart registrationOption">Iniciar sesión con Google </button>
+        <form  class="formResgister" action="">
+          <button id="btnStart" class="button">Iniciar sesión con Google </button>
           <hr>
-          <input type="text" placeholder="  Correo electrónico" class="registrationOption">
-          <input type="text" placeholder="  Nombre completo" class="registrationOption">
-          <input type="text" placeholder="  Nombre de usuario" class="registrationOption">
-          <input type="text" placeholder="  contraseña" class="registrationOption">
-          <div>
-            <button class="btnCheckin registrationOption">Registrase</button>
+          <input type="text" placeholder="  Correo electrónico">
+          <input type="text" placeholder="  Nombre completo">
+          <input type="text" placeholder="  Nombre de usuario">
+          <input type="text" placeholder="  contraseña">
+         <div>
+            <button id="btnCheckIn" class="button">Registrase</button>
           </div>
         </form>
-        <div class="registrationA">
-          <p>¿Tienes una cuenta? <a href="#">Entrar</a></p>
-        </div> 
+          <div class="registrationA">
+            <p>¿Tienes una cuenta? <a href="#">Entrar</a></p>
+          </div> 
 
-      </section>  
-
-      <div class="imgRegistrationContent">
-        <img class="imgRegistration" src="./img/CB2.png" alt="">
+          <div class="imgBox">
+            <img class="imgRegistration" src="./img/CB2.png" alt="">
+          </div>
       </div>
-
-    </div>
-
-
-   
+    </section>  
+  
   </main>
-
-
 
   <script type="module" src="main.js"></script>
 </body>

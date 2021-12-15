@@ -28,121 +28,113 @@
     box-sizing: border-box;
     font-family: Rubik, Verdana, Geneva, Tahoma;
 }
+
+/* primera sección*/
+
+.flexSection{
+    /* border-radius:10px ; */
+    background: white;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    /* border: solid 1px #B1B1B1; */
+    padding: 20px;
+}
+
+.flexBox{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    background: white;
+    border-radius:10px ;
+    border: solid 1px #B1B1B1;
+}
+
+.register{
+    background:var(--neutral-1);
+}
+
+.welcome{
+    border: dashed  1px #B1B1B1;
+}
+
+.recordTitle {
+    font-family: 'Poppins', sans-serif;
+    font-size: 30px;
+    display: flex;
+    margin: 20px 0px;
+    justify-content: center;
+    align-items: center;
+}
+
+.boxLogin,.formRegistration {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+}
+.registrationA {
+    height: 40px;
+    font-size: 15px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.imgBox{
+    width: 100%; 
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.box>p{
+    text-align: center;
+}
+
+.imgRegistration{
+    width: 150px;
+    height: 100px;
+}
+
+.button{
+    border: solid 1px #421987;
+    background-color: #724BB7;
+    color: white;
+    transition:background-color .5s;
+    cursor: pointer;
+}
+.button:hover{
+    background-color: #653CAD;
+}
+
+.box>input,.formResgister>input,.button{
+    border:solid var(--color-1);
+    border-radius: 8px;
+    height: 36px;
+    width:266px;
+    margin: 12px;
+}
+
+@media (min-width:450px){
+    .flexBox{
+        width: 450px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+} 
+
+
 .hidden{
     display: none;
 }
-
-/*primera sección*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*segunda seccion*/
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -233,7 +225,8 @@
 
 
 /*tercera seccion*/
-.registrationGeneral{
+
+/* .registrationGeneral{
     background:var(--neutral-1);
     height: 100vh;
     width: 100%;
@@ -242,9 +235,9 @@
     align-items: center;
     align-content: center;
    justify-content: center;
-}
+} */
 
-.registrationSection{
+/* .registrationSection{
     border-radius:10px ;
     background: white;
     display: flex;
@@ -252,8 +245,8 @@
     flex-wrap: wrap;
     border: solid 1px #B1B1B1;
     padding: 20px;
-}
-.formRegistration {
+} */
+/* .boxLogin,.formRegistration {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -267,24 +260,24 @@
     align-content: center;
     justify-content: center;
     align-items: center;
-}
-.registrationOption{
+} */
+/* .registrationOption{
     border:solid var(--color-1);
     border-radius: 8px;
     background: var(--color-1);
     height: 36px;
     width:266px;
     margin: 12px;
-}
-.recordTitle {
+} */
+/* .recordTitle {
     font-family: 'Poppins', sans-serif;
     font-size: 30px;
     display: flex;
     margin: 20px 0px;
     justify-content: center;
     align-items: center;
-}
-.btnStart {
+} */
+/* .btnStart {
     border: solid 1px #421987;
     background-color: #A081D9;
     color: white;
@@ -294,350 +287,8 @@
 .btnStart:hover{
     background-color: #653CAD;
 }
-.btnCheckin {  
-    cursor: pointer;
-    border: solid 1px #421987;
-    color: white;
-    background: #A081D9;
-    transition:background-color .5s;
-}
 .btnCheckin:hover{
     background-color: #653CAD;
 }
-.imgRegistrationContent{
-    width: 100%; 
-    display: flex;
-    align-content: center;
-    align-items: center;
-    justify-content: center;
-}
-.imgRegistration{
-    width: 150px;
-    height: 100px;
-}
-@media (min-width:450px){
-    .registrationgeneral{
-        width: 450px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-} 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* html, body{
-    width: 100%;
-    height: 100%;
-    font-size: 62.5%;
- } */
-/* .welcome{
-    border: solid;
-}
-/* welcome */
-
-/* .messageWelcome{
-    margin: 2rem;
-    padding: 3rem 2rem;
-    text-align: center;
-    
-}
-.messageWelcome>h1{
-    color: #A181FF;;
-} */
-
-/* .inputWelcome{
-    margin: 2rem;
-    padding: 1rem 0;
-} */
-
-/* .imgWelcome{
-  
-    text-align: center;
-    align-content: center;
-    width: 100%;
-   
-}
-
-.btnJoin{
-    display: flex;
-    flex-direction: row;
-    padding: 1rem;
-
-    background: #FFFFFF;
-    border: 3px solid #000000;
-    box-sizing: border-box;
-    box-shadow: 10px 10px 0px #A181FF;
-
-
-    width: 25rem;
-    height: 3rem;
-
-    font-style: normal;
-    font-weight: normal;
-    font-size: 1.5rem;
-    line-height: 3rem;
-    display: flex;
-    align-items: center;
-    text-align: center;
-
-   
-    order: 0;
-    flex-grow: 0;
-} */
-
-
-/* .box{
-    position: absolute;
-    text-align: center;
-    top: 25%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    max-width: 380px;
-    width: 80%;
-    background: rgb(225, 225, 2225, 0.35);
-    background-color: #DCDCDC;
-    padding: 30px;
-    border-radius: 10px; 
-    border-color: black;
-}
-
-#input{
-    background-color: #A181FF;
-    border-radius: 3px;
-    height: 40px;
-    width: 200px;
-}
-
-#btnLog{
-    position: absolute;
-    text-align: center;
-    top: 45%;
-    left: 40%;
-}
-
-#btnSignUp{
-    position: absolute;
-    text-align: center;
-    top: 50%;
-    left: 33%;
-} */
-
-/* a{
-    position: absolute;
-    text-align: center;
-    top: 55%;
-    left: 25%; 
-}
-
-.img2{
-    position: absolute;
-    text-align: center;
-    top: 58%;
-    height: 05px;
-    width: 20x;
-}
-
-@media screen and (max-width:376px) and (min-width:360px) {
- section{
-    display: inline-block;
- }
- .welcome{
-    width: 100%;
-    align-items: center;
- }
- .messageWelcome{
-    margin: 0 auto;
-}
-
-.btnJoin{  
-    width: 100%;
-    font-size: 1rem;
-}
-}
-.boxLogin{
-    border:solid;
-}  */
-
-/* tercera sección  */
-/* .registrationSection{
-    background: #F5F7FA;
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    align-content: center;
-   justify-content: center;
-}
-.registrationGeneral{
-    border-radius:10px ;
-    background: white;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    border: solid 1px #B1B1B1;
-    padding: 20px;
-}
-
-.registrationA {
-    height: 40px;
-    font-size: 15px;
-    display: flex;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
-}
-.registrationOption{
-    border-radius: 8px;
-    background: #EAE2F8;
-    height: 36px;
-    width:266px;
-    margin: 12px;
-}
-.recordTitle {
- 
-    font-family: 'Poppins', sans-serif;
-    font-size: 30px;
-    display: flex;
-    margin: 20px 0px;
-    justify-content: center;
-    align-items: center;
-}
-.btnStart {
-    border: solid 1px #421987;
-    background-color: #A081D9;
-    color: white;
-    transition:background-color .5s;
-    cursor: pointer;
-}
-.btnStart:hover{
-    background-color: #653CAD;
-}
-
-.btnCheckin {  
-    cursor: pointer;
-    border: solid 1px #421987;
-    color: white;
-    background: #A081D9;
-    transition:background-color .5s;
-}
-.btnCheckin:hover{
-    background-color: #653CAD;
-}
-.imgRegistrationContent{
-     width: 100%; 
-     display: flex;
-     align-content: center;
-     align-items: center;
-     justify-content: center;
-     
-}
-.imgRegistration{
-    width: 150px;
-    height: 100px;
-}
-@media (min-width:450px){
-    .registrationgeneral{
-        width: 450px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-} 
  */
+
