@@ -26,7 +26,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Rubik, Verdana, Geneva, Tahoma;
+    /* font-family: Rubik, Verdana, Geneva, Tahoma; */
 }
 
 html{
@@ -35,17 +35,22 @@ html{
 
 /* primera sección*/
 
-.flexSection{
+
+.flexSection {
     background: white;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     padding: 20px;
     align-items: center;
+    height: 100vh;
+    width: 100%;
+    align-content: center;
+    justify-content: center;
 }
 
 .flexBox{
-    height: 100vh;
+    /* height: 100vh; */
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -54,24 +59,21 @@ html{
     justify-content: center;
     background: white;
     border-radius:10px ;
-    border: solid 1px #B1B1B1;
+    /* border: solid 1px #B1B1B1; */
 }
 
 .register{
     background:var(--neutral-1);
 }
 
-.welcome{
-    border: dashed  1px #B1B1B1;
-}
-
 .recordTitle {
     font-family: 'Poppins', sans-serif;
     font-size: 30px;
     display: flex;
-    margin: 20px 0px;
+    margin: 12px 0px;
     justify-content: center;
     align-items: center;
+    font-family: 'Poppins', sans-serif;
 }
 
 .boxLogin,.formResgister {
@@ -81,15 +83,21 @@ html{
     justify-content: center;
     align-content: center;
 }
-.registrationA {
+.backLogin {
     height: 40px;
     font-size: 15px;
     display: flex;
     align-content: center;
     justify-content: center;
     align-items: center;
+    font-size: 16px;
+    color: var(--color-4);
 }
 
+.backLogin>a{
+    color: var(--color-4);
+    text-decoration: none;
+}
 .imgBox{
     width: 100%; 
     display: flex;
@@ -98,10 +106,26 @@ html{
     justify-content: center;
 }
 
+.imgBox>img{
+    padding: 10px;
+    height: 170px;
+    width: 240px;
+}
+
+
 .SingUpBox {
     display: flex;
     justify-content: center;
     flex-direction: column;
+    align-items: center;
+    align-content: center;
+}
+
+.SingUpBox>a{
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    font-size: 15px;
 }
 
 .SingUpBox>p, .SingUpBox>a{
@@ -112,6 +136,11 @@ html{
     font-size: 15px;
 }
 
+.SingUpBox>h4{
+    color: var(--neutral-9);
+    font-size: 30px;
+    padding: 30px;
+}
 .imgRegistration{
     width: 150px;
     height: 100px;
@@ -119,13 +148,13 @@ html{
 
 .button{
     border: solid 1px #421987;
-    background-color: #724BB7;
+    background-color: var(--Color-5);
     color: white;
     transition:background-color .5s;
     cursor: pointer;
 }
 .button:hover{
-    background-color: #653CAD;
+    background-color: var(--color-7);
 }
 
 .SingUpBox>input,.formResgister>input,.button{
@@ -136,169 +165,18 @@ html{
     margin: 12px;
 }
 
+
 @media (min-width:450px){
     .flexBox{
-        width: 450px;
+        width: 350px;
     }
 } 
-
+.messageWelcome>p {
+    font-size: 1.6rem;
+    padding: 20px 50px;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+}
 .hidden{
     display: none;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*tercera seccion*/
-
-/* .registrationGeneral{
-    background:var(--neutral-1);
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    align-content: center;
-   justify-content: center;
-} */
-
-/* .registrationSection{
-    border-radius:10px ;
-    background: white;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    border: solid 1px #B1B1B1;
-    padding: 20px;
-} */
-/* .boxLogin,.formRegistration {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    align-content: center;
-}
-.registrationA {
-    height: 40px;
-    font-size: 15px;
-    display: flex;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
-} */
-/* .registrationOption{
-    border:solid var(--color-1);
-    border-radius: 8px;
-    background: var(--color-1);
-    height: 36px;
-    width:266px;
-    margin: 12px;
-} */
-/* .recordTitle {
-    font-family: 'Poppins', sans-serif;
-    font-size: 30px;
-    display: flex;
-    margin: 20px 0px;
-    justify-content: center;
-    align-items: center;
-} */
-/* .btnStart {
-    border: solid 1px #421987;
-    background-color: #A081D9;
-    color: white;
-    transition:background-color .5s;
-    cursor: pointer;
-}
-.btnStart:hover{
-    background-color: #653CAD;
-}
-.btnCheckin:hover{
-    background-color: #653CAD;
-}
- */
-
