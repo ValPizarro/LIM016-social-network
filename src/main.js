@@ -3,7 +3,11 @@
 // import {myFunction} from './lib/index.js';
 import {createUser, signIn} from './firebase/auth.js';
 
+<<<<<<< HEAD
 // myFunction();
+=======
+myFunction();
+>>>>>>> 79c6f63 (se revirtieron los cambios)
 
 // --- declaración de variables ----->
 // Section:
