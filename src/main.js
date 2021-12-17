@@ -3,6 +3,7 @@
 import { myFunction } from './lib/index.js';
 
 myFunction();
+// console.log("hola a mi mundo");
 
 // --- declaración de variables ----->
 // Section:
