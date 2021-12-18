@@ -1,6 +1,6 @@
 // Este es el punto de entrada de tu aplicacion
 
-import { myFunction } from './lib/index.js';
+import {myFunction} from './lib/index.js';
 
 myFunction();
 
@@ -15,8 +15,8 @@ const btnjoin = document.getElementById('btnJoin');
 // const btnLog = document.getElementById('btnLog');
 const btnSingUp = document.getElementById('btnSignUp');
 
-// -------  funciones mostrar secciones ----->
-
+/**
+ * funciones mostrar sección log in */
 function join() {
   btnjoin.addEventListener('click', () => {
     welcomeSection.classList.add('hidden');
@@ -25,6 +25,8 @@ function join() {
   });
 } join();
 
+/**
+ * funciones mostrar sección registro */
 function register() {
   btnSingUp.addEventListener('click', () => {
     welcomeSection.classList.add('hidden');
