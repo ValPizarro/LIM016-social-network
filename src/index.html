@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
   <link rel = "preconnect" href = "https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;1,200&family=Roboto:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
   <title>Document</title>
 </head>
-<>
+
   <main>
 
     <section id="welcome" class="flexSection ">
@@ -37,16 +37,16 @@
       <div class="flexBox">
         <div class="SingUpBox">
           <p>¡BIENVENIDX!</p>
-          <form id = "formLogIn" class="formLogIn">
+          <div id = "formLogIn" class="formLogIn">
             <input id="logEmail" type="email" placeholder="correo electrónico">
             <input id="logPassword" type="text" placeholder="contraseña">
             
-            <button type="submit" id="btnSignUp" class="button">Inicia sesión</button>
+            <button id="btnSignUp" class="button">Inicia sesión</button>
             <button id="btnLog" class="button">Crear cuenta nueva</button>
           
-          </form>
+          </div>
                     
-          <a href="">iniciar sesión con google</a>
+          <a href="#">iniciar sesión con google</a>
           
         </div>
         <div class="imgbox">
@@ -60,21 +60,17 @@
 
     <section id="register" class="flexSection register hidden">
       <div class="flexBox">
-
         <div class="recordTitle">
           <h1>Queer Place</h1>
         </div>
-        <form id="formResgister" class="formResgister" action="">
+        <div id="formResgister" class="formResgister">
           <button id="btnStart" class="button">Iniciar sesión con Google </button>
-          <hr>
           <input id="registerEmail" type="email" placeholder="  Correo electrónico">
           <input type="text" placeholder="  Nombre completo">
           <input type="text" placeholder="  Nombre de usuario">
           <input id="registerPassword" type="text" placeholder="  contraseña">
-         <div>
-            <button id="btnCheckIn" class="button">Registrase</button>
-          </div>
-        </form>
+          <button id="btnCheckIn" class="button">Registrase</button>
+        </div>
           <div class="backLogIn">
             <p>¿Tienes una cuenta? <a href="#">Entrar</a></p>
           </div> 
