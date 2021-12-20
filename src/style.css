@@ -76,7 +76,7 @@ html{
     font-family: 'Poppins', sans-serif;
 }
 
-.boxLogin,.formResgister {
+.boxLogin,.formLogIn,.formResgister {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -157,14 +157,13 @@ html{
     background-color: var(--color-7);
 }
 
-.SingUpBox>input,.formResgister>input,.button{
+.formLogIn>input,.formResgister>input,.button{
     border:solid var(--color-1);
     border-radius: 8px;
     height: 36px;
     width:266px;
     margin: 12px;
 }
-
 
 @media (min-width:450px){
     .flexBox{
