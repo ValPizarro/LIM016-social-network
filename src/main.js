@@ -1,7 +1,7 @@
 // Este es el punto de entrada de tu aplicacion
 
 // import {myFunction} from './lib/index.js';
-import {createUser} from './firebase/auth.js';
+import {createUser, signIn} from './firebase/auth.js';
 
 // myFunction();
 
@@ -63,15 +63,21 @@ function registerUserNew() {
     const email = document.querySelector('#registerEmail').value;
     const password = document.querySelector('#registerPassword').value;
 
-    console.log(email, password);
     const user = createUser(email, password);
-    // createUser(email, password).then((userCredential) => {
     console.log(user);
-
-    //   // const user = userCredential.user;
-
-    //   console.log('user creado');
-    // });
   });
 } registerUserNew();
 
+/**
+ * funcion Iniciar Sesión*/
+function signInUser() {
+  btnSingUp.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    const email = document.querySelector('#logEmail').value;
+    const password = document.querySelector('#logPassword').value;
+
+    const user = signIn(email, password);
+    console.log(user);
+  });
+} signInUser();
