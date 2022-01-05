@@ -1,7 +1,12 @@
 // Este es el punto de entrada de tu aplicacion
 
 // import {myFunction} from './lib/index.js';
-import {createUser, signIn,googleAuth} from './firebase/auth.js';
+import {createUser} from './firebase/auth_signup_password.js';
+import {signIn} from './firebase/auth_signin_password.js';
+import {googleAuth} from './firebase/auth_google_signin_popup.js';
+
+
+// import {signOutUser} from './auth_sign_out.js';
 
 // myFunction();
 
@@ -29,7 +34,8 @@ function join() {
     loginSection.classList.remove('hidden');
     registerSection.classList.add('hidden');
   });
-} join();
+}
+join();
 
 /**
  * funciones mostrar sección registro */
@@ -40,7 +46,8 @@ function register() {
     loginSection.classList.add('hidden');
     registerSection.classList.remove('hidden');
   });
-} register();
+}
+register();
 
 /**
  * funciones firebase*/
@@ -66,7 +73,8 @@ function registerUserNew() {
     const user = createUser(email, password);
     console.log(user);
   });
-} registerUserNew();
+}
+registerUserNew();
 
 /**
  * funcion Iniciar Sesión*/
@@ -80,8 +88,8 @@ function signInUser() {
     const user = signIn(email, password);
     console.log(user);
   });
-} signInUser();
+}
+signInUser();
 
-
-let btnStart=document.getElementById("btnStart");
- btnStart.addEventListener("click",googleAuth)
+const btnStart=document.getElementById('btnStart');
+btnStart.addEventListener('click', googleAuth);
