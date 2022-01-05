@@ -3,7 +3,7 @@
 // import {myFunction} from './lib/index.js';
 import {createUser} from './firebase/auth_signup_password.js';
 import {signIn} from './firebase/auth_signin_password.js';
-import {googleAuth} from './firebase/auth_google_signin_popup';
+import {googleAuth} from './firebase/auth_google_signin_popup.js';
 
 
 // import {signOutUser} from './auth_sign_out.js';
