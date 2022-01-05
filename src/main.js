@@ -1,7 +1,7 @@
 // Este es el punto de entrada de tu aplicacion
 
 // import {myFunction} from './lib/index.js';
-import {createUser, signIn} from './firebase/auth.js';
+import {createUser, signIn,googleAuth} from './firebase/auth.js';
 
 // myFunction();
 
@@ -81,3 +81,7 @@ function signInUser() {
     console.log(user);
   });
 } signInUser();
+
+
+let btnStart=document.getElementById("btnStart");
+ btnStart.addEventListener("click",googleAuth)
