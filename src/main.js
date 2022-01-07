@@ -1,4 +1,5 @@
 // Este es el punto de entrada de tu aplicacion
+/* import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js'; */
 
 import {changeView} from './view-controler/router.js';
 
@@ -9,6 +10,12 @@ import {changeView} from './view-controler/router.js';
 // import {signOutUser} from './auth_sign_out.js';
 
 // myFunction();
+
+// Import the functions you need from the SDKs you
+
+// import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-analytics.js";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
 // --- declaración de variables ----->
 // Section:
