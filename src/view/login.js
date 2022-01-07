@@ -1,5 +1,13 @@
-export default () => {
-  const showLogIn = `<section id="login" class="flexSection register">
+const SingUp = () => {
+  window.location.hash = '#/home';
+};
+
+const log = () => {
+  window.location.hash = '#/signIn';
+};
+
+const LogIn = () => {
+  const showLogIn = `
     <div class="flexBox">
       <div class="SingUpBox">
         <p>¡BIENVENIDX!</p>
@@ -7,10 +15,8 @@ export default () => {
           <input id="logEmail" type="email" placeholder="correo electrónico">
           <input id="logPassword" type="text" placeholder="contraseña">
 
-          <button onclick="window.location.hash='#/home'"
-          id="btnSignUp" class="button">Inicia sesión</button>
-          <button onclick="window.location.hash='#/signIn'" 
-          id="btnLog" class="button">Crear cuenta nueva</button>
+          <button id="btnSignUp" class="button">Inicia sesión</button>
+          <button id="btnLog" class="button">Crear cuenta nueva</button>
 
         </div>
 
@@ -22,10 +28,15 @@ export default () => {
       </div>
 
     </div>
-  </section>
-`;
-  const divElem = document.createElement('div');
-  divElem.innerHTML = showLogIn;
+  `;
+  const divElemt = document.createElement('div');
+  divElemt.setAttribute('class', 'flexSection register');
+  divElemt.innerHTML = showLogIn;
 
-  return divElem;
+  divElemt.querySelector('#btnSignUp').addEventListener('click', SingUp);
+  divElemt.querySelector('#btnLog').addEventListener('click', log);
+
+  return divElemt;
 };
+
+export default LogIn;
