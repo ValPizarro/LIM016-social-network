@@ -1,4 +1,11 @@
-export default () => {
+// /**
+//  * funcion Unirse */
+
+const join =() => {
+  window.location.hash = '#/logIn';
+};
+
+const welcome = () => {
   const viewWelcome = `
       <div class="flexBox welcome">
         <div class="messageWelcome">
@@ -14,8 +21,7 @@ export default () => {
         </div>
 
         <div class="inputWelcome">
-          <button onclick="window.location.hash='#/logIn'" 
-          id="btnJoin" class="button">
+          <button id="btnJoin" class="button">
           Únete a nuestra comunidad </button>
         </div>
         <div class="imgBox">
@@ -28,7 +34,10 @@ export default () => {
   divElemt.setAttribute('class', 'flexSection');
   divElemt.innerHTML = viewWelcome;
 
-  console.log(divElemt);
+  divElemt
+      .querySelector('#btnJoin')
+      .addEventListener('click', join);
 
   return divElemt;
 };
+export default welcome;

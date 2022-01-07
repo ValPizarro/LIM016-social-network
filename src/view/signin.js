@@ -1,11 +1,20 @@
-export default () => {
+const CheckIn = () => {
+  console.log('Usuario creado');
+};
+
+const CheckGoogle = () => {
+  console.log('Usuario creado con google');
+};
+
+const SignIn = () => {
   const showSignIn = `
     <div class="flexBox">
       <div class="recordTitle">
         <h1>Queer Place</h1>
       </div>
       <div id="formResgister" class="formResgister">
-        <button id="btnStart" class="button">Iniciar sesión con Google </button>
+        <button id="btnStartGoogle" 
+        class="button">Iniciar sesión con Google </button>
         <input id="registerEmail" 
         type="email" placeholder="  Correo electrónico">
         <input type="text" placeholder="  Nombre completo">
@@ -27,5 +36,11 @@ export default () => {
   divElemt.setAttribute('class', 'flexSection register');
   divElemt.innerHTML = showSignIn;
 
+  divElemt.querySelector('#btnCheckIn').addEventListener('click', CheckIn);
+  divElemt.querySelector('#btnStartGoogle')
+      .addEventListener('click', CheckGoogle);
+
   return divElemt;
 };
+
+export default SignIn;

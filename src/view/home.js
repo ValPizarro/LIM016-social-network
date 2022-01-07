@@ -9,7 +9,8 @@ export default () => {
       <a href="#/Perfil"><img src="./img/iconos/account.png" alt="user"></a>
     </li>
     <li>
-      <a href="#/Search"><img class="search"src="./img/iconos/search.png" alt="search"></a>
+      <a href="#/Search"><img class="search" 
+      src="./img/iconos/search.png" alt="search"></a>
     </li>
     <li>
       <a href="#/signOut"><img src="./img/iconos/More.png" alt="signOut"></a>
@@ -18,8 +19,7 @@ export default () => {
 </nav>
     `;
   const divElemt = document.createElement('div');
-  divElemt.setAttribute('class', 'flexNav home')
-  
+  divElemt.setAttribute('class', 'flexNav home');
   divElemt.innerHTML = showHome;
 
   return divElemt;
