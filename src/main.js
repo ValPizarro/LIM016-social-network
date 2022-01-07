@@ -90,6 +90,6 @@ function signInUser() {
   });
 }
 signInUser();
-
+// iniciar sesion con google
 const btnStart=document.getElementById('btnStart');
 btnStart.addEventListener('click', googleAuth);
