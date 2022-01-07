@@ -181,7 +181,25 @@ html{
     text-align: center;
     font-family: 'Poppins', sans-serif;
 }
-.hidden{
-    display: none;
+
+/*home*/
+
+.flexNav{
+    background: white;
+   
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding: 20px;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    align-content: center;
+    justify-content: center;
 }
+.nav {
+    list-style: none;
+    display: flex;
+    align-content: center;
+} 
+
 
