@@ -1,6 +1,5 @@
 export default () => {
   const viewWelcome = `
-    <section id="welcome" class="flexSection ">
       <div class="flexBox welcome">
         <div class="messageWelcome">
           <div class="recordTitle">
@@ -23,9 +22,13 @@ export default () => {
           <img src="./img/The Movement - Together.png" alt="img Welcome">
         </div>
       </div>
-    </section>`;
+      `;
+
   const divElemt = document.createElement('div');
+  divElemt.setAttribute('class', 'flexSection');
   divElemt.innerHTML = viewWelcome;
+
+  console.log(divElemt);
 
   return divElemt;
 };

@@ -1,5 +1,5 @@
 export default () => {
-  const showLogIn = `<section id="login" class="flexSection register">
+  const showLogIn = `
     <div class="flexBox">
       <div class="SingUpBox">
         <p>¡BIENVENIDX!</p>
@@ -22,10 +22,10 @@ export default () => {
       </div>
 
     </div>
-  </section>
-`;
-  const divElem = document.createElement('div');
-  divElem.innerHTML = showLogIn;
+  `;
+  const divElemt = document.createElement('div');
+  divElemt.setAttribute('class', 'flexSection register');
+  divElemt.innerHTML = showLogIn;
 
-  return divElem;
+  return divElemt;
 };

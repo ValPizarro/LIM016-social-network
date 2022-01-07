@@ -1,6 +1,5 @@
 export default () => {
   const showSignIn = `
-  <section id="register" class="flexSection register">
     <div class="flexBox">
       <div class="recordTitle">
         <h1>Queer Place</h1>
@@ -22,11 +21,11 @@ export default () => {
         <img class="imgRegister" src="./img/CB2.png" alt="">
       </div>
     </div>
-  </section>
   `;
 
-  const divElem = document.createElement('div');
-  divElem.innerHTML = showSignIn;
+  const divElemt = document.createElement('div');
+  divElemt.setAttribute('class', 'flexSection register');
+  divElemt.innerHTML = showSignIn;
 
-  return divElem;
+  return divElemt;
 };
