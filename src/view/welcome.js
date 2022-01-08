@@ -2,7 +2,7 @@
 //  * funcion Unirse */
 
 const join =() => {
-  window.location.hash = '#/logIn';
+  window.location.hash = '#/signIn';
 };
 
 const welcome = () => {
