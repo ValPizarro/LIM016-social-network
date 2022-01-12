@@ -6,6 +6,8 @@ const changeView = (route) => {
   container.innerHTML = '';
 
   switch (route) {
+    case '':
+    case '#':
     case '#/': {
       return container.appendChild(components.welcome());
     }
@@ -18,6 +20,8 @@ const changeView = (route) => {
     case '#/home': {
       return home.appendChild(components.home());
     }
+    default:
+      return container.appendChild(components.different());
   }
 };
 

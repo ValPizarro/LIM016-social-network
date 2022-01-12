@@ -1,6 +1,3 @@
-// /**
-//  * funcion Unirse */
-
 const join =() => {
   window.location.hash = '#/signIn';
 };

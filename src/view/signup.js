@@ -1,21 +1,23 @@
 import {createUser} from '../firebase/auth_signup_password.js';
 import {googleAuth} from '../firebase/auth_google_signin_popup.js';
 
-
-const registerUserNew = (e) => {
+export const registerUserNew = (e) => {
   e.preventDefault();
 
   const email = e.target.closest('form').querySelector('#email').value;
   const password = e.target.closest('form').querySelector('#password').value;
 
   const user = createUser(email, password);
-  console.log(user);
 
-  console.log('Usuario creado:', email, password);
+  console.log('Usuario creado:', user);
+};
+
+const backSignIn = () => {
+  window.location.hash = '#/signIn';
 };
 
 const SignUp = () => {
-  const showSignIn = `
+  const showSignUp = `
     <div class="flexBox">
       <div class="recordTitle">
         <h1>Queer Place</h1>
@@ -36,7 +38,7 @@ const SignUp = () => {
       </form>
 
       <div class="backLogIn">
-        <p>¿Tienes una cuenta? <a href="#">Entrar</a></p>
+        <p>¿Tienes una cuenta? <a id="SignIn">Entrar</a></p>
       </div>
 
       <div class="imgBox">
@@ -47,14 +49,13 @@ const SignUp = () => {
 
   const divElemt = document.createElement('div');
   divElemt.setAttribute('class', 'flexSection register');
-  divElemt.innerHTML = showSignIn;
+  divElemt.innerHTML = showSignUp;
 
   divElemt
-      .querySelector('#btnCheckIn')
-      .addEventListener('click', registerUserNew);
+      .querySelector('#btnCheckIn').addEventListener('click', registerUserNew);
   divElemt
-      .querySelector('#btnStartGoogle')
-      .addEventListener('click', googleAuth);
+      .querySelector('#btnStartGoogle').addEventListener('click', googleAuth);
+  divElemt.querySelector('#SignIn').addEventListener('click', backSignIn);
 
   return divElemt;
 };
