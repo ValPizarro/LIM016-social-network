@@ -1,14 +1,16 @@
+import {googleAuth} from '../firebase/auth_google_signin_popup.js';
 import {signIn} from '../firebase/auth_signin_password.js';
+import {onAuth} from '../firebase/auth_state_listener.js';
 
-const registerUser = (e) => {
+export const registerUser = (e) => {
   // window.location.hash = '#/home';
 
   const email = e.target.closest('form').querySelector('#email').value;
   const password = e.target.closest('form').querySelector('#password').value;
 
   const user = signIn(email, password);
-  console.log(user);
-  console.log('El usuario existe');
+
+  onAuth(user);
 };
 
 const SignUp = () => {
@@ -18,20 +20,25 @@ const SignUp = () => {
 const SignIn = () => {
   const showSignIn = `
     <div class="flexBox">
-      <div class="SingUpBox">
-        <p>¡BIENVENIDX!</p>
+      <div class="SignUpBox">
+        <h1>¡BIENVENIDX!</h1>
         <form>
         <div id="formLogIn" class="formLogIn">
-          <input id="email" type="email" placeholder="correo electrónico">
-          <input id="password" type="text" placeholder="contraseña">
+          <input id="email" type="email" placeholder=" correo electrónico">
+          <input id="password" type="text" placeholder=" contraseña">
 
-          <button id="btnSignIn" class="button">Inicia sesión</button>
-          <button id="btnSignUp" class="button">Crear cuenta nueva</button>
-        </form>
+          <button id="btnSignIn" class="button">Iniciar sesión</button>
+        
+          </form>
+
+          <p>Iniciar sesión con <a id='google'> google</a></p>
+
         </div>
 
-        <a href="#">iniciar sesión con google</a>
-
+        <div>
+          <p>¿No tienes una cuenta?</p>
+          <a id='btnSignUp'>Regístrate</a>
+        </div>
       </div>
       <div class="imgbox">
         <img src="./img/CB2.png" alt="img Welcome">
@@ -45,6 +52,7 @@ const SignIn = () => {
 
   divElemt.querySelector('#btnSignIn').addEventListener('click', registerUser);
   divElemt.querySelector('#btnSignUp').addEventListener('click', SignUp);
+  divElemt.querySelector('#google').addEventListener('click', googleAuth);
 
   return divElemt;
 };
