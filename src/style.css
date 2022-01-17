@@ -199,3 +199,150 @@ html{
     display: flex;
     align-content: center;
 } 
+
+/* primera sección*/
+
+
+
+
+
+
+
+
+
+.flexSection {
+    background: white;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding: 20px;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    align-content: center;
+    justify-content: center;
+}
+
+.flexBox{
+    /* height: 100vh; */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    background: white;
+    border-radius:10px ;
+    /* border: solid 1px #B1B1B1; */
+}
+
+.register{
+    background:var(--neutral-1);
+}
+
+.recordTitle {
+    font-family: 'Poppins', sans-serif;
+    font-size: 30px;
+    display: flex;
+    margin: 12px 0px;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+.boxLogin,.formLogIn,.formResgister {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+}
+.backLogin {
+    height: 40px;
+    font-size: 15px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: var(--color-4);
+}
+
+.backLogin>a{
+    color: var(--color-4);
+    text-decoration: none;
+}
+.imgBox{
+    width: 100%; 
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.imgBox>img{
+    padding: 10px;
+    height: 170px;
+    width: 240px;
+}
+
+.SingUpBox {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+}
+
+.SignUpBox>h1{
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    /* font-size: 15px; */
+}
+
+.SignUpBox>p, .SignUpBox>a{
+    display: flex;
+    justify-content: center;
+    font-size: 15px;
+
+}
+
+.SignUpBox>h4{
+    color: var(--neutral-9);
+    font-size: 30px;
+    padding: 30px;
+}
+.imgRegistration{
+    width: 150px;
+    height: 100px;
+}
+
+ .button{
+    border: solid 1px var(--color-5);
+    background-color: var(--color-5);
+    color: white;
+    transition:background-color .5s;
+    cursor: pointer;
+} 
+.button:hover{
+    background-color: var(--color-7);
+}
+
+.formLogIn>input{
+    background-color: var(--color-1);
+    border:solid var(--neutal-2);
+    color: var(--color-10);
+}
+
+@media (min-width:450px){
+    .flexBox{
+        width: 350px;
+    }
+} 
+.messageWelcome>p {
+    font-size: 1.6rem;
+    padding: 20px 50px;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+}
