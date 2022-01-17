@@ -48,9 +48,9 @@ const SignIn = () => {
           </div>
           <button id="btnSignIn" class="button">Inicia sesión</button>
           
-          <a href="#" class="loginInGoogle" id="google"><img src="https://brandlogos.net/wp-content/uploads/2015/09/google-favicon-vector-400x400.png" alt="google"> iniciar sesión con google</a>
+          <a class="loginInGoogle" id="google"><img src="https://brandlogos.net/wp-content/uploads/2015/09/google-favicon-vector-400x400.png" alt="google"> iniciar sesión con google</a>
           <p>¿No tienes cuenta?</p>
-          <a href="#/signIn" id="btnSignUp" 
+          <a id="btnSignUp" 
           class="loginInCheckIn">Registrate</a>
         </form>
         <div class="imgbox">
