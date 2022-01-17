@@ -1,16 +1,24 @@
 import {googleAuth} from '../firebase/auth_google_signin_popup.js';
 import {signIn} from '../firebase/auth_signin_password.js';
 import {onAuth} from '../firebase/auth_state_listener.js';
+// import {fs} from '../firebase/configuraciones.js';
+// import {setPost} from './perfil.js';
 
 export const registerUser = (e) => {
-  // window.location.hash = '#/home';
-
   const email = e.target.closest('form').querySelector('#email').value;
   const password = e.target.closest('form').querySelector('#password').value;
 
-  const user = signIn(email, password);
+  signIn(email, password);
 
-  onAuth(user);
+  onAuth((user) => {
+    if (user) {
+      window.location.hash = '#/home';
+
+      console.log('El usuario inició sesión');
+    } else {
+      console.log('El usuario cerró sesión');
+    }
+  });
 };
 
 const SignUp = () => {

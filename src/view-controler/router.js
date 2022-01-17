@@ -19,6 +19,7 @@ const changeView = (route) => {
     }
     case '#/home': {
       return home.appendChild(components.home());
+      container.appendChild(components.perfil());
     }
     default:
       return container.appendChild(components.different());

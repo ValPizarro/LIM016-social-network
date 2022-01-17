@@ -1,5 +1,8 @@
 import {initializeApp} from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js';
 import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, GoogleAuthProvider, signInWithPopup} from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js';
+import {getFirestore} from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js';
+
+
 // [START auth_signup_password_modular]
 
 const firebaseConfig = {
@@ -17,8 +20,10 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider(app);
 
+const fs = getFirestore();
 
 export {
   app, auth, provider, createUserWithEmailAndPassword,
   signInWithEmailAndPassword, onAuthStateChanged, signOut, signInWithPopup,
+  fs,
 };
