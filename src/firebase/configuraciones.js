@@ -21,9 +21,7 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider(app);
 
-const fs = getFirestore();
-
-// const db = getFirestore();
+const db = getFirestore();
 
 // export const saveTask = (title, description) => {
 //   addDoc(collection(db, 'tasks'), {title: title, description: description});
@@ -38,7 +36,7 @@ export {
   onAuthStateChanged,
   signOut,
   signInWithPopup,
-  fs,
+  db,
   collection,
   addDoc,
 };
