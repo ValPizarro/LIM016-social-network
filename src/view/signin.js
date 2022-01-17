@@ -1,16 +1,24 @@
 import {googleAuth} from '../firebase/auth_google_signin_popup.js';
 import {signIn} from '../firebase/auth_signin_password.js';
 import {onAuth} from '../firebase/auth_state_listener.js';
+// import {fs} from '../firebase/configuraciones.js';
+// import {setPost} from './perfil.js';
 
 export const registerUser = (e) => {
-  // window.location.hash = '#/home';
-
   const email = e.target.closest('form').querySelector('#email').value;
   const password = e.target.closest('form').querySelector('#password').value;
 
-  const user = signIn(email, password);
+  signIn(email, password);
 
-  onAuth(user);
+  onAuth((user) => {
+    if (user) {
+      window.location.hash = '#/home';
+
+      console.log('El usuario inició sesión');
+    } else {
+      console.log('El usuario cerró sesión');
+    }
+  });
 };
 
 const SignUp = () => {
@@ -19,31 +27,36 @@ const SignUp = () => {
 
 const SignIn = () => {
   const showSignIn = `
-    <div class="flexBox">
-      <div class="SignUpBox">
-        <h1>¡BIENVENIDX!</h1>
-        <form>
-        <div id="formLogIn" class="formLogIn">
-          <input id="email" type="email" placeholder=" correo electrónico">
-          <input id="password" type="text" placeholder=" contraseña">
-
-          <button id="btnSignIn" class="button">Iniciar sesión</button>
-        
-          </form>
-
-          <p>Iniciar sesión con <a id='google'> google</a></p>
-
+ <div class="conteinerGeneral">
+      <div class="SingUpBox">
+        <p class="title" >¡BIENVENIDX!</p>
+        <form id="formLogIn" class="formLogIn">
+          
+          <div class="form-control">
+            <input id="email" type="email" placeholder="correo electrónico">
+            <i class="far fa-check-circle"></i>
+            <i class="far fa-times-circle"></i>
+            <small></small>
+          </div>
+          
+          <div class="form-control">
+            <input minlength="5" id="password" type="password" 
+            placeholder="contraseña">
+            <i class="far fa-check-circle"></i>
+            <i class="far fa-times-circle"></i>
+            <small></small>
+          </div>
+          <button id="btnSignIn" class="button">Inicia sesión</button>
+          
+          <a href="#" class="loginInGoogle" id="google"><img src="https://brandlogos.net/wp-content/uploads/2015/09/google-favicon-vector-400x400.png" alt="google"> iniciar sesión con google</a>
+          <p>¿No tienes cuenta?</p>
+          <a href="#/signIn" id="btnSignUp" 
+          class="loginInCheckIn">Registrate</a>
+        </form>
+        <div class="imgbox">
+          <img src="./img/CB2.png" alt="img Welcome" class="imgWelcome">
         </div>
-
-        <div>
-          <p>¿No tienes una cuenta?</p>
-          <a id='btnSignUp'>Regístrate</a>
-        </div>
-      </div>
-      <div class="imgbox">
-        <img src="./img/CB2.png" alt="img Welcome">
-      </div>
-
+      </div>  
     </div>
   `;
   const divElemt = document.createElement('div');

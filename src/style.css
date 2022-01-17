@@ -33,7 +33,154 @@ html{
     font-size: 62.5%;
 }
 
+
+
+.conteinerGeneral {
+    background-color: rgba(var(--b3f,250,250,250),1);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding: 20px;    
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    align-content: center;
+    justify-content: center;
+  } 
+  .SingUpBox{
+  background-color: white;
+  border-radius: 8px ;
+  box-shadow: 0 2px 5px rgb(0 0 0 / 10%); 
+  width: 350px;
+  max-width: 100%;
+  overflow: hidden;
+  }
+  .SingUpBox>p{
+    font-size: 25px;
+    padding: 20px 10px;
+    text-align: center;
+  }
+  .formLogIn {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 40px;
+  }
+  .loginInGoogle{
+  padding: 20px;
+    font-size: 15px;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    font-family: 'Rubik', sans-serif;
+  }
+  .loginInCheckIn{
+    padding: 20px;
+    font-size: 15px;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-5);
+    font-family: 'Rubik', sans-serif;
+  }
+  
+  .formLogIn p{
+    font-size: 15px;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Rubik', sans-serif;
+  }
+  
+  .title{
+    font-family: 'Comic Neue', cursive;
+  }
+  .formLogIn a img{
+  height: 30px;
+  width: 30px;
+  }
+  .form-control {
+    margin-bottom: 10px;
+    padding-bottom: 20px;
+    position: relative;
+  }
+  .form-control input {
+    border: 0px solid var(--color-5);
+    border-radius: 8px;
+    font-size: 14px;
+    height: 36px;
+    width: 266px;
+    padding: 10px;
+    outline-color: #EAE2F8;
+    background: #EAE2F8;
+  }
+  .form-control input::placeholder{
+   color: #A081D9;
+  }
+  .form-control i {
+    visibility: hidden; 
+    position: absolute;
+    top: 10px;
+    right: 10px; 
+    font-size: 20px
+  }
+  .form-control.success i.fa-check-circle {
+    visibility: visible;
+    color: #2ecc71;
+  }
+  .form-control.error i.fa-times-circle {
+    visibility: visible;
+    color: #FE6F5E;
+  }
+  .form-control small {
+    visibility: hidden; 
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+  .form-control.error small {
+    font-size: 15px;
+    color: var(--neutral-6);
+    visibility: visible;
+    font-family: 'Rubik', sans-serif;
+  }
+  .button {
+    height:36px ;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-radius: 8px;
+    color: #ffff;
+    width: 266px;
+    padding: 10px;
+    font-size: 14px;
+    border: solid 1px var(--color-5);
+    background-color: var(--color-5);
+    transition:background-color .5s;
+    cursor: pointer;
+  }
+.button:hover{
+    background-color: var(--color-7);
+}
+
+  
+  .imgWelcome{
+      height: 120px;
+      width: 150px;
+  }
+
+
+
 /* primera sección*/
+
+
+
+
+
+
+
 
 
 .flexSection {
@@ -144,22 +291,15 @@ html{
     height: 100px;
 }
 
-.button{
+ .button{
     border: solid 1px var(--color-5);
     background-color: var(--color-5);
     color: white;
     transition:background-color .5s;
     cursor: pointer;
-}
+} 
 .button:hover{
     background-color: var(--color-7);
-}
-
-.formLogIn>input,.formResgister>input,.button{
-    border-radius: 8px;
-    height: 36px;
-    width:266px;
-    margin: 12px;
 }
 
 .formLogIn>input{
@@ -199,5 +339,3 @@ html{
     display: flex;
     align-content: center;
 } 
-
-

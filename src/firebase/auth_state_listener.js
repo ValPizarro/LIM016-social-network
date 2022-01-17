@@ -7,8 +7,8 @@ export const onAuth = () => {
       console.log(uid);
     } else {
       // User is signed out
-      const uid = null;
-      console.log(uid);
+      // const uid = null;
+      console.log('El usuario no existe');
     }
   });
 };
