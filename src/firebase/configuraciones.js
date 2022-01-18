@@ -1,10 +1,6 @@
 import {initializeApp} from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js';
 import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, GoogleAuthProvider, signInWithPopup} from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js';
-import {collection, getFirestore, addDoc,
-} from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js';
-
-
-// [START auth_signup_password_modular]
+import {getFirestore, collection, getDocs, addDoc} from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyCYMriyYLnj7mjwQ990OLhGaxulpUI6ONE',
@@ -21,6 +17,7 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider(app);
 
+// Init Services
 const db = getFirestore();
 
 // export const saveTask = (title, description) => {
@@ -38,5 +35,6 @@ export {
   signInWithPopup,
   db,
   collection,
+  getDocs,
   addDoc,
 };
