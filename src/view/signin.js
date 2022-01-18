@@ -1,25 +1,13 @@
 import {googleAuth} from '../firebase/auth_google_signin_popup.js';
 import {signIn} from '../firebase/auth_signin_password.js';
-import {onAuth} from '../firebase/auth_state_listener.js';
-// import {fs} from '../firebase/configuraciones.js';
-// import {setPost} from './perfil.js';
 
 export const registerUser = (e) => {
   const email = e.target.closest('form').querySelector('#email').value;
   const password = e.target.closest('form').querySelector('#password').value;
 
   signIn(email, password);
-
-  onAuth((user) => {
-    if (user) {
-      window.location.hash = '#/home';
-
-      console.log('El usuario inició sesión');
-    } else {
-      console.log('El usuario cerró sesión');
-    }
-  });
 };
+
 
 const SignUp = () => {
   window.location.hash = '#/signUp';
@@ -48,9 +36,9 @@ const SignIn = () => {
           </div>
           <button id="btnSignIn" class="button">Inicia sesión</button>
           
-          <a href="#" class="loginInGoogle" id="google"><img src="https://brandlogos.net/wp-content/uploads/2015/09/google-favicon-vector-400x400.png" alt="google"> iniciar sesión con google</a>
+          <a class="loginInGoogle" id="google"><img src="https://brandlogos.net/wp-content/uploads/2015/09/google-favicon-vector-400x400.png" alt="google"> iniciar sesión con google</a>
           <p>¿No tienes cuenta?</p>
-          <a href="#/signIn" id="btnSignUp" 
+          <a id="btnSignUp" 
           class="loginInCheckIn">Registrate</a>
         </form>
         <div class="imgbox">
