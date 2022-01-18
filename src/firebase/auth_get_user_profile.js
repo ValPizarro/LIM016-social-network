@@ -6,7 +6,7 @@ export const profileUser = (user) => {
   if (user !== null) {
     // const displayName = user.displayName;
     const email = user.email;
-    //const photoURL = user.photoURL;
+    // const photoURL = user.photoURL;
     // const emailVerified = user.emailVerified;
     console.log('El correo del usuario es:', email);
   }
