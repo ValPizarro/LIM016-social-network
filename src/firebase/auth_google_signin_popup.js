@@ -1,11 +1,14 @@
 import {auth, provider, signInWithPopup} from './configuraciones.js';
+import {profileUser} from './auth_get_user_profile.js';
+
 
 export const googleAuth = () => {
   return signInWithPopup(auth, provider)
       .then((result) => {
         console.log('Nombre:', result.user.displayName);
         console.log('Email:', result.user.email);
-        mailVerificado('Verfica2:', result.user.emailVerified);
+        mailVerificado('Verficado:', result.user.emailVerified);
+        profileUser(provider);
       })
       .catch((error) => {
         console.log(error.code);
