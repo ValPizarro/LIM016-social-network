@@ -15,7 +15,7 @@ const SignUp = () => {
 
 const SignIn = () => {
   const showSignIn = `
- <div class="conteinerGeneral">
+ <div class"conteinerGeneral">
       <div class="SingUpBox">
         <p class="title" >¡BIENVENIDX!</p>
         <form id="formLogIn" class="formLogIn">

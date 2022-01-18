@@ -15,11 +15,11 @@ window.addEventListener('load', init);
 /*  window.addEventListener('DOMContentLoaded',()=>{
 
 }); */
-const taskForm=document.getElementById('task-form');
-taskForm.addEventListener('submit', (e)=>{
-  e.preventDefault();
+// const taskForm=document.getElementById('task-form');
+// taskForm.addEventListener('submit', (e)=>{
+//   e.preventDefault();
 
-  const title=taskForm['task-title'];
-  const description= taskForm['task-description'];
-  saveTask(title.value, description.value);
-});
+//   const title=taskForm['task-title'];
+//   const description= taskForm['task-description'];
+//   saveTask(title.value, description.value);
+// });
