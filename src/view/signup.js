@@ -21,7 +21,7 @@ const SignUp = () => {
   <div class="conteinerGeneral">
     <div class="SingUpBox">
       <h1>Queer Place</h1>
-      <form id="formResgister" class="formResgister">
+      <form id="formRegister" class="formRegister">
         <a href="#" class="loginInGoogle" id="btnStartGoogle"><img class="google" src="https://brandlogos.net/wp-content/uploads/2015/09/google-favicon-vector-400x400.png" alt="google"> iniciar sesión con google</a>
         <div class="form-control">
           <input id="email" type="email" placeholder="correo electrónico">
@@ -50,7 +50,7 @@ const SignUp = () => {
         
         <button  id="btnCheckIn" class="button">Registrarte</button>
         <p>¿Tienes cuenta?</p>
-        <a href="" id="SignIn" class="loginInCheckIn">Entrar</a>
+        <a  id="SignIn" class="loginInCheckIn">Entrar</a>
         <img class="imgRegistration" src="./img/CB2.png" alt="img">
       </form>
     </div>

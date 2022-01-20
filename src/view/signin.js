@@ -8,6 +8,9 @@ export const registerUser = (e) => {
   signIn(email, password);
 };
 
+export const showHome = (user) => {
+  window.location.hash = '#/home';
+};
 
 const SignUp = () => {
   window.location.hash = '#/signUp';
@@ -41,9 +44,9 @@ const SignIn = () => {
           <a id="btnSignUp" 
           class="loginInCheckIn">Registrate</a>
         </form>
-        <div class="imgbox">
-          <img src="./img/CB2.png" alt="img Welcome" class="imgWelcome">
-        </div>
+ 
+          <img src="./img/CB2.png" alt="img Welcome" class="imgRegistration">
+
       </div>  
     </div>
   `;

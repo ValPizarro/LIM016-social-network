@@ -26,15 +26,10 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* font-family: Rubik, Verdana, Geneva, Tahoma; */
 }
-
 html{
   font-size: 62.5%;
 }
-
-
-
 .conteinerGeneral {
   background-color: rgba(var(--b3f,250,250,250),1);
   display: flex;
@@ -87,7 +82,6 @@ padding: 20px;
   color: var(--color-5);
   font-family: 'Rubik', sans-serif;
 }
-
 .formLogIn p{
   font-size: 15px;
   text-decoration: none;
@@ -96,7 +90,6 @@ padding: 20px;
   align-items: center;
   font-family: 'Rubik', sans-serif;
 }
-
 .title{
   font-family: 'Comic Neue', cursive;
 }
@@ -166,29 +159,19 @@ padding: 20px;
 .button:hover{
   background-color: var(--color-7);
 }
-
-
 .imgWelcome{
     height: 120px;
     width: 150px;
 }
-.formRegister img{
-height: 100px;
-width: 150px;
+.formRegister p{
+  font-size: 15px;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Rubik', sans-serif;
 }
-
-
-
-
-
-
-
-
-
-
-
 .SingUpBox>h1{
-  /* font-weight: lighter; */
   font-size: 40px;
   display: flex;
   margin: 12px 0px;
@@ -196,11 +179,10 @@ width: 150px;
   align-items: center;
   font-family: 'Poppins', sans-serif;
   }
-
-  .google{
-    height: 30px;
-    width: 30px;
-    }
+.google{
+  height: 30px;
+  width: 30px;
+}
 .formRegister{
 padding: 0px 40px;
 font-size: 15px;
@@ -211,18 +193,6 @@ justify-content: center;
 align-items: center;
 font-family: 'Rubik', sans-serif; 
 }
-
-
-/* primera sección*/
-
-
-
-
-
-
-
-
-
 .flexSection {
   background: white;
   display: flex;
@@ -237,7 +207,6 @@ font-family: 'Rubik', sans-serif;
 }
 
 .flexBox{
-  /* height: 100vh; */
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -246,13 +215,10 @@ font-family: 'Rubik', sans-serif;
   justify-content: center;
   background: white;
   border-radius:10px ;
-  /* border: solid 1px #B1B1B1; */
 }
-
-.register{
-  background:var(--neutral-1);
-}
-
+ .register{
+  background-color: rgba(var(--b3f,250,250,250),1);
+} 
 .recordTitle {
   font-family: 'Poppins', sans-serif;
   font-size: 30px;
@@ -263,14 +229,14 @@ font-family: 'Rubik', sans-serif;
   font-family: 'Poppins', sans-serif;
 }
 
-.boxLogin,.formLogIn,.formResgister {
+/* .boxLogin,.formLogIn,.formResgister {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   align-content: center;
-}
-.backLogin {
+} */
+/* .backLogin {
   height: 40px;
   font-size: 15px;
   display: flex;
@@ -279,13 +245,13 @@ font-family: 'Rubik', sans-serif;
   align-items: center;
   font-size: 16px;
   color: var(--color-4);
-}
+} */
 
-.backLogin>a{
+/* .backLogin>a{
   color: var(--color-4);
   text-decoration: none;
-}
-.imgBox{
+} */
+/* .imgBox{
   width: 100%; 
   display: flex;
   align-content: center;
@@ -297,30 +263,34 @@ font-family: 'Rubik', sans-serif;
   padding: 10px;
   height: 170px;
   width: 240px;
-}
-
-.SingUpBox {
+} */
+/* .button{
+  border: solid 1px var(--color-5);
+  background-color: var(--color-5);
+  color: white;
+  transition:background-color .5s;
+  cursor: pointer;
+} 
+.button:hover{
+  background-color: var(--color-7);
+} */
+ .SingUpBox {
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
   align-content: center;
-}
-
+} 
 .SignUpBox>h1{
   text-decoration: none;
   display: flex;
   justify-content: center;
-  /* font-size: 15px; */
 }
-
 .SignUpBox>p, .SignUpBox>a{
   display: flex;
   justify-content: center;
   font-size: 15px;
-
 }
-
 .SignUpBox>h4{
   color: var(--neutral-9);
   font-size: 30px;
@@ -330,18 +300,6 @@ font-family: 'Rubik', sans-serif;
   width: 150px;
   height: 100px;
 }
-
-.button{
-  border: solid 1px var(--color-5);
-  background-color: var(--color-5);
-  color: white;
-  transition:background-color .5s;
-  cursor: pointer;
-} 
-.button:hover{
-  background-color: var(--color-7);
-}
-
 .formLogIn>input{
   background-color: var(--color-1);
   border:solid var(--neutal-2);
@@ -361,10 +319,8 @@ font-family: 'Rubik', sans-serif;
 }
 
 /*home*/
-
 .flexNav{
   background: white;
- 
   flex-direction: column;
   flex-wrap: wrap;
   padding: 20px;
@@ -380,25 +336,3 @@ font-family: 'Rubik', sans-serif;
   align-content: center;
 } 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.label{
-  width: 80px;
-  display: inline-block;
-}
-.inputP, Select{
-  width: 120px;
-}
