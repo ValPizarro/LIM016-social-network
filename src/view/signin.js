@@ -8,6 +8,9 @@ export const registerUser = (e) => {
   signIn(email, password);
 };
 
+export const showHome = (user) => {
+  window.location.hash = '#/home';
+};
 
 const SignUp = () => {
   window.location.hash = '#/signUp';

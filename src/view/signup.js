@@ -31,7 +31,7 @@ const SignUp = () => {
           <input id="email" type="email" placeholder="  Correo electrónico">
           <input type="text" placeholder="  Nombre completo">
           <input type="text" placeholder="  Nombre de usuario">
-          <input id="password" type="text" placeholder="  contraseña">
+          <input id="password" type="password" placeholder="  contraseña">
           <button  id="btnCheckIn" class="button">Registrarte</button>
         </div>
 
