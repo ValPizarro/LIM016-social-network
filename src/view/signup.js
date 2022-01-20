@@ -18,33 +18,43 @@ const backSignIn = () => {
 
 const SignUp = () => {
   const showSignUp = `
-    <div class="flexBox">
-      <div class="recordTitle">
-        <h1>Queer Place</h1>
-      </div>
-
-      <form>
-
-        <div id="formResgister" class="formResgister">
-          <button id="btnStartGoogle" 
-          class="button">Iniciar sesión con Google </button>
-          <input id="email" type="email" placeholder="  Correo electrónico">
+  <div class="conteinerGeneral">
+    <div class="SingUpBox">
+      <h1>Queer Place</h1>
+      <form id="formRegister" class="formRegister">
+        <a href="#" class="loginInGoogle" id="btnStartGoogle"><img class="google" src="https://brandlogos.net/wp-content/uploads/2015/09/google-favicon-vector-400x400.png" alt="google"> iniciar sesión con google</a>
+        <div class="form-control">
+          <input id="email" type="email" placeholder="correo electrónico">
+            <i class="far fa-check-circle"></i>
+            <i class="far fa-times-circle"></i>
+            <small></small>
+        </div> 
+        <div class="form-control">
           <input type="text" placeholder="  Nombre completo">
+            <i class="far fa-check-circle"></i>
+            <i class="far fa-times-circle"></i>
+            <small></small>
+        </div> 
+        <div class="form-control">
           <input type="text" placeholder="  Nombre de usuario">
-          <input id="password" type="password" placeholder="  contraseña">
-          <button  id="btnCheckIn" class="button">Registrarte</button>
-        </div>
-
+            <i class="far fa-check-circle"></i>
+            <i class="far fa-times-circle"></i>
+            <small></small>
+        </div> 
+        <div class="form-control">
+          <input id="password" type="text" placeholder="  contraseña">
+            <i class="far fa-check-circle"></i>
+            <i class="far fa-times-circle"></i>
+            <small></small>
+        </div> 
+        
+        <button  id="btnCheckIn" class="button">Registrarte</button>
+        <p>¿Tienes cuenta?</p>
+        <a  id="SignIn" class="loginInCheckIn">Entrar</a>
+        <img class="imgRegistration" src="./img/CB2.png" alt="img">
       </form>
-
-      <div class="backLogIn">
-        <p>¿Tienes una cuenta? <a id="SignIn">Entrar</a></p>
-      </div>
-
-      <div class="imgBox">
-        <img class="imgRegister" src="./img/CB2.png" alt="">
-      </div>
     </div>
+  </div>
   `;
 
   const divElemt = document.createElement('div');
