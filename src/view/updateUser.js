@@ -1,4 +1,4 @@
-const UpdateUser = () => {
+const updateUser = () => {
   const UpdateProfile = ` 
   <div>
     <h2>Editar perfil</h2>
@@ -17,10 +17,10 @@ const UpdateUser = () => {
   divElemt.setAttribute('class', 'flexSection');
   divElemt.innerHTML = UpdateProfile;
 
-  divElemt.querySelector('#btnSaveProfile')
-      .addEventListener('click', registerUser);
+  //   divElemt.querySelector('#btnSaveProfile')
+  //       .addEventListener('click', registerUser);
 
   return divElemt;
 };
 
-export default UpdateUser;
+export default updateUser;

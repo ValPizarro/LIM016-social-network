@@ -26,6 +26,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Rubik', sans-serif;
 }
 html{
   font-size: 62.5%;
@@ -43,12 +44,12 @@ html{
   justify-content: center;
 } 
 .SingUpBox{
-background-color: white;
-border-radius: 8px ;
-box-shadow: 0 2px 5px rgb(0 0 0 / 40%); 
-width: 350px;
-max-width: 100%;
-overflow: hidden;
+  background-color: white;
+  border-radius: 8px ;
+  box-shadow: 0 2px 5px rgba(253, 213, 213, 0.4); 
+  width: 350px;
+  max-width: 100%;
+  overflow: hidden;
 }
 .SingUpBox>p{
   font-size: 25px;
@@ -56,20 +57,20 @@ overflow: hidden;
   text-align: center;
 }
 .formLogIn {
-display: flex;
-flex-direction: column;
-padding: 20px 40px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 40px;
 }
 .loginInGoogle{
   cursor: pointer;
-padding: 20px;
+  padding: 20px;
   font-size: 15px;
   text-decoration: none;
   display: flex;
   justify-content: center;
   align-items: center;
   color: black;
-  font-family: 'Rubik', sans-serif;
+  /* font-family: 'Rubik', sans-serif; */
 }
 .loginInCheckIn{
   cursor: pointer;
@@ -80,7 +81,7 @@ padding: 20px;
   justify-content: center;
   align-items: center;
   color: var(--color-5);
-  font-family: 'Rubik', sans-serif;
+  /* font-family: 'Rubik', sans-serif; */
 }
 .formLogIn p{
   font-size: 15px;
@@ -88,7 +89,7 @@ padding: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'Rubik', sans-serif;
+  /* font-family: 'Rubik', sans-serif; */
 }
 .title{
   font-family: 'Comic Neue', cursive;
@@ -140,7 +141,7 @@ padding: 20px;
   font-size: 15px;
   color: var(--neutral-6);
   visibility: visible;
-  font-family: 'Rubik', sans-serif;
+  /* font-family: 'Rubik', sans-serif; */
 }
 .button {
   height:36px ;
@@ -169,7 +170,7 @@ padding: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'Rubik', sans-serif;
+  /* font-family: 'Rubik', sans-serif; */
 }
 .SingUpBox>h1{
   font-size: 40px;
@@ -184,14 +185,14 @@ padding: 20px;
   width: 30px;
 }
 .formRegister{
-padding: 0px 40px;
-font-size: 15px;
-text-decoration: none;
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-font-family: 'Rubik', sans-serif; 
+  padding: 0px 40px;
+  font-size: 15px;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* font-family: 'Rubik', sans-serif;  */
 }
 .flexSection {
   background: white;
@@ -205,7 +206,6 @@ font-family: 'Rubik', sans-serif;
   align-content: center;
   justify-content: center;
 }
-
 .flexBox{
   width: 100%;
   display: flex;
@@ -228,53 +228,7 @@ font-family: 'Rubik', sans-serif;
   align-items: center;
   font-family: 'Poppins', sans-serif;
 }
-
-/* .boxLogin,.formLogIn,.formResgister {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  align-content: center;
-} */
-/* .backLogin {
-  height: 40px;
-  font-size: 15px;
-  display: flex;
-  align-content: center;
-  justify-content: center;
-  align-items: center;
-  font-size: 16px;
-  color: var(--color-4);
-} */
-
-/* .backLogin>a{
-  color: var(--color-4);
-  text-decoration: none;
-} */
-/* .imgBox{
-  width: 100%; 
-  display: flex;
-  align-content: center;
-  align-items: center;
-  justify-content: center;
-}
-
-.imgBox>img{
-  padding: 10px;
-  height: 170px;
-  width: 240px;
-} */
-/* .button{
-  border: solid 1px var(--color-5);
-  background-color: var(--color-5);
-  color: white;
-  transition:background-color .5s;
-  cursor: pointer;
-} 
-.button:hover{
-  background-color: var(--color-7);
-} */
- .SingUpBox {
+.SingUpBox {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -335,4 +289,3 @@ font-family: 'Rubik', sans-serif;
   display: flex;
   align-content: center;
 } 
-

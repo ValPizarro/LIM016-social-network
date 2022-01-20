@@ -24,7 +24,7 @@ const SignUp = () => {
       <form id="formRegister" class="formRegister">
         <a href="#" class="loginInGoogle" id="btnStartGoogle"><img class="google" src="https://brandlogos.net/wp-content/uploads/2015/09/google-favicon-vector-400x400.png" alt="google"> iniciar sesión con google</a>
         <div class="form-control">
-          <input id="email" type="email" placeholder="correo electrónico">
+          <input id="email" type="email" placeholder=" Correo electrónico">
             <i class="far fa-check-circle"></i>
             <i class="far fa-times-circle"></i>
             <small></small>
@@ -42,7 +42,7 @@ const SignUp = () => {
             <small></small>
         </div> 
         <div class="form-control">
-          <input id="password" type="text" placeholder="  contraseña">
+          <input id="password" type="text" placeholder="  Contraseña">
             <i class="far fa-check-circle"></i>
             <i class="far fa-times-circle"></i>
             <small></small>
