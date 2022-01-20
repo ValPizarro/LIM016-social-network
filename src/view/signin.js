@@ -39,14 +39,14 @@ const SignIn = () => {
           </div>
           <button id="btnSignIn" class="button">Inicia sesión</button>
           
-          <a class="loginInGoogle" id="google"><img src="https://brandlogos.net/wp-content/uploads/2015/09/google-favicon-vector-400x400.png" alt="google"> iniciar sesión con google</a>
+          <a class="loginInGoogle" id="google"><img class="google" src="https://brandlogos.net/wp-content/uploads/2015/09/google-favicon-vector-400x400.png" alt="google"> iniciar sesión con google</a>
           <p>¿No tienes cuenta?</p>
           <a id="btnSignUp" 
           class="loginInCheckIn">Registrate</a>
         </form>
-        <div class="imgbox">
-          <img src="./img/CB2.png" alt="img Welcome" class="imgWelcome">
-        </div>
+ 
+          <img src="./img/CB2.png" alt="img Welcome" class="imgRegistration">
+
       </div>  
     </div>
   `;
