@@ -12,4 +12,5 @@ export const createUser = (email, password) => {
         const errorMessage = error.message;
         console.log('Error', errorMessage, errorCode);
       });
+
 };

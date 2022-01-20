@@ -21,9 +21,8 @@ const welcome = () => {
           <button id="btnJoin" class="button">
           Únete a nuestra comunidad </button>
         </div>
-        <div class="imgBox">
-          <img src="./img/The Movement - Together.png" alt="img Welcome">
-        </div>
+        <img class=" imgWelcome " src="./img/The Movement - Together.png" alt="img Welcome">
+
       </div>
       `;
 
