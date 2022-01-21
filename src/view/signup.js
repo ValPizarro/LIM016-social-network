@@ -12,7 +12,7 @@ export const registerUserNew = (e) => {
   console.log('Usuario creado:', user);
 };
 
-export const backSignIn = () => {
+const backSignIn = () => {
   window.location.hash = '#/signIn';
 };
 

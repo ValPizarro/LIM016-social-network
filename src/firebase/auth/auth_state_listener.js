@@ -10,8 +10,7 @@ export const onAuth = () => {
 
       profileUser(currentUser);
     } else {
-      const uid = null;
-      console.log('El usuario es:', uid);
+      console.log('El usuario se desconecto');
     }
   });
 };
