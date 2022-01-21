@@ -10,8 +10,10 @@ const profile = () => {
   <div>
     <h2> Perfil</h2>
   </div>
-
- <div>
+  <div>
+  
+  </div>
+  <div>
     <button id="btnEditProfile" class="button">Editar perfil</button>
   </div>`;
   const divElemt = document.createElement('div');

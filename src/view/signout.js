@@ -1,4 +1,4 @@
-// import {backSignIn} from './signup.js';
+import {signOutUser} from '../firebase/auth/auth_sign_out.js';
 
 const signOut = () => {
   const showSignOut = ` 
@@ -13,12 +13,7 @@ const signOut = () => {
   divElemt.setAttribute('class', 'flexSection');
   divElemt.innerHTML = showSignOut;
 
-  divElemt.querySelector('#btnSignOut')
-      .addEventListener('click', console.log('cerró sesión'));
-
-  //   divElemt
-  //       .querySelector('#btnSignOut')
-  //       .addEventListener('click', backSignIn());
+  divElemt.querySelector('#btnSignOut').addEventListener('click', signOutUser);
 
   return divElemt;
 };
