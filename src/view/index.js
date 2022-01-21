@@ -5,6 +5,9 @@ import Profile from './perfil.js';
 import Different from './404.js';
 import UpdateUser from './updateUser.js';
 import Nav from './nav.js';
+import Timeline from './timeline.js';
+import Search from './search.js';
+import SignOut from './signout.js';
 
 const components = {
   welcome: Welcome,
@@ -13,7 +16,10 @@ const components = {
   nav: Nav,
   profile: Profile,
   update: UpdateUser,
+  timeLine: Timeline,
+  search: Search,
   different: Different,
+  signOut: SignOut,
 };
 
 export {components};

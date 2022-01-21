@@ -70,7 +70,7 @@ html{
   justify-content: center;
   align-items: center;
   color: black;
-  /* font-family: 'Rubik', sans-serif; */
+  font-family: 'Rubik', sans-serif;
 }
 .loginInCheckIn{
   cursor: pointer;
@@ -81,7 +81,7 @@ html{
   justify-content: center;
   align-items: center;
   color: var(--color-5);
-  /* font-family: 'Rubik', sans-serif; */
+  font-family: 'Rubik', sans-serif;
 }
 .formLogIn p{
   font-size: 15px;
@@ -89,7 +89,7 @@ html{
   display: flex;
   justify-content: center;
   align-items: center;
-  /* font-family: 'Rubik', sans-serif; */
+  font-family: 'Rubik', sans-serif;
 }
 .title{
   font-family: 'Comic Neue', cursive;
@@ -141,7 +141,7 @@ html{
   font-size: 15px;
   color: var(--neutral-6);
   visibility: visible;
-  /* font-family: 'Rubik', sans-serif; */
+  font-family: 'Rubik', sans-serif;
 }
 .button {
   height:36px ;
@@ -170,7 +170,7 @@ html{
   display: flex;
   justify-content: center;
   align-items: center;
-  /* font-family: 'Rubik', sans-serif; */
+  font-family: 'Rubik', sans-serif;
 }
 .SingUpBox>h1{
   font-size: 40px;
@@ -192,7 +192,7 @@ html{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* font-family: 'Rubik', sans-serif;  */
+  font-family: 'Rubik', sans-serif; 
 }
 .flexSection {
   background: white;
@@ -216,7 +216,7 @@ html{
   background: white;
   border-radius:10px ;
 }
- .register{
+.register{
   background-color: rgba(var(--b3f,250,250,250),1);
 } 
 .recordTitle {
@@ -226,7 +226,6 @@ html{
   margin: 12px 0px;
   justify-content: center;
   align-items: center;
-  font-family: 'Poppins', sans-serif;
 }
 .SingUpBox {
   display: flex;
@@ -272,20 +271,64 @@ html{
   font-family: 'Poppins', sans-serif;
 }
 
-/*home*/
-.flexNav{
-  background: white;
-  flex-direction: column;
-  flex-wrap: wrap;
-  padding: 20px;
-  align-items: center;
-  height: 100vh;
+/*navegador*/
+
+.tab-nav-container{
+  height:65px ;
+  border-bottom: 0.1px solid #EAE2F8;
   width: 100%;
-  align-content: center;
-  justify-content: center;
-}
-.nav {
-  list-style: none;
   display: flex;
-  align-content: center;
-} 
+}
+.tab {
+    width: 25%;
+    height: 100%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    border-radius: 50px;
+    cursor: pointer;
+    padding: 0 20px;
+    margin: 0 10px;
+}
+.boxSearch{
+    position: absolute;
+}
+.inputSearch {
+  padding: 10px;
+  width: 60px;
+  height: 40px;
+  background: none;
+  border: 0px solid #EAE2F8;
+  border-radius: 50px;
+  box-sizing: border-box;
+  font-family: Comic Sans MS;
+  font-size: 15px;
+  color: #8662C7;
+  outline: none;
+  transition: .5s;
+}
+.boxSearch:hover .inputSearch{
+  width: 200px;
+  background: #EAE2F8;
+  border-radius: 10px;
+}
+.fa-search{
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translate(-50%,-50%);
+  display: flex;
+  justify-content: center;
+  transition: .2s;
+}
+.boxSearch:hover .fa-search{
+  opacity: 0;
+  z-index: -1;
+}
+.fasNav{
+  color:#724BB7;/*iconos*/
+  font-size: 25px;
+}

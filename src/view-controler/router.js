@@ -22,7 +22,8 @@ const changeView = (route) => {
       break;
     }
     case '#/home': {
-      nav.appendChild(components.nav());
+      navegador.appendChild(components.nav());
+      container.appendChild(components.timeLine());
       break;
     }
     case '#/profile': {
@@ -30,8 +31,19 @@ const changeView = (route) => {
       container.appendChild(components.profile());
       break;
     }
+    case '#/search': {
+      navegador.appendChild(components.nav());
+      container.appendChild(components.search());
+      break;
+    }
     case '#/update': {
+      navegador.appendChild(components.nav());
       container.appendChild(components.update());
+      break;
+    }
+    case '#/signOut': {
+      navegador.appendChild(components.nav());
+      container.appendChild(components.signOut());
       break;
     }
     default:

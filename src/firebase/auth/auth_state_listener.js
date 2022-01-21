@@ -1,4 +1,4 @@
-import {auth, onAuthStateChanged} from './configuraciones.js';
+import {auth, onAuthStateChanged} from '../configuraciones.js';
 import {profileUser} from './auth_get_user_profile.js';
 
 

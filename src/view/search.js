@@ -1,14 +1,14 @@
-const timeline = () => {
-  const showTimeline = `
+const search = () => {
+  const showSearch = `
   <div>
-    <h2> Publicaciones</h2>
+    <h2>Búsqueda</h2>
   </div>
 `;
   const divElemt = document.createElement('div');
   divElemt.setAttribute('class', 'flexSection');
-  divElemt.innerHTML = showTimeline;
+  divElemt.innerHTML = showSearch;
 
   return divElemt;
 };
 
-export default timeline;
+export default search;

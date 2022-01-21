@@ -1,5 +1,5 @@
-import {googleAuth} from '../firebase/auth_google_signin_popup.js';
-import {signIn} from '../firebase/auth_signin_password.js';
+import {googleAuth} from '../firebase/auth/auth_google_signin_popup.js';
+import {signIn} from '../firebase/auth/auth_signin_password.js';
 
 export const registerUser = (e) => {
   const email = e.target.closest('form').querySelector('#email').value;
