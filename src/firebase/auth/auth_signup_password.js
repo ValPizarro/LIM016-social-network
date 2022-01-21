@@ -1,10 +1,10 @@
-import {auth, signInWithEmailAndPassword} from './configuraciones.js';
 import {onAuth} from './auth_state_listener.js';
+import {auth, createUserWithEmailAndPassword} from '../configuraciones.js';
 
-export const signIn = (email, password) => {
-  return signInWithEmailAndPassword(auth, email, password)
+export const createUser = (email, password) => {
+  return createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        const user = userCredential.user.uid;
+        const user = userCredential.user;
         onAuth(user);
       })
       .catch((error) => {
