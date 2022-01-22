@@ -1,4 +1,4 @@
-import {auth, onAuthStateChanged} from './configuraciones.js';
+import {auth, onAuthStateChanged} from '../configuraciones.js';
 import {profileUser} from './auth_get_user_profile.js';
 
 
@@ -10,8 +10,7 @@ export const onAuth = () => {
 
       profileUser(currentUser);
     } else {
-      const uid = null;
-      console.log('El usuario es:', uid);
+      console.log('El usuario se desconecto');
     }
   });
 };
