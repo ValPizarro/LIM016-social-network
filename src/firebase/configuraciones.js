@@ -33,8 +33,11 @@ export {
   onAuthStateChanged,
   signOut,
   signInWithPopup,
+  getFirestore,
   collection,
   getDocs,
-  addDoc
+  addDoc,
+  db
 };
+
  

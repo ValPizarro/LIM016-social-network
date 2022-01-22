@@ -336,3 +336,13 @@ font-family: 'Rubik', sans-serif;
   align-content: center;
 } 
 
+
+
+
+.label{
+  width: 80px;
+  display: inline-block;
+}
+.inputP, Select{
+  width: 120px;
+}

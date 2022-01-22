@@ -22,7 +22,7 @@ const SignUp = () => {
     <div class="SingUpBox">
       <h1>Queer Place</h1>
       <form id="formRegister" class="formRegister">
-        <a href="#" class="loginInGoogle" id="btnStartGoogle"><img class="google" src="https://brandlogos.net/wp-content/uploads/2015/09/google-favicon-vector-400x400.png" alt="google"> iniciar sesión con google</a>
+        <a class="loginInGoogle" id="btnStartGoogle"><img class="google" src="https://brandlogos.net/wp-content/uploads/2015/09/google-favicon-vector-400x400.png" alt="google"> iniciar sesión con google</a>
         <div class="form-control">
           <input id="email" type="email" placeholder="correo electrónico">
             <i class="far fa-check-circle"></i>
