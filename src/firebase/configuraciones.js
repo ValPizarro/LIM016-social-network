@@ -1,5 +1,14 @@
 import {initializeApp} from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js';
-import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, GoogleAuthProvider, signInWithPopup} from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js';
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut,
+  GoogleAuthProvider,
+  signInWithPopup,
+  updateProfile,
+} from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js';
 import {getFirestore, collection, getDocs, addDoc} from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js';
 
 const firebaseConfig = {
@@ -20,12 +29,6 @@ const provider = new GoogleAuthProvider(app);
 // Init Services
 const db = getFirestore();
 
-// almacena nuestra base de datos
-
-// export const saveTask = (title, description) => {
-//   addDoc(collection(db, 'tasks'), {title: title, description: description});
-// };
-
 export {
   app,
   auth,
@@ -35,6 +38,7 @@ export {
   onAuthStateChanged,
   signOut,
   signInWithPopup,
+  updateProfile,
   db,
   collection,
   getDocs,

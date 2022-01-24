@@ -1,13 +1,16 @@
 import {createUser} from '../firebase/auth/auth_signup_password.js';
 import {googleAuth} from '../firebase/auth/auth_google_signin_popup.js';
 
-export const registerUserNew = (e) => {
+/**
+ * @param{evento} e
+*/
+async function registerUserNew(e) {
   e.preventDefault();
 
   const email = e.target.closest('form').querySelector('#email').value;
   const password = e.target.closest('form').querySelector('#password').value;
 
-  const user = createUser(email, password);
+  const user = await createUser(email, password);
 
   console.log('Usuario creado:', user);
 };
