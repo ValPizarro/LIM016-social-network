@@ -25,10 +25,10 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider(app);
-
 // Init Services
-const db = getFirestore();
+const db = getFirestore(app);// conexión a la base de datos
 
+export const getTastks = () => console.log('tasks-list');
 export {
   app,
   auth,

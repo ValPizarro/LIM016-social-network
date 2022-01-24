@@ -1,26 +1,26 @@
 :root{
   /* tono violeta desendente  */
-  --color-10:#240754;
-  --color-9:#34126F;
-  --color-8:#421987;
-  --color-7:#51279B;
-  --color-6:#653CAD;
-  --color-5:#724BB7;
-  --color-4:#8662C7;
-  --color-3:#A081D9;
-  --color-2:#CFBCF2;
-  --color-1:#EAE2F8;
+--color-10:#240754;
+--color-9:#34126F;
+--color-8:#421987;
+--color-7:#51279B;
+--color-6:#653CAD;
+--color-5:#724BB7;
+--color-4:#8662C7;
+--color-3:#A081D9;
+--color-2:#CFBCF2;
+--color-1:#EAE2F8;
   /*tono neutrales plomos*/
-  --neutral-10:#;
-  --neutral-9:#323F4F;
-  --neutral-8:#3E4C59;
-  --netral-7:#59606D;
-  --neutral-6:#616E7C;
-  --neutral-5:#7B8794;
-  --neutral-4:#9AA5B1;
-  --neutral-3:#C8D2D9;
-  --neutral-2:#EAE7EB;
-  --neutral-1:#F5F7FA;
+--neutral-10:#;
+--neutral-9:#323F4F;
+--neutral-8:#3E4C59;
+--netral-7:#59606D;
+--neutral-6:#616E7C;
+--neutral-5:#7B8794;
+--neutral-4:#9AA5B1;
+--neutral-3:#C8D2D9;
+--neutral-2:#EAE7EB;
+--neutral-1:#F5F7FA;
 }
 *{
   margin: 0;
