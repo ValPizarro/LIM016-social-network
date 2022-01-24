@@ -1,0 +1,334 @@
+:root{
+  /* tono violeta desendente  */
+--color-10:#240754;
+--color-9:#34126F;
+--color-8:#421987;
+--color-7:#51279B;
+--color-6:#653CAD;
+--color-5:#724BB7;
+--color-4:#8662C7;
+--color-3:#A081D9;
+--color-2:#CFBCF2;
+--color-1:#EAE2F8;
+  /*tono neutrales plomos*/
+--neutral-10:#;
+--neutral-9:#323F4F;
+--neutral-8:#3E4C59;
+--netral-7:#59606D;
+--neutral-6:#616E7C;
+--neutral-5:#7B8794;
+--neutral-4:#9AA5B1;
+--neutral-3:#C8D2D9;
+--neutral-2:#EAE7EB;
+--neutral-1:#F5F7FA;
+}
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Rubik', sans-serif;
+}
+html{
+  font-size: 62.5%;
+}
+.conteinerGeneral {
+  background-color: rgba(var(--b3f,250,250,250),1);
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding: 20px;    
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  align-content: center;
+  justify-content: center;
+} 
+.SingUpBox{
+  background-color: white;
+  border-radius: 8px ;
+  box-shadow: 0 2px 5px rgba(253, 213, 213, 0.4); 
+  width: 350px;
+  max-width: 100%;
+  overflow: hidden;
+}
+.SingUpBox>p{
+  font-size: 25px;
+  padding: 20px 10px;
+  text-align: center;
+}
+.formLogIn {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 40px;
+}
+.loginInGoogle{
+  cursor: pointer;
+  padding: 20px;
+  font-size: 15px;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  font-family: 'Rubik', sans-serif;
+}
+.loginInCheckIn{
+  cursor: pointer;
+  padding: 20px;
+  font-size: 15px;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-5);
+  font-family: 'Rubik', sans-serif;
+}
+.formLogIn p{
+  font-size: 15px;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Rubik', sans-serif;
+}
+.title{
+  font-family: 'Comic Neue', cursive;
+}
+.google{
+  height: 30px;
+  width: 30px;
+}
+.form-control {
+  margin-bottom: 10px;
+  padding-bottom: 20px;
+  position: relative;
+}
+.form-control input {
+  border: 0px solid var(--color-5);
+  border-radius: 8px;
+  font-size: 14px;
+  height: 36px;
+  width: 266px;
+  padding: 10px;
+  outline-color: #EAE2F8;
+  background: #EAE2F8;
+}
+.form-control input::placeholder{
+ color: #A081D9;
+}
+.form-control i {
+  visibility: hidden; 
+  position: absolute;
+  top: 10px;
+  right: 10px; 
+  font-size: 20px
+}
+.form-control.success i.fa-check-circle {
+  visibility: visible;
+  color: #2ecc71;
+}
+.form-control.error i.fa-times-circle {
+  visibility: visible;
+  color: #FE6F5E;
+}
+.form-control small {
+  visibility: hidden; 
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.form-control.error small {
+  font-size: 15px;
+  color: var(--neutral-6);
+  visibility: visible;
+  font-family: 'Rubik', sans-serif;
+}
+.button {
+  height:36px ;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-radius: 8px;
+  color: #ffff;
+  width: 266px;
+  padding: 10px;
+  font-size: 14px;
+  border: solid 1px var(--color-5);
+  background-color: var(--color-5);
+  transition:background-color .5s;
+  cursor: pointer;
+}
+.button:hover{
+  background-color: var(--color-7);
+}
+.imgWelcome{
+    height: 120px;
+    width: 150px;
+}
+.formRegister p{
+  font-size: 15px;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Rubik', sans-serif;
+}
+.SingUpBox>h1{
+  font-size: 40px;
+  display: flex;
+  margin: 12px 0px;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+  }
+.google{
+  height: 30px;
+  width: 30px;
+}
+.formRegister{
+  padding: 0px 40px;
+  font-size: 15px;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Rubik', sans-serif; 
+}
+.flexSection {
+  background: white;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding: 20px;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  align-content: center;
+  justify-content: center;
+}
+.flexBox{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  background: white;
+  border-radius:10px ;
+}
+.register{
+  background-color: rgba(var(--b3f,250,250,250),1);
+} 
+.recordTitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 30px;
+  display: flex;
+  margin: 12px 0px;
+  justify-content: center;
+  align-items: center;
+}
+.SingUpBox {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+} 
+.SignUpBox>h1{
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+}
+.SignUpBox>p, .SignUpBox>a{
+  display: flex;
+  justify-content: center;
+  font-size: 15px;
+}
+.SignUpBox>h4{
+  color: var(--neutral-9);
+  font-size: 30px;
+  padding: 30px;
+}
+.imgRegistration{
+  width: 150px;
+  height: 100px;
+}
+.formLogIn>input{
+  background-color: var(--color-1);
+  border:solid var(--neutal-2);
+  color: var(--color-10);
+}
+
+@media (min-width:450px){
+  .flexBox{
+      width: 350px;
+  }
+} 
+.messageWelcome>p {
+  font-size: 1.6rem;
+  padding: 20px 50px;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+}
+
+/*navegador*/
+
+.tab-nav-container{
+  height:65px ;
+  border-bottom: 0.1px solid #EAE2F8;
+  width: 100%;
+  display: flex;
+}
+.tab {
+    width: 25%;
+    height: 100%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    border-radius: 50px;
+    cursor: pointer;
+    padding: 0 20px;
+    margin: 0 10px;
+}
+.boxSearch{
+    position: absolute;
+}
+.inputSearch {
+  padding: 10px;
+  width: 60px;
+  height: 40px;
+  background: none;
+  border: 0px solid #EAE2F8;
+  border-radius: 50px;
+  box-sizing: border-box;
+  font-family: Comic Sans MS;
+  font-size: 15px;
+  color: #8662C7;
+  outline: none;
+  transition: .5s;
+}
+.boxSearch:hover .inputSearch{
+  width: 200px;
+  background: #EAE2F8;
+  border-radius: 10px;
+}
+.fa-search{
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translate(-50%,-50%);
+  display: flex;
+  justify-content: center;
+  transition: .2s;
+}
+.boxSearch:hover .fa-search{
+  opacity: 0;
+  z-index: -1;
+}
+.fasNav{
+  color:#724BB7;/*iconos*/
+  font-size: 25px;
+}
