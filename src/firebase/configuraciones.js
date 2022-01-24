@@ -16,16 +16,10 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider(app);
-
 // Init Services
-const db = getFirestore();
+const db = getFirestore(app);//conexion a la base de datos
 
-// almacena nuestra base de datos
-
-// export const saveTask = (title, description) => {
-//   addDoc(collection(db, 'tasks'), {title: title, description: description});
-// };
-
+ export const getTastks = () => console.log('tasks-list'); 
 export {
   app,
   auth,
