@@ -2,8 +2,10 @@ import {components} from '../view/index.js';
 
 const changeView = (route) => {
   const container = document.getElementById('container');
-  const home = document.getElementById('home');
   container.innerHTML = '';
+
+  const navegador = document.getElementById('navegador');
+  navegador.innerHTML = '';
 
   switch (route) {
     case '':
@@ -12,14 +14,37 @@ const changeView = (route) => {
       return container.appendChild(components.welcome());
     }
     case '#/signIn': {
-      return container.appendChild(components.signIn());
+      container.appendChild(components.signIn());
+      break;
     }
     case '#/signUp': {
-      return container.appendChild(components.signUp());
+      container.appendChild(components.signUp());
+      break;
     }
     case '#/home': {
-      return home.appendChild(components.home());
-      container.appendChild(components.perfil());
+      navegador.appendChild(components.nav());
+      container.appendChild(components.timeLine());
+      break;
+    }
+    case '#/profile': {
+      navegador.appendChild(components.nav());
+      container.appendChild(components.profile());
+      break;
+    }
+    case '#/search': {
+      navegador.appendChild(components.nav());
+      container.appendChild(components.search());
+      break;
+    }
+    case '#/update': {
+      navegador.appendChild(components.nav());
+      container.appendChild(components.update());
+      break;
+    }
+    case '#/signOut': {
+      navegador.appendChild(components.nav());
+      container.appendChild(components.signOut());
+      break;
     }
     default:
       return container.appendChild(components.different());

@@ -18,7 +18,9 @@ const auth = getAuth(app);
 const provider = new GoogleAuthProvider(app);
 
 // Init Services
- const db = getFirestore();///alamacena nuestra base de datos
+const db = getFirestore();
+
+// almacena nuestra base de datos
 
 // export const saveTask = (title, description) => {
 //   addDoc(collection(db, 'tasks'), {title: title, description: description});
@@ -33,8 +35,8 @@ export {
   onAuthStateChanged,
   signOut,
   signInWithPopup,
+  db,
   collection,
   getDocs,
-  addDoc
+  addDoc,
 };
- 

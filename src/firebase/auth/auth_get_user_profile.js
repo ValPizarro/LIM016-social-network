@@ -1,5 +1,5 @@
-import {showHome} from '../view/signin.js';
-import {auth} from './configuraciones.js';
+import {showHome} from '../../view/signin.js';
+import {auth} from '../configuraciones.js';
 
 export const profileUser = (user) => {
   const currentUser = auth.currentUser;
