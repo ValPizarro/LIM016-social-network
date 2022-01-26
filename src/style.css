@@ -43,7 +43,7 @@ html{
   align-content: center;
   justify-content: center;
 } 
-.SingUpBox, .updateBoX{
+.SingUpBox, .updateBoX, .postBox{
   background-color: white;
   border-radius: 8px ;
   box-shadow: 0 2px 5px rgba(253, 213, 213, 0.4); 
