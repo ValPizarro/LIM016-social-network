@@ -1,11 +1,16 @@
 import {saveTask} from '../firebase/firestore/firestore-add.js';
+import {getTastks} from '../firebase/configuraciones.js';
 
-/* window.addEventListener('DOMContent',()=>{
-  console.log('works')
+// NO BORRAR
+/* window.addEventListener('DOMContentLoaded',async()=>{
+  const querySnapshot=await getTastks()
+  //console.log(querySnapshot);
+  querySnapshot.forEach(doc => {
+    console.log(doc.data());
+    console.log(taskContainer);
+  });
 });
- const prueba = (evt) =>{
-  console.log('hola');
-} */
+ */
 const post = (e) => {
   e.preventDefault();
   const taskTitle= e.target.closest('form').querySelector('#task-title').value;
@@ -17,8 +22,7 @@ const post = (e) => {
 };
 const timeline = () => {
   const showTimeline = `
-  <div class="conteinerGeneral">
-  <div class="postBox">
+  <div >
     <h2> Publicaciones</h2>
     <form class="task-form">
       <label for="title" Title:</label>
@@ -29,6 +33,7 @@ const timeline = () => {
       placeholder="Task Description" ></textarea>
       <button id="btn-task-save" class="button">Save</button>
     </form>
+    <div id="tasks-container">holaa</div>
   </div>
 
   <div id="showAllPosts"> </div>
@@ -41,7 +46,25 @@ const timeline = () => {
   divElemt.innerHTML = showTimeline;
   divElemt.querySelector('#btn-task-save').addEventListener('click', post);
 
+  const prueba =divElemt.querySelector('#tasks-container');
+  console.log(prueba);
+  printPost();
+
+
   return divElemt;
 };
+
+const printPost = ()=>{
+  window.addEventListener('Load', async ()=>{
+    const querySnapshot=await getTastks();
+    // console.log(querySnapshot);
+    querySnapshot.forEach((doc) => {
+      console.log(doc.data());
+      console.log(taskContainer);
+    });
+  });
+};
+printPost();
+
 
 export default timeline;
