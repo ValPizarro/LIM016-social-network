@@ -1,6 +1,5 @@
 import {googleAuth} from '../firebase/auth/auth_google_signin_popup.js';
 import {signIn} from '../firebase/auth/auth_signin_password.js';
-
 export const registerUser = (e) => {
   const email = e.target.closest('form').querySelector('#email').value;
   const password = e.target.closest('form').querySelector('#password').value;
@@ -10,6 +9,7 @@ export const registerUser = (e) => {
 
 export const showHome = (user) => {
   window.location.hash = '#/home';
+ 
 };
 
 const SignUp = () => {
