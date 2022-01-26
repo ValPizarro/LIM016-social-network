@@ -19,7 +19,8 @@ const provider = new GoogleAuthProvider(app);
 // Init Services
 const db = getFirestore(app);//conexion a la base de datos
 
- export const getTastks = () => console.log('tasks-list'); 
+export const getTastks = () =>getDocs(collection(db,'Post'));
+
 export {
   app,
   auth,
