@@ -1,7 +1,6 @@
 import {auth, onAuthStateChanged} from '../configuraciones.js';
 import {profileUser} from './auth_get_user_profile.js';
 
-
 export const onAuth = () => {
   return onAuthStateChanged(auth, (user) => {
     if (user) {

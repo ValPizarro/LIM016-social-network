@@ -8,7 +8,7 @@ export const registerUserNew = (e) => {
   const password = e.target.closest('form').querySelector('#password').value;
 
   const user = createUser(email, password);
-
+  
   console.log('Usuario creado:', user);
 };
 
