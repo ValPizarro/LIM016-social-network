@@ -66,6 +66,22 @@ const SignIn = () => {
 
 export default SignIn;
 
+
+export const showError = (error) => {
+  console.log(error);
+
+  if (error === 'auth/internal-error') {
+    console.log('Ingrese contraseña');
+    setErrorInput(password, 'Ingrese contraseña');
+  } else if (error === 'auth/wrong-password') {
+    console.log('contraseña erronea');
+
+    // setErrorInput(password, 'Contraseña incorrecta');
+  } else {
+    // setErrorInput(password, 'Contraseña');
+  }
+}; showError();
+
 const setErrorInput = (input, errorMessage) => {
   const formControl = input.parentElement;
   const small = formControl.querySelector('small');
@@ -73,16 +89,3 @@ const setErrorInput = (input, errorMessage) => {
   small.innerText = errorMessage;
   formControl.className = 'form-control error';
 };
-
-export const showError = (error) => {
-  console.log(error);
-
-  if (error === 'auth/internal-error') {
-    setErrorInput(password, 'Ingrese contraseña');
-  } else if (error === 'auth/wrong-password') {
-    setErrorInput(password, 'Contraseña incorrecta');
-  } else {
-    setErrorInput(password, 'Contraseña');
-  }
-}; showError();
-
