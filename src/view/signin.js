@@ -27,16 +27,14 @@ const SignIn = () => {
         <form id="formLogIn" class="formLogIn">
           
           <div class="form-control">
-            <input id="email" type="email" placeholder="correo electrónico">
-            <i class="far fa-check-circle"></i>
+            <input id="email" type="email" placeholder="Correo electrónico">
             <i class="far fa-times-circle"></i>
             <small></small>
           </div>
           
           <div class="form-control">
             <input minlength="5" id="password" type="password" 
-            placeholder="contraseña">
-            <i class="far fa-check-circle"></i>
+            placeholder="Contraseña">
             <i class="far fa-times-circle"></i>
             <small></small>
           </div>
@@ -71,14 +69,15 @@ export const showError = (error) => {
   console.log(error);
 
   if (error === 'auth/internal-error') {
-    console.log('Ingrese contraseña');
     setErrorInput(password, 'Ingrese contraseña');
   } else if (error === 'auth/wrong-password') {
-    console.log('contraseña erronea');
-
-    // setErrorInput(password, 'Contraseña incorrecta');
+    setErrorInput(password, 'Contraseña incorrecta');
+  } else if (error === 'auth/invalid-email') {
+    setErrorInput(email, 'Ingrese correo electrónico');
+  } else if (error === 'auth/user-not-found') {
+    setErrorInput(email, 'No se encuentra registrado');
   } else {
-    // setErrorInput(password, 'Contraseña');
+    console.log('El correo o contraseña es incorrecta');
   }
 }; showError();
 
