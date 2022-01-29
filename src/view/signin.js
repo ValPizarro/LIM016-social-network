@@ -57,12 +57,32 @@ const SignIn = () => {
 export default SignIn;
 
 export const registerUser = (e) => {
+  e.preventDefault();
+
   const email = e.target.closest('form').querySelector('#email').value;
   const password = e.target.closest('form').querySelector('#password').value;
 
   signIn(email, password);
+  checkImput(password);
 };
 
-export const showError =(error) => {
+const setErrorInput = (input, errorMessage) => {
+  const formControl = input.parentElement;
+  const small = formControl.querySelector('small');
+
+  small.innerText = errorMessage;
+  formControl.className = 'form-control error';
+};
+
+export const showError = (error) => {
   console.log(error);
-}
+
+  if (error === 'auth/internal-error') {
+    setErrorInput(password, 'Ingrese contraseña');
+  } else if (error === 'auth/wrong-password') {
+    setErrorInput(password, 'Contraseña incorrecta');
+  } else {
+    setErrorInput(password, 'Contraseña');
+  }
+}; showError();
+

@@ -1,3 +1,4 @@
+import {showError} from '../../view/signin.js';
 import {auth, signInWithEmailAndPassword} from '../configuraciones.js';
 import {onAuth} from './auth_state_listener.js';
 
@@ -11,5 +12,6 @@ export const signIn = (email, password) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log('Error', errorMessage, errorCode);
+        showError(errorCode);
       });
 };
