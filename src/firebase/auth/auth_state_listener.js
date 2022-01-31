@@ -1,6 +1,7 @@
 import {post} from '../../view/perfil.js';
 import {auth, onAuthStateChanged} from '../configuraciones.js';
 import {profileUser} from './auth_get_user_profile.js';
+import {backSignIn} from '../../view/signup.js';
 
 export const onAuth = () => {
   return onAuthStateChanged(auth, (user) => {
@@ -12,6 +13,7 @@ export const onAuth = () => {
       post(uid);
     } else {
       console.log('El usuario se desconecto');
+      backSignIn();
     }
   });
 };

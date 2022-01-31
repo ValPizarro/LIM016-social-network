@@ -15,7 +15,7 @@ async function registerUserNew(e) {
   console.log('Usuario creado:', user);
 };
 
-const backSignIn = () => {
+export const backSignIn = () => {
   window.location.hash = '#/signIn';
 };
 

@@ -1,18 +1,8 @@
 import {googleAuth} from '../firebase/auth/auth_google_signin_popup.js';
 import {signIn} from '../firebase/auth/auth_signin_password.js';
-export const registerUser = (e) => {
-  const email = e.target.closest('form').querySelector('#email').value;
-  const password = e.target.closest('form').querySelector('#password').value;
 
-  signIn(email, password);
-};
-
-export const showHome = (user) => {
+export const showHome = () => {
   window.location.hash = '#/home';
-};
-
-const SignUp = () => {
-  window.location.hash = '#/signUp';
 };
 
 const SignIn = () => {
@@ -24,21 +14,19 @@ const SignIn = () => {
           
           <div class="form-control">
             <input id="email" type="email" placeholder="correo electrónico">
-            <i class="far fa-check-circle"></i>
-            <i class="far fa-times-circle"></i>
+            <i class="fa-times-circle"></i>
             <small></small>
           </div>
           
           <div class="form-control">
             <input minlength="5" id="password" type="password" 
-            placeholder="contraseña">
-            <i class="far fa-check-circle"></i>
-            <i class="far fa-times-circle"></i>
+            placeholder="Contraseña">
+            <i class="fa-times-circle"></i>
             <small></small>
           </div>
           <button id="btnSignIn" class="button">Inicia sesión</button>
           
-          <a class="loginInGoogle" id="google"><img class="google" src="https://brandlogos.net/wp-content/uploads/2015/09/google-favicon-vector-400x400.png" alt="google"> iniciar sesión con google</a>
+          <a class="loginInGoogle" id="google"><img class="google" src="https://brandlogos.net/wp-content/uploads/2015/09/google-favicon-vector-400x400.png" alt="google"> Iniciar sesión con google</a>
           <p>¿No tienes cuenta?</p>
           <a id="btnSignUp" 
           class="loginInCheckIn">Registrate</a>
@@ -61,3 +49,44 @@ const SignIn = () => {
 };
 
 export default SignIn;
+
+const SignUp = () => {
+  window.location.hash = '#/signUp';
+};
+
+export const registerUser = (e) => {
+  e.preventDefault();
+
+  const email = e.target.closest('form').querySelector('#email').value;
+  const password = e.target.closest('form').querySelector('#password').value;
+
+  signIn(email, password);
+};
+
+const setErrorInput = (input, errorMessage) => {
+  const formControl = input.parentElement;
+  const small = formControl.querySelector('small');
+
+  small.innerText = errorMessage;
+
+  formControl.addEventListener('keyup', () => {
+    formControl.removeAttribute('class');
+    formControl.setAttribute('class', 'form-control');
+  });
+};
+
+export const showError = (error) => {
+  console.log(error);
+
+  if (error === 'auth/internal-error') {
+    setErrorInput(password, 'Ingrese contraseña');
+  } else if (error === 'auth/wrong-password') {
+    setErrorInput(password, 'Contraseña incorrecta');
+  } else if (error === 'auth/invalid-email') {
+    setErrorInput(email, 'Ingrese correo electrónico');
+  } else if (error === 'auth/user-not-found') {
+    setErrorInput(email, 'No se encuentra registrado');
+  } else {
+    console.log('El correo o contraseña es incorrecta');
+  }
+};
