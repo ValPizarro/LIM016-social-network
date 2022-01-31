@@ -14,14 +14,14 @@ const SignIn = () => {
           
           <div class="form-control">
             <input id="email" type="email" placeholder="correo electrónico">
-            <i class="fa-times-circle"></i>
+            <i class="far fa-times-circle"></i>
             <small></small>
           </div>
           
           <div class="form-control">
             <input minlength="5" id="password" type="password" 
             placeholder="Contraseña">
-            <i class="fa-times-circle"></i>
+            <i class="far fa-times-circle"></i>
             <small></small>
           </div>
           <button id="btnSignIn" class="button">Inicia sesión</button>
@@ -68,10 +68,10 @@ const setErrorInput = (input, errorMessage) => {
   const small = formControl.querySelector('small');
 
   small.innerText = errorMessage;
+  formControl.classList.add('error');
 
   formControl.addEventListener('keyup', () => {
-    formControl.removeAttribute('class');
-    formControl.setAttribute('class', 'form-control');
+    formControl.classList.remove('error');
   });
 };
 
@@ -83,10 +83,12 @@ export const showError = (error) => {
   } else if (error === 'auth/wrong-password') {
     setErrorInput(password, 'Contraseña incorrecta');
   } else if (error === 'auth/invalid-email') {
-    setErrorInput(email, 'Ingrese correo electrónico');
+    setErrorInput(email, 'Correo electrónico invalido');
   } else if (error === 'auth/user-not-found') {
     setErrorInput(email, 'No se encuentra registrado');
+  } else if (error !== '') {
+    setErrorInput(email, 'El correo o contraseña es incorrecta');
   } else {
-    console.log('El correo o contraseña es incorrecta');
+    console.log('Error no definido:', error);
   }
 };
