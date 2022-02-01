@@ -1,15 +1,6 @@
 import { saveTask  } from "../firebase/firestore/firestore-add.js";
 import { getTastks,onGetTasks,delateTask,getTask} from "../firebase/configuraciones.js"; 
-/* import { template } from "./template.js"; */
-//NO BORRAR
-/*  window.addEventListener('DOMContentLoaded',async()=>{
-  const querySnapshot=await getTastks()
-  //console.log(querySnapshot); 
-  querySnapshot.forEach(doc => {
-    console.log(doc.data());
-    console.log(taskContainer);
-  }); 
-});   */
+
 let taskTitle
 let taskDescription
 const post = (e) => {
@@ -45,19 +36,21 @@ const timeline = () => {
 
   let allPosts;
   let showAllPosts;
-  let taskForm
+  let taskForm;
+  let publicationTitle
+  let publicationDescription;
   const funcion = async()=>{
 
   await onGetTasks((querySnapshot)=>{
 
     allPosts='';
     querySnapshot.forEach(doc => {
-    //console.log(doc.id);
+    console.log(doc.id);
 
      allPosts +=`
      <form class="form-publication">
-      <textarea class='publication-title' disabled>${doc.data().Title}</textarea>
-      <textarea class='publication-description' disabled>${doc.data().Descripción}</textarea>
+      <textarea class='publication-title'data-id="${doc.id} disabled>${doc.data().Title}</textarea>
+      <textarea class='publication-description' data-id="${doc.id} disabled>${doc.data().Descripción}</textarea>
       <button class='btn-delete' data-id="${doc.id}"> Delate</button>
       <button class='btn-edit' data-id="${doc.id}"> Edit</button>
      </form>
@@ -76,24 +69,20 @@ const timeline = () => {
       });
     });
     const btnEdit=divElemt.querySelectorAll(".btn-edit");
-    let publicationTitle= divElemt.querySelectorAll(".publication-title");
-    
+    //publicationTitle= divElemt.querySelectorAll(".publication-title");
+    taskForm=divElemt.querySelectorAll(".form-publication")
+    //publicationDescription=divElemt.querySelectorAll(".publication-description")
     btnEdit.forEach(btn => {
       btn.addEventListener('click',async (e) =>{
-        
-       const doc = await getTask(e.currentTarget.dataset.id)
-       console.log(doc);
-       const task =doc.data();
-       console.log(task);
-       e.disabled=false;
-
+        const doc = await getTask(e.currentTarget.dataset.id);
+        const textAreaID = e.target.dataset.id;
+        const textAreaEdit = divElemt
+            .querySelector(`[data-id="${textAreaID}"]`);
+        console.log(textAreaEdit);
+        textAreaEdit.disabled = false;
       })
     }); 
-   /*  publicationTitle.forEach(evt =>{
-         evt.addEventListener()
-       }) */
-
-    
+  
 /*     btnDelete.forEach(btn => {
       btn.addEventListener('click',async({ target:{ dataset }}) => {
         await delateTask(dataset.id);
@@ -101,19 +90,6 @@ const timeline = () => {
       });
     }); */
 
-/*     const btnEdit=document.querySelectorAll(".btn-edit")
-    const taskForm=document.querySelector('.task-form')
-    btnEdit.forEach(btn=>{
-      btn.addEventListener('click',async (e)=>{
-        //console.log(e.target.dataset.id);
-        const doc=await getTask(e.target.dataset.id)
-        console.log(doc.data());
-        taskForm['task-title'].value=doc.data().taskTitle;
-        taskForm['task-description'].value=doc.data().taskDescription;
-        
-      });
-      
-    }); */
   });  
   }
   funcion();
