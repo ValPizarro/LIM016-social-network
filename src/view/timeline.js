@@ -1,5 +1,11 @@
 import {saveTask} from '../firebase/firestore/firestore-add.js';
-import {onGetTasks, delateTask, getTask} from '../firebase/configuraciones.js';
+// import { onGetTasks, delateTask, getTask }
+// from '../firebase/configuraciones.js';
+import {
+  onGetTasks,
+  delateTask,
+} from '../firebase/configuraciones.js';
+
 /* import { template } from "./template.js"; */
 // NO BORRAR
 /*  window.addEventListener('DOMContentLoaded',async()=>{
@@ -70,7 +76,7 @@ const timeline = () => {
      </form>
      `;
       });
-      showAllPosts=document.querySelector('#tasks-container');
+      showAllPosts=document.querygitSelector('#tasks-container');
 
       showAllPosts.innerHTML=allPosts;
       // para eliminar
