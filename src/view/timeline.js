@@ -1,6 +1,10 @@
 import {saveTask} from '../firebase/firestore/firestore-add.js';
+<<<<<<< HEAD
 import {onGetTasks, delateTask, getTask}
   from '../firebase/configuraciones.js';
+=======
+import {onGetTasks, delateTask, getTask} from '../firebase/configuraciones.js';
+>>>>>>> e18d828d249353c60276773f9aa710f38ac0ac12
 /* import { template } from "./template.js"; */
 // NO BORRAR
 /*  window.addEventListener('DOMContentLoaded',async()=>{
@@ -15,7 +19,11 @@ let taskTitle;
 let taskDescription;
 const post = (e) => {
   e.preventDefault();
+<<<<<<< HEAD
   taskTitle = e.target.closest('form').querySelector('#task-title').value;
+=======
+  taskTitle= e.target.closest('form').querySelector('#task-title').value;
+>>>>>>> e18d828d249353c60276773f9aa710f38ac0ac12
   // console.log(taskTitle);
   taskDescription = e.target.closest('form')
       .querySelector('#task-description').value;
@@ -33,7 +41,11 @@ const timeline = () => {
       <label for="description">Description:</label>
       <textarea id="task-description" rows="3" 
       placeholder="Task Description" ></textarea>
+<<<<<<< HEAD
       <button id="btn-task-save" class="button">Save</button>
+=======
+      <button id="btn-task-save">Save</button>
+>>>>>>> e18d828d249353c60276773f9aa710f38ac0ac12
     </form>
     <div id="tasks-container"></div>
   </div>
@@ -63,7 +75,12 @@ const timeline = () => {
       <textarea class='publication-title' disabled>${doc.data().Title}
       </textarea>
       <textarea class='publication-description' disabled>
+<<<<<<< HEAD
       ${doc.data().Descripción}</textarea>
+=======
+      ${doc.data().Descripción}
+      </textarea>
+>>>>>>> e18d828d249353c60276773f9aa710f38ac0ac12
       <button class='btn-delete' data-id="${doc.id}"> Delate</button>
       <button class='btn-edit' data-id="${doc.id}"> Edit</button>
      </form>
@@ -81,9 +98,15 @@ const timeline = () => {
         // console.log(e.currentTarget.dataset.id)
         });
       });
+<<<<<<< HEAD
       const btnEdit = divElemt.querySelectorAll('.btn-edit');
       // const publicationTitle=
       // divElemt.querySelectorAll('.publication-title');
+=======
+      const btnEdit=divElemt.querySelectorAll('.btn-edit');
+      // const publicationTitle= divElemt
+      //     .querySelectorAll('.publication-title');
+>>>>>>> e18d828d249353c60276773f9aa710f38ac0ac12
 
       btnEdit.forEach((btn) => {
         btn.addEventListener('click', async (e) =>{
@@ -149,5 +172,3 @@ export default timeline;
   }
   funcion();
   return divElemt; */
-
-

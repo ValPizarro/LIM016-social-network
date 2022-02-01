@@ -13,14 +13,13 @@ const SignIn = () => {
         <form id="formLogIn" class="formLogIn">
           
           <div class="form-control">
-            <input id="email" class="input1" type="email" 
-            placeholder="correo electrónico">
+            <input id="email" type="email" placeholder="Correo electrónico">
             <i class="far fa-times-circle"></i>
             <small></small>
           </div>
           
           <div class="form-control">
-            <input minlength="5" id="password" class="input2" type="password" 
+            <input minlength="5" id="password" type="password" 
             placeholder="Contraseña">
             <i class="far fa-times-circle"></i>
             <small></small>

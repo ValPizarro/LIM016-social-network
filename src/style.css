@@ -133,7 +133,8 @@ html{
   right: 10px; 
   font-size: 20px
 }
-.form-control.error>i.fa-times-circle {
+
+.form-control.error i.fa-times-circle {
   visibility: visible;
   color: #FE6F5E;
 }
