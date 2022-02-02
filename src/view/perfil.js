@@ -5,16 +5,33 @@ const update= () => {
   updateUser;
 };
 
-const profile = () => {
+export const post = (usuario) => {
+  console.log(usuario);
+
+//   /**
+//    * @param{ID} IDPost
+//    */
+//   // async function searchOrCreatePosts(IDPost) {
+//   //   // crea una referencia al documento
+//   //   const
+//   //   // Revisa si existe
+//   //   // Si Si existe
+//   //   // Si no existe
+//   // };
+}; post();
+
+const profile = (name, email, photo) => {
   const showProfile = ` 
   <div>
     <h2> Perfil</h2>
   </div>
   <div>
-  
+    <button id="btnEditProfile" class="button">Editar perfil</button>
   </div>
   <div>
-    <button id="btnEditProfile" class="button">Editar perfil</button>
+    <p>${name}</p>
+    <p>${email}</p>
+    <p>${photo}</p>
   </div>`;
   const divElemt = document.createElement('div');
   divElemt.setAttribute('class', 'flexSection');
