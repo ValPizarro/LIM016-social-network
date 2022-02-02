@@ -58,8 +58,8 @@ const timeline = () => {
   let showAllPosts;
   // let taskForm;
   const funcion = async ()=>{
-    await onGetTasks((querySnapshot)=>{
-      allPosts='';
+    await onGetTasks((querySnapshot) => {
+      allPosts = '';
       querySnapshot.forEach((doc) => {
         // console.log(doc.id);
 
@@ -70,17 +70,51 @@ const timeline = () => {
       <textarea class='publication-description' data-id="${doc.id}" disabled>
       ${doc.data().Descripción}
       </textarea>
+
+      <div>
+        <h2> Like </h2>
+        <span  id="like-container">0</span>        
+        <button class='btn-like'>like</button>
+      </div>
+      
       <button class='btn-delete' data-id="${doc.id}"> Borrar</button>
       <button class='btn-edit' data-id="${doc.id}"> Editar</button>
       <button class='btn-save' data-id="${doc.id}"> Guardar</button>
      </form>
      `;
       });
-      showAllPosts=document.querygitSelector('#tasks-container');
+      showAllPosts = document.querySelector('#tasks-container');
 
-      showAllPosts.innerHTML=allPosts;
+      showAllPosts.innerHTML = allPosts;
+
+      // like
+      const btnLike = divElemt.querySelectorAll('.btn-like');
+
+      btnLike.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          console.log('like');
+          let totalLikes = 0;
+          const valor = divElemt.querySelector('#like-container');
+
+          totalLikes++;
+          // eslint-disable-next-line padded-blocks
+          valor.textContent = totalLikes;
+        });
+      });
+
+      // const showLike = () => {
+      //   console.log('like');
+      //   let totalLikes = 0;
+      //   const valor = divElemt.querySelector('#like-container');
+
+      //   totalLikes++;
+      //   // eslint-disable-next-line padded-blocks
+      //   valor.textContent = totalLikes;
+      // };
+
+
       // para eliminar
-      const btnDelete=divElemt.querySelectorAll('.btn-delete');
+      const btnDelete = divElemt.querySelectorAll('.btn-delete');
       btnDelete.forEach((btn) => {
         btn.addEventListener('click', async (e) => {
         // console.log(e.currentTarget.dataset.id)
@@ -131,6 +165,7 @@ const timeline = () => {
     }); */
     });
   };
+
   funcion();
   return divElemt;
 };
@@ -158,4 +193,4 @@ export default timeline;
     showAllPosts.innerHTML=allPosts;
   }
   funcion();
-  return divElemt; */
+return divElemt; */
