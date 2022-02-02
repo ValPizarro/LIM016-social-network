@@ -43,7 +43,7 @@ html{
   align-content: center;
   justify-content: center;
 } 
-.SingUpBox{
+.SingUpBox, .updateBoX, .postBox{
   background-color: white;
   border-radius: 8px ;
   box-shadow: 0 2px 5px rgba(253, 213, 213, 0.4); 
@@ -51,12 +51,13 @@ html{
   max-width: 100%;
   overflow: hidden;
 }
-.SingUpBox>p{
+.SingUpBox>p
+{
   font-size: 25px;
   padding: 20px 10px;
   text-align: center;
 }
-.formLogIn {
+.formLogIn, .formProfile{
   display: flex;
   flex-direction: column;
   padding: 20px 40px;
@@ -98,12 +99,12 @@ html{
   height: 30px;
   width: 30px;
 }
-.form-control {
+.form-control, .formProfileControl {
   margin-bottom: 10px;
   padding-bottom: 20px;
   position: relative;
 }
-.form-control input {
+.form-control>input{
   border: 0px solid var(--color-5);
   border-radius: 8px;
   font-size: 14px;
@@ -113,20 +114,26 @@ html{
   outline-color: #EAE2F8;
   background: #EAE2F8;
 }
-.form-control input::placeholder{
- color: #A081D9;
+.formProfileControl>input{
+  border-radius: 8px;
+  font-size: 14px;
+  height: 36px;
+  width: 266px;
+  padding: 10px;
+  outline-color: #EAE2F8;
 }
-.form-control i {
+
+/* .form-control>input::placeholder{
+ color: #A081D9;
+} */
+.form-control>i {
   visibility: hidden; 
   position: absolute;
   top: 10px;
   right: 10px; 
   font-size: 20px
 }
-.form-control.success i.fa-check-circle {
-  visibility: visible;
-  color: #2ecc71;
-}
+
 .form-control.error i.fa-times-circle {
   visibility: visible;
   color: #FE6F5E;
@@ -164,7 +171,7 @@ html{
     height: 120px;
     width: 150px;
 }
-.formRegister p{
+.formRegister>p,.updateBoX>h2 {
   font-size: 15px;
   text-decoration: none;
   display: flex;
@@ -242,6 +249,11 @@ html{
 .SignUpBox>p, .SignUpBox>a{
   display: flex;
   justify-content: center;
+  font-size: 15px;
+}
+.formProfileControl>label{
+  display: flex;
+  justify-content: left;
   font-size: 15px;
 }
 .SignUpBox>h4{
