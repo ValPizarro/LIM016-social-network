@@ -18,15 +18,22 @@ import {
 });   */
 let taskTitle;
 let taskDescription;
-const post = (e) => {
+let taskLike;
+
+const addPost = (e) => {
   e.preventDefault();
-  taskTitle= e.target.closest('form').querySelector('#task-title').value;
+  taskTitle = e.target.closest('form').querySelector('#task-title').value;
   // console.log(taskTitle);
   taskDescription = e.target.closest('form')
       .querySelector('#task-description').value;
   // console.log(taskDescription);
-  saveTask(taskTitle, taskDescription);
+  taskLike = 0;
+  console.log(taskTitle, taskDescription, taskLike);
+
+  saveTask(taskTitle, taskDescription, taskLike);
 };
+
+
 const timeline = () => {
   const showTimeline = `
   <div >
@@ -52,12 +59,12 @@ const timeline = () => {
 
   divElemt.innerHTML = showTimeline;
 
-  divElemt.querySelector('#btn-task-save').addEventListener('click', post);
+  divElemt.querySelector('#btn-task-save').addEventListener('click', addPost);
 
   let allPosts;
   let showAllPosts;
   // let taskForm;
-  const funcion = async ()=>{
+  const timelineFuntion = async ()=>{
     await onGetTasks((querySnapshot) => {
       allPosts = '';
       querySnapshot.forEach((doc) => {
@@ -65,16 +72,17 @@ const timeline = () => {
 
         allPosts += `
      <form class="form-publication">
-      <textarea class='publication-title' disabled> ${doc.data().Title}
+      <textarea class='publication-title' disabled> ${doc.data().title}
       </textarea>
       <textarea class='publication-description' data-id="${doc.id}" disabled>
-      ${doc.data().Descripción}
+      ${doc.data().description}
       </textarea>
 
       <div>
         <h2> Like </h2>
-        <span  id="like-container">0</span>        
-        <button class='btn-like'>like</button>
+        <spam class='publication-like' data-like="${doc.id}"> 
+        ${doc.data().like}</spam>        
+        <button class='btn-like' data-id="${doc.id}">like</button>
       </div>
       
       <button class='btn-delete' data-id="${doc.id}"> Borrar</button>
@@ -91,26 +99,20 @@ const timeline = () => {
       const btnLike = divElemt.querySelectorAll('.btn-like');
 
       btnLike.forEach((btn) => {
-        btn.addEventListener('click', () => {
+        btn.addEventListener('click', (e) => {
           console.log('like');
           let totalLikes = 0;
-          const valor = divElemt.querySelector('#like-container');
+          const likeID = e.target.dataset.id;
+          console.log(likeID);
+
+          const likeContent = divElemt.querySelector(`[data-like="${likeID}"]`);
+          console.log(likeContent);
 
           totalLikes++;
           // eslint-disable-next-line padded-blocks
-          valor.textContent = totalLikes;
+          likeContent.textContent = totalLikes;
         });
       });
-
-      // const showLike = () => {
-      //   console.log('like');
-      //   let totalLikes = 0;
-      //   const valor = divElemt.querySelector('#like-container');
-
-      //   totalLikes++;
-      //   // eslint-disable-next-line padded-blocks
-      //   valor.textContent = totalLikes;
-      // };
 
 
       // para eliminar
@@ -166,7 +168,7 @@ const timeline = () => {
     });
   };
 
-  funcion();
+  timelineFuntion();
   return divElemt;
 };
 
