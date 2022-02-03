@@ -19,11 +19,11 @@ const provider = new GoogleAuthProvider(app);
 // Init Services
 const db = getFirestore(app);// conexión a la base de datos
 
-export const getTastks = () =>getDocs(query(collection(db, 'Post')));
+export const getTastks = () =>getDocs(query(collection(db, 'post')));
 export const onGetTasks = (callback) =>
-  onSnapshot(collection(db, 'Post'), callback);
-export const delateTask=async (id)=>await deleteDoc(doc(db, 'Post', id));
-export const getTask=(id)=>getDoc(doc(db, 'Post', id));
+  onSnapshot(collection(db, 'post'), callback);
+export const delateTask=async (id)=>await deleteDoc(doc(db, 'post', id));
+export const getTask=(id)=>getDoc(doc(db, 'post', id));
 
 export {
   app,
