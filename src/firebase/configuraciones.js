@@ -19,11 +19,11 @@ const provider = new GoogleAuthProvider(app);
 // Init Services
 const db = getFirestore(app);// conexión a la base de datos
 
-export const getTastks = () =>getDocs(query(collection(db, 'Post')));
-export const onGetTasks = (callback) =>
-  onSnapshot(collection(db, 'Post'), callback);
-export const delateTask=async (id)=>await deleteDoc(doc(db, 'Post', id));
-export const getTask=(id)=>getDoc(doc(db, 'Post', id));
+//export const getTastks = () =>getDocs(query(collection(db, 'Post'))); no jala los datos a tiempo real
+export const onGetTasks = (callback) =>// jala los datos a tiempo real
+  onSnapshot(collection(db, 'Post'), callback); 
+export const delateTask=async (id)=>await deleteDoc(doc(db, 'Post', id));//para borrar
+export const getTask=(id)=>getDoc(doc(db, 'Post', id));//para editar los post 
 
 export {
   app,

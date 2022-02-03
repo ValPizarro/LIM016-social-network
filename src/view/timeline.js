@@ -1,21 +1,7 @@
 import {saveTask} from '../firebase/firestore/firestore-add.js';
  import { onGetTasks, delateTask, getTask }
 from '../firebase/configuraciones.js';
-/* import {
-  onGetTasks,
-  delateTask,
-} from '../firebase/configuraciones.js'; */
 
-/* import { template } from "./template.js"; */
-// NO BORRAR
-/*  window.addEventListener('DOMContentLoaded',async()=>{
-  const querySnapshot=await getTastks()
-  //console.log(querySnapshot);
-  querySnapshot.forEach(doc => {
-    console.log(doc.data());
-    console.log(taskContainer);
-  });
-});   */
 let taskTitle;
 let taskDescription;
 const post = (e) => {
@@ -49,7 +35,6 @@ const timeline = () => {
 `;
   const divElemt = document.createElement('div');
   divElemt.setAttribute('class', 'flexSection');
-
   divElemt.innerHTML = showTimeline;
 
   divElemt.querySelector('#btn-task-save').addEventListener('click', post);
@@ -58,8 +43,8 @@ const timeline = () => {
   let showAllPosts;
   // let taskForm;
   const funcion = async ()=>{
-    await onGetTasks((querySnapshot)=>{
-      allPosts='';
+    await onGetTasks((querySnapshot) => {
+      allPosts = '';
       querySnapshot.forEach((doc) => {
         // console.log(doc.id);
 
@@ -70,40 +55,80 @@ const timeline = () => {
       <textarea class='publication-description' data-id="${doc.id}" disabled>
       ${doc.data().Descripción}
       </textarea>
+
+      <div>
+        <h2> Like </h2>
+        <span  id="like-container">0</span>        
+        <button class='btn-like'>like</button>
+      </div>
+      
       <button class='btn-delete' data-id="${doc.id}"> Borrar</button>
       <button class='btn-edit' data-id="${doc.id}"> Editar</button>
       <button class='btn-save' data-id="${doc.id}"> Guardar</button>
      </form>
      `;
       });
-      showAllPosts=document.querySelector('#tasks-container');
+      showAllPosts = document.querySelector('#tasks-container');
 
-      showAllPosts.innerHTML=allPosts;
+      showAllPosts.innerHTML = allPosts;
+
+      // like
+      //const btnLike = divElemt.querySelectorAll('.btn-like');
+/*      divElemt.addEventListener('onload',function(){
+        let contador= 0;
+ divElemt.querySelectorAll('.btn-like').onclick=function(){
+contador++;
+divElemt.getElementsByCla
+      };
+      }) */
+          
+/*    btnLike.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          console.log('like');
+          let totalLikes = 0;
+          const valor = divElemt.querySelector('#like-container');
+
+          totalLikes++;
+          // eslint-disable-next-line padded-blocks
+          valor.textContent = totalLikes;
+        });
+      }); */
+
+      // const showLike = () => {
+      //   console.log('like');
+      //   let totalLikes = 0;
+      //   const valor = divElemt.querySelector('#like-container');
+
+      //   totalLikes++;
+      //   // eslint-disable-next-line padded-blocks
+      //   valor.textContent = totalLikes;
+      // };
+
+
       // para eliminar
-      const btnDelete=divElemt.querySelectorAll('.btn-delete');
+      const btnDelete = divElemt.querySelectorAll('.btn-delete');
+
       btnDelete.forEach((btn) => {
         btn.addEventListener('click', async (e) => {
-         console.log(e.currentTarget.dataset.id)
           await delateTask(e.target.dataset.id);
         // console.log(e.currentTarget.dataset.id)
         });
       });
       
       const btnEdit=divElemt.querySelectorAll('.btn-edit');
-      const btnSave=divElemt.querySelectorAll('.btn-save');
-      btnSave= false;
+
+      let textAreaID;
+      let textAreaEdit;
       btnEdit.forEach((btn) => {
         btn.addEventListener('click', async (e) => {
-          
           const doc = await getTask(e.target.dataset.id);
           const task = doc.data()
-          console.log(task);
-          //primera instancia 
-          const textAreaID =e.target.dataset.id;
-          const textAreaEdit = divElemt.querySelector(`[data-id="${textAreaID}"]`);
-          //console.log(textAreaEdit);
-          textAreaEdit.disabled = false;
-          //segunda instancia 
+           //console.log(task);
+          textAreaID =e.target.dataset.id;
+          textAreaEdit = divElemt.querySelector(`[data-id="${textAreaID}"]`);
+
+          
+          console.log(textAreaEdit);
 
         });
       });
@@ -134,6 +159,7 @@ const timeline = () => {
     }); */
     });
   };
+
   funcion();
   return divElemt;
 };
@@ -161,4 +187,4 @@ export default timeline;
     showAllPosts.innerHTML=allPosts;
   }
   funcion();
-  return divElemt; */
+return divElemt; */
