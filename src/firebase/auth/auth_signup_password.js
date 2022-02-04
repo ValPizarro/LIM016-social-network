@@ -6,7 +6,11 @@ export const createUser = (email, password) => {
   return createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        onAuth(user);
+        const uid = userCredential.user.uid;
+        const correo = userCredential.user.email;
+        const correoVerificado = userCredential.user.emailVerified;
+        onAuth();
+        console.log(user, correo, uid, correoVerificado);
       })
       .catch((error) => {
         const errorCode = error.code;

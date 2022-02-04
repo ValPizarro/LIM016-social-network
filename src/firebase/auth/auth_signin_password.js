@@ -6,8 +6,6 @@ export const signIn = (email, password) => {
   return signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user.uid;
-        window.location.hash = '#/home';
-
         onAuth(user);
       })
       .catch((error) => {
