@@ -1,10 +1,13 @@
-import {saveTask} from '../firebase/firestore/firestore-add.js';
-// import { onGetTasks, delateTask, getTask }
-// from '../firebase/configuraciones.js';
 import {
+  saveTask,
   onGetTasks,
   delateTask,
-} from '../firebase/configuraciones.js';
+} from '../firebase/firestore/firestore-add.js';
+
+
+// import { onGetTasks, delateTask, getTask }
+// from '../firebase/configuraciones.js';
+
 
 /* import { template } from "./template.js"; */
 // NO BORRAR
@@ -19,22 +22,30 @@ import {
 let taskTitle;
 let taskDescription;
 let taskLike;
+let taskUser;
+
+export const currentUser = (UID) => {
+  taskUser = UID;
+  console.log(taskUser);
+}; currentUser();
 
 const addPost = (e) => {
   e.preventDefault();
+
   taskTitle = e.target.closest('form').querySelector('#task-title').value;
   // console.log(taskTitle);
   taskDescription = e.target.closest('form')
       .querySelector('#task-description').value;
   // console.log(taskDescription);
-  taskLike = 0;
-  console.log(taskTitle, taskDescription, taskLike);
+  taskLike = [];
 
-  saveTask(taskTitle, taskDescription, taskLike);
+  console.log(taskTitle, taskDescription, taskLike, taskUser);
+
+  saveTask(taskUser, taskTitle, taskDescription, taskLike);
 };
 
 
-const timeline = () => {
+export const timeline = () => {
   const showTimeline = `
   <div >
     <h2> Publicaciones</h2>
@@ -59,11 +70,12 @@ const timeline = () => {
 
   divElemt.innerHTML = showTimeline;
 
-  divElemt.querySelector('#btn-task-save').addEventListener('click', addPost);
+  divElemt.querySelector('#btn-task-save')
+      .addEventListener('click', addPost);
 
   let allPosts;
   let showAllPosts;
-  // let taskForm;
+  // let taskForm  TESTEALO
   const timelineFuntion = async ()=>{
     await onGetTasks((querySnapshot) => {
       allPosts = '';
@@ -100,6 +112,8 @@ const timeline = () => {
 
       btnLike.forEach((btn) => {
         btn.addEventListener('click', (e) => {
+          e.preventDefault();
+
           console.log('like');
           let totalLikes = 0;
           const likeID = e.target.dataset.id;
