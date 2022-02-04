@@ -1,5 +1,6 @@
 import {createUser} from '../firebase/auth/auth_signup_password.js';
 import {googleAuth} from '../firebase/auth/auth_google_signin_popup.js';
+import {saveUser} from '../firebase/firestore/firestore-add.js';
 
 
 export const backSignIn = () => {
@@ -20,12 +21,14 @@ const SignUp = () => {
             <small></small>
         </div> 
         <div class="form-control">
-          <input type="text"  class="input" placeholder="  Nombre completo">
+          <input type="text" id="name"  class="input" 
+            placeholder="  Nombre completo">
             <i class="far fa-times-circle"></i>
             <small></small>
         </div> 
         <div class="form-control">
-          <input type="text" class="input" placeholder="  Nombre de usuario">
+          <input type="text" id="nickname" class="input"
+             placeholder="  Nombre de usuario">
             <i class="far fa-times-circle"></i>
             <small></small>
         </div> 
@@ -69,8 +72,11 @@ async function registerUserNew(e) {
 
   const email = e.target.closest('form').querySelector('#email').value;
   const password = e.target.closest('form').querySelector('#password').value;
-
-  const user = await createUser(email, password);
+  const name = e.target.closest('form').querySelector('#name').value;
+  const nickname = e.target.closest('form').querySelector('#nickname').value;
+  const user = await
+  createUser(email, password);
+  saveUser(email, password, name, nickname);
 
   console.log('Usuario creado:', user);
 };

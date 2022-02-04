@@ -1,18 +1,18 @@
 import {showHome} from '../../view/signin.js';
 // import {auth} from '../configuraciones.js';
-import profile from '../../view/perfil.js';
+// import profile from '../../view/perfil.js';
 
 export const profileUser = (user) => {
-  // const usuarioActual = auth.currentUser;
-
   if (user !== null) {
-    const displayName = user.displayName;
-    const email = user.email;
-    const photoURL = user.photoURL;
+    // const name = user.displayName;
+    // const email = user.email;
+    // // const photoURL = user.photoURL;
+    // const uid = user.uid;
     // const emailVerified = user.emailVerified;
-    profile(displayName, email, photoURL);
+
     showHome(user);
-    console.log('El correo del usuario es:', email);
+    // profile(displayName, email, uid);
+    // saveProfile(uid, name, nickname, email);
   } else {
     console.log('No se pudo iniciar sesión');
   }

@@ -5,20 +5,6 @@ const update= () => {
   updateUser;
 };
 
-export const post = (usuario) => {
-  console.log(usuario);
-
-//   /**
-//    * @param{ID} IDPost
-//    */
-//   // async function searchOrCreatePosts(IDPost) {
-//   //   // crea una referencia al documento
-//   //   const
-//   //   // Revisa si existe
-//   //   // Si Si existe
-//   //   // Si no existe
-//   // };
-}; post();
 
 const profile = (name, email, photo) => {
   const showProfile = ` 

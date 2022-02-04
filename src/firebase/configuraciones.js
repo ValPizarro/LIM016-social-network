@@ -1,6 +1,6 @@
 import {initializeApp} from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js';
 import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, GoogleAuthProvider, signInWithPopup} from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js';
-import {getFirestore, collection, getDocs, addDoc, query, onSnapshot, deleteDoc, doc, getDoc} from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js';
+import {getFirestore, collection, getDocs, getDoc, addDoc, query, onSnapshot, deleteDoc, doc} from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyCYMriyYLnj7mjwQ990OLhGaxulpUI6ONE',
@@ -19,12 +19,6 @@ const provider = new GoogleAuthProvider(app);
 // Init Services
 const db = getFirestore(app);// conexión a la base de datos
 
-export const getTastks = () =>getDocs(query(collection(db, 'post')));
-export const onGetTasks = (callback) =>
-  onSnapshot(collection(db, 'post'), callback);
-export const delateTask=async (id)=>await deleteDoc(doc(db, 'post', id));
-export const getTask=(id)=>getDoc(doc(db, 'post', id));
-
 export {
   app,
   auth,
@@ -34,10 +28,16 @@ export {
   onAuthStateChanged,
   signOut,
   signInWithPopup,
-  // updateProfile,
+  // FireStore
   db,
   collection,
   getDocs,
+  getDoc,
   addDoc,
   onSnapshot,
+  deleteDoc,
+  doc,
+  query,
 };
+
+
