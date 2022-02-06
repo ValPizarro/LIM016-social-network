@@ -1,21 +1,20 @@
 import {saveTask} from '../firebase/firestore/firestore-add.js';
 import { onGetTasks, delateTask, getTask,updateTask } from '../firebase/firestore/firestore-add.js';
 
-let taskTitle;
 let taskDescription;
 //let taskLike; 
 let taskUser;
 
  const addPost = (e) => {
   e.preventDefault();
-  taskTitle = e.target.closest('form').querySelector('#task-title').value;
+
   // console.log(taskTitle);
   taskDescription = e.target.closest('form').querySelector('#task-description').value;
   // console.log(taskDescription);
   //taskLike = [];
-  console.log(taskTitle, taskDescription, taskUser);
+  console.log(taskDescription, taskUser);
 
-  saveTask(taskTitle, taskDescription, taskUser);
+  saveTask(taskDescription, taskUser);
 };  
 
 export const currentUser = (UID) =>{
@@ -30,8 +29,6 @@ const timeline = () => {
   <div >
     <h2> Publicaciones</h2>
     <form class="task-form">
-      <label for="title" Title:</label>
-      <input type="text" placeholder="task-title" id="task-title">
       <label for="description">Description:</label>
       <textarea id="task-description" rows="3" 
       placeholder="Task Description" ></textarea>
@@ -60,10 +57,8 @@ const timeline = () => {
 
       allPosts += `
       <form class="form-publication">
-        <textarea class='publication-title' disabled> ${doc.data().title}</textarea>
         <textarea class='publication-description' data-id="${doc.id}" disabled>${doc.data().description}</textarea>
         <div>
-          <h2> Like </h2>
           <spam class='publication-like' data-like="${doc.id}"> ${doc.data().like}</spam>        
           <i class="fas fa-heart btn-like" data-like="${doc.id}"></i>
         </div>

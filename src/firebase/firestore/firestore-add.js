@@ -11,8 +11,8 @@ import {
 
 // import {query, getDocs} from '../configuraciones.js';
 
-export const saveTask = ( title,description,user ) => 
-  addDoc(collection(db, 'post'), {title,description,user});
+export const saveTask = (description,user ) => 
+  addDoc(collection(db, 'post'), {description,user});
 
 export const onGetTasks = (callback) =>
   onSnapshot(collection(db, 'post'), callback);
