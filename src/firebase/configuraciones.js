@@ -1,6 +1,6 @@
 import {initializeApp} from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js';
 import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, GoogleAuthProvider, signInWithPopup} from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js';
-import {getFirestore, collection, getDocs, addDoc, query, onSnapshot, deleteDoc, doc, getDoc,updateDoc} from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js';
+import {getFirestore, collection, getDocs, getDoc, addDoc, query, onSnapshot, deleteDoc, doc,updateDoc} from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyCYMriyYLnj7mjwQ990OLhGaxulpUI6ONE',
@@ -19,12 +19,6 @@ const provider = new GoogleAuthProvider(app);
 // Init Services
 const db = getFirestore(app);// conexión a la base de datos
 
-export const getTastks = () =>getDocs(query(collection(db, 'post'))); //no jala los datos a tiempo real
-export const onGetTasks = (callback) =>// jala los datos a tiempo real
-  onSnapshot(collection(db, 'post'), callback); 
-export const delateTask=async (id)=>await deleteDoc(doc(db, 'post', id));//para borrar
-export const getTask=(id)=>getDoc(doc(db, 'post', id));//para editar los post 
-export const updateTask=(id, newFields)=>updateDoc(doc(db, 'post', id),newFields)
 export {
   app,
   auth,
@@ -34,10 +28,17 @@ export {
   onAuthStateChanged,
   signOut,
   signInWithPopup,
-  // updateProfile,
+  // FireStore
   db,
   collection,
   getDocs,
+  getDoc,
   addDoc,
   onSnapshot,
+  deleteDoc,
+  doc,
+  query,
+  updateDoc,
 };
+
+

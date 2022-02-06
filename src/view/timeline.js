@@ -1,22 +1,29 @@
 import {saveTask} from '../firebase/firestore/firestore-add.js';
-import { onGetTasks, delateTask, getTask,updateTask } from '../firebase/configuraciones.js';
+import { onGetTasks, delateTask, getTask,updateTask } from '../firebase/firestore/firestore-add.js';
 
-/* let taskTitle;
+let taskTitle;
 let taskDescription;
-let taskLike;
+//let taskLike; 
+let taskUser;
 
-const addPost = (e) => {
+ const addPost = (e) => {
   e.preventDefault();
   taskTitle = e.target.closest('form').querySelector('#task-title').value;
   // console.log(taskTitle);
-  taskDescription = e.target.closest('form')
-      .querySelector('#task-description').value;
+  taskDescription = e.target.closest('form').querySelector('#task-description').value;
   // console.log(taskDescription);
-  taskLike = 0;
-  console.log(taskTitle, taskDescription, taskLike);
+  //taskLike = [];
+  console.log(taskTitle, taskDescription, taskUser);
 
-  saveTask(taskTitle, taskDescription, taskLike);
-}; */
+  saveTask(taskTitle, taskDescription, taskUser);
+};  
+
+export const currentUser = (UID) =>{
+  taskUser=UID;
+  console.log(taskUser);
+
+};  currentUser();
+
 
 const timeline = () => {
   const showTimeline = `
@@ -40,23 +47,6 @@ const timeline = () => {
   const divElemt = document.createElement('div');
   divElemt.setAttribute('class', 'flexSection');
   divElemt.innerHTML = showTimeline;
-
-      // prueba 
-      let taskTitle;
-      let taskDescription;
-      let taskLike;
-
-      const addPost = (e) => {
-      e.preventDefault();
-      taskTitle = e.target.closest('form').querySelector('#task-title').value;
-      console.log(taskTitle);
-      taskDescription = e.target.closest('form').querySelector('#task-description').value;
-      console.log(taskDescription);
-      taskLike = 0;
-      console.log(taskTitle, taskDescription, taskLike);
-      saveTask(taskTitle, taskDescription, taskLike);
-      };
-
   divElemt.querySelector('#btn-task-save').addEventListener('click', addPost);
 
   let allPosts;
@@ -87,30 +77,31 @@ const timeline = () => {
       showAllPosts = document.querySelector('#tasks-container');
       showAllPosts.innerHTML = allPosts;
 
-      // like
-      const btnLike = divElemt.querySelectorAll('.btn-like');
 
-      btnLike.forEach((btn) => {
+      // like
+     // const btnLike = divElemt.querySelectorAll('.btn-like');
+
+ /*      btnLike.forEach((btn) => {
         btn.addEventListener('click', (e) => {
+          e.preventDefault();
           console.log('like');
           let totalLikes = 0;
           const likeID = e.target.dataset.id;
           console.log(likeID);
-
           const likeContent = divElemt.querySelector(`[data-like="${likeID}"]`);
           console.log(likeContent);
-
           totalLikes++;
           // eslint-disable-next-line padded-blocks
           likeContent.textContent = totalLikes;
         });
-      }); 
+      });  */
 
       // para eliminar
       const btnDelete = divElemt.querySelectorAll('.btn-delete');
 
       btnDelete.forEach((btn) => {
         btn.addEventListener('click', async (e) => {
+          e.preventDefault();
           await delateTask(e.target.dataset.id);
         // console.log(e.currentTarget.dataset.id)
         });
@@ -126,58 +117,38 @@ const timeline = () => {
           e.preventDefault();
           const doc = await getTask(e.target.dataset.id);
           const task = doc.data()
-          let idBtnEdit =e.target.dataset.id;
-          console.log(idBtnEdit);
-          let publicationTitle = e.target.closest('form').querySelectorAll('.publication-title'); 
-          publicationTitle==task;
-          let publicacion=divElemt.querySelector('.publication-title').value;
-          console.log(publicacion);
-         
-/*           textAreaID =e.target.dataset.id;
+           //console.log(task);
+          textAreaID =e.target.dataset.id;
+           //console.log(textAreaID);
           textAreaEdit = divElemt.querySelector(`[data-id="${textAreaID}"]`);
-          textAreaEdit.disabled=false; */
-          //console.log(textAreaEdit);
-          /* let publicationTitle = e.target.closest('form').querySelector('.publication-title').value;
-          console.log(publicationTitle); */
+          // console.log(textAreaEdit.value);
 
+          textAreaEdit.disabled=false; 
+    
+          //console.log(textAreaEdit);
         });
       });
-      const btnSave=divElemt.querySelectorAll('.btn-save');
-      const taskForm= document.querySelectorAll('.form-publication')
-      btnSave.forEach((btn)=>{
-        btn.addEventListener('click',(e)=>{
+
+      const btnActualizar=divElemt.querySelectorAll('.btn-save');
+      btnActualizar.forEach((btn)=>{
+        btn.addEventListener('click',async (e)=>{
           e.preventDefault();
-          let publicationTitle = e.target.closest('form').querySelector('.publication-title').value;
-          //console.log(publicationTitle);
-        
-
+          let btnActualizarId=e.target.dataset.id;
+          //console.log(btnActualizarId);
+          let textAreaEdit=divElemt.querySelector(`[data-id="${btnActualizarId}"]`);
+          //console.log(textAreaEdit.dataset.id, textAreaEdit.value);
+          await updateTask(textAreaEdit.dataset.id,textAreaEdit.value);
+          //console.log(textAreaEdit.dataset.id,textAreaEdit.value);
+          if(textAreaEdit.disabled=false){
+           }else{
+              textAreaEdit.disabled=true;
+           }
         })
+
       })
-      /*  publicationTitle.forEach(evt =>{
-         evt.addEventListener()
-       }) */
 
 
-      /*     btnDelete.forEach(btn => {
-      btn.addEventListener('click',async({ target:{ dataset }}) => {
-        await delateTask(dataset.id);
-        console.log(dataset.id)
-      });
-    }); */
 
-      /*     const btnEdit=document.querySelectorAll(".btn-edit")
-    const taskForm=document.querySelector('.task-form')
-    btnEdit.forEach(btn=>{
-      btn.addEventListener('click',async (e)=>{
-        //console.log(e.target.dataset.id);
-        const doc=await getTask(e.target.dataset.id)
-        console.log(doc.data());
-        taskForm['task-title'].value=doc.data().taskTitle;
-        taskForm['task-description'].value=doc.data().taskDescription;
-
-      });
-
-    }); */
     });
   };
 
