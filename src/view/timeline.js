@@ -65,11 +65,11 @@ const timeline = () => {
         <div>
           <h2> Like </h2>
           <spam class='publication-like' data-like="${doc.id}"> ${doc.data().like}</spam>        
-          <button class='btn-like' data-like="${doc.id}">like</button>
+          <i class="fas fa-heart btn-like" data-like="${doc.id}"></i>
         </div>
-      
-        <button class='btn-delete' data-id="${doc.id}"> Borrar</button>
-        <button class='btn-edit' data-id="${doc.id}"> Editar</button>
+
+        <i class="fas fa-trash-alt btn-delete" data-id="${doc.id}"></i>
+        <i class="fas fa-pencil-alt btn-edit" data-id="${doc.id}"></i>
         <button class='btn-save' data-id="${doc.id}"> Guardar</button>
       </form>
       `;
