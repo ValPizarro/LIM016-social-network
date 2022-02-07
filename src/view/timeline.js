@@ -1,19 +1,20 @@
-import {saveTask} from '../firebase/firestore/firestore-add.js';
+
 import {
-  onGetTasks,
-  delateTask,
-  getTask,
-  updateTask,
+  savePost,
+  onGetPosts ,
+  delatePost,
+  getPost,
+  updatePost,
   // addLike,
 } from '../firebase/firestore/firestore-add.js';
 
-let taskDescription;
-let taskLike;
-let taskUser;
+let postDescription;
+let postLike;
+let postUser;
 
 export const currentUser = (UID) => {
-  taskUser = UID;
-  console.log(taskUser);
+  postUser = UID;
+  console.log(postUser);
 };
 currentUser();
 
@@ -21,26 +22,26 @@ currentUser();
 const addPost = (e) => {
   e.preventDefault();
 
-  taskDescription = e.target.closest('form')
-      .querySelector('#task-description').value;
-  // console.log(taskDescription);
-  taskLike = ['like1'];
-  console.log(taskDescription, taskLike, taskUser);
-  console.log(taskLike);
-  saveTask(taskDescription, taskLike, taskUser);
+  postDescription = e.target.closest('form')
+      .querySelector('#postDescription').value;
+  // console.log(postDescription);
+  postLike = ['like1'];
+  console.log(postDescription, postLike, postUser);
+  console.log(postLike);
+  savePost(postDescription, postLike, postUser);
 };
 
 const timeline = () => {
   const showTimeline = `
   <div >
     <h2> Publicaciones</h2>
-    <form class="task-form">
+    <form class="postForm">
       <label for="description">Description:</label>
-      <textarea id="task-description" rows="3" 
-      placeholder="Task Description" ></textarea>
-      <button id="btn-task-save">Save</button>
+      <textarea id="postDescription" rows="3" 
+      placeholder="¿Tienes alguna recomendación?" ></textarea>
+      <button id="btnSave">Save</button>
     </form>
-    <div id="tasks-container"></div>
+    <div id="postsContainer"></div>
   </div>
 
   <div id="showAllPosts"> </div>
@@ -50,39 +51,39 @@ const timeline = () => {
   const divElemt = document.createElement('div');
   divElemt.setAttribute('class', 'flexSection');
   divElemt.innerHTML = showTimeline;
-  divElemt.querySelector('#btn-task-save').addEventListener('click', addPost);
+  divElemt.querySelector('#btnSave').addEventListener('click', addPost);
 
   let allPosts;
   let showAllPosts;
 
   const timelineFuntion = async ()=>{
-    await onGetTasks((querySnapshot) => {
+    await onGetPosts((querySnapshot) => {
       allPosts = '';
       querySnapshot.forEach((doc) => {
         // console.log(doc.id);
 
         allPosts += `
-      <form class="form-publication">
-        <textarea class='publication-description' data-id="${doc.id}" disabled>
+      <form class="postForm">
+        <textarea class='postDescription' data-id="${doc.id}" disabled>
         ${doc.data().description}</textarea>
         <div>
-          <spam class='publication-like' data-like="${doc.id}">
-          ${doc.data().like}</spam>        
-          <i class="fas fa-heart btn-like" data-id="${doc.id}"></i>
+          <span class='postsLike' data-like="${doc.id}">
+          ${doc.data().like}</span>        
+          <i class="fas fa-heart btnLike" data-id="${doc.id}"></i>
 
         </div>
 
-        <i class="fas fa-trash-alt btn-delete" data-id="${doc.id}"></i>
-        <i class="fas fa-pencil-alt btn-edit" data-id="${doc.id}"></i>
-        <button class='btn-save' data-id="${doc.id}"> Guardar</button>
+        <i class="fas fa-trash-alt btnDelete" data-id="${doc.id}"></i>
+        <i class="fas fa-pencil-alt btnEdit" data-id="${doc.id}"></i>
+        <button class='btnUpdate' data-id="${doc.id}"> Guardar</button>
       </form>
       `;
       });
-      showAllPosts = document.querySelector('#tasks-container');
+      showAllPosts = document.querySelector('#postsContainer');
       showAllPosts.innerHTML = allPosts;
 
       // like
-      const btnLike = divElemt.querySelectorAll('.btn-like');
+      const btnLike = divElemt.querySelectorAll('.btnLike');
 
       btnLike.forEach((btn) => {
         btn.addEventListener('click', async (e) => {
@@ -93,13 +94,13 @@ const timeline = () => {
           // console.log(likes);
           // console.log(likeID);
           // console.log(likeContent);
-          const doc = await getTask(e.target.dataset.id);
-          const dataLike = doc.data().like;
-          console.log(dataLike);
-          const totalLikes = dataLike;
+          const doc = await getPost(e.target.dataset.id);
+          const dataLikes = doc.data().like;
+          console.log(dataLikes);
+          const totalLikes = dataLikes;
           console.log(totalLikes);
 
-          const totalLikesLength = totalLikes.push(taskUser);
+          const totalLikesLength = totalLikes.push(postUser);
           console.log(totalLikesLength);
           likeContent.textContent = totalLikesLength;
 
@@ -108,48 +109,43 @@ const timeline = () => {
       });
 
       // para eliminar
-      const btnDelete = divElemt.querySelectorAll('.btn-delete');
+      const btnDelete = divElemt.querySelectorAll('.btnDelete');
 
       btnDelete.forEach((btn) => {
         btn.addEventListener('click', async (e) => {
           e.preventDefault();
-          await delateTask(e.target.dataset.id);
+          await delatePost(e.target.dataset.id);
         // console.log(e.currentTarget.dataset.id)
         });
       });
 
-      const btnEdit=divElemt.querySelectorAll('.btn-edit');
+      const btnEdit=divElemt.querySelectorAll('.btnEdit');
 
-      let textAreaID;
+      let btnEditID;
       let textAreaEdit;
 
       btnEdit.forEach((btn) => {
         btn.addEventListener('click', async (e) => {
           e.preventDefault();
-          const doc = await getTask(e.target.dataset.id);
-          const task = doc.data();
-          console.log(task);
-          textAreaID =e.target.dataset.id;
-          // console.log(textAreaID);
-          textAreaEdit = divElemt.querySelector(`[data-id="${textAreaID}"]`);
+          btnEditID =e.target.dataset.id;
+          // console.log(btnEditID);
+          textAreaEdit = divElemt.querySelector(`[data-id="${btnEditID}"]`);
           // console.log(textAreaEdit.value);
-
           textAreaEdit.disabled=false;
-
           // console.log(textAreaEdit);
         });
       });
 
-      const btnActualizar=divElemt.querySelectorAll('.btn-save');
-      btnActualizar.forEach((btn)=>{
+      const btnUpdate=divElemt.querySelectorAll('.btnUpdate');
+      btnUpdate.forEach((btn)=>{
         btn.addEventListener('click', async (e)=>{
           e.preventDefault();
-          const btnActualizarId=e.target.dataset.id;
-          // console.log(btnActualizarId);
+          const btnUpdateId=e.target.dataset.id;
+          // console.log(btnUpdateId);
           const textAreaEdit = divElemt
-              .querySelector(`[data-id="${btnActualizarId}"]`);
+              .querySelector(`[data-id="${btnUpdateId}"]`);
           // console.log(textAreaEdit.dataset.id, textAreaEdit.value);
-          await updateTask(textAreaEdit.dataset.id, textAreaEdit.value);
+          await updatePost(textAreaEdit.dataset.id, textAreaEdit.value);
           // console.log(textAreaEdit.dataset.id,textAreaEdit.value);
           if (textAreaEdit.disabled=false) {
           } else {
@@ -183,7 +179,7 @@ export default timeline;
       allPosts += template(title,Descripción);
 
     });
-    const showAllPosts=document.querySelector('#tasks-container');
+    const showAllPosts=document.querySelector('#postsContainer');
     showAllPosts.innerHTML=allPosts;
   }
   funcion();
