@@ -25,7 +25,7 @@ const addPost = (e) => {
   postDescription = e.target.closest('form')
       .querySelector('#postDescription').value;
   // console.log(postDescription);
-  postLike = ['like1'];
+  postLike = [];
   console.log(postDescription, postLike, postUser);
   console.log(postLike);
   savePost(postDescription, postLike, postUser);
@@ -62,7 +62,12 @@ const timeline = () => {
       allPosts = '';
       querySnapshot.forEach((doc) => {
         // console.log(doc.id);
-        allLikes = doc.data().like;
+        const likes = doc.data().like.length;
+        if (likes == 0) {
+          allLikes = '';
+        } else {
+          allLikes = doc.data().like.length;
+        };
 
         allPosts += `
       <form class="postForm">
@@ -70,7 +75,7 @@ const timeline = () => {
         ${doc.data().description}</textarea>
         <div>
           <span class='postsLike' data-like="${doc.id}">
-          ${allLikes.length}</span>        
+          ${allLikes}</span>        
           <i class="fas fa-heart btnLike" data-id="${doc.id}"></i>
 
         </div>
@@ -87,28 +92,31 @@ const timeline = () => {
       // like
       const btnLike = divElemt.querySelectorAll('.btnLike');
 
-      let likeID;
-      let likeContent;
 
       btnLike.forEach((btn) => {
         btn.addEventListener('click', async (e) => {
           e.preventDefault();
 
-          likeID = e.target.dataset.id;
-          likeContent = divElemt.querySelector(`[data-like="${likeID}"]`);
+          const likeID = e.target.dataset.id;
+          // const likeContent = divElemt
+          // .querySelector(`[data-like="${likeID}"]`);
           // console.log(likes);
-          console.log(likeID);
-          console.log(likeContent);
-          const doc = await getPost(e.target.dataset.id);
+          // console.log(likeID);
+          // console.log(likeContent);
+          const doc = await getPost(likeID);
           const dataLikes = doc.data().like;
-          console.log(dataLikes);
+          // console.log(dataLikes);
           const totalLikes = dataLikes;
           // console.log(totalLikes);
-
-          const totalLikesLength = totalLikes.push(postUser);
-          console.log(totalLikesLength);
-          likeContent.textContent = totalLikesLength;
-          await addLike(likeID, totalLikes);
+          if (totalLikes.includes(postUser) == false) {
+            const totalLikesLength = totalLikes.push(postUser);
+            console.log(totalLikesLength);
+            // likeContent.textContent = totalLikesLength;
+            await addLike(likeID, totalLikes);
+          } else {
+            console.log(
+                ' El usuario', postUser, 'ya dio like');
+          }
         });
       });
 
