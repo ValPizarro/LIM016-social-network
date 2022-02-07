@@ -1,11 +1,11 @@
 
 import {
   savePost,
-  onGetPosts ,
+  onGetPosts,
   delatePost,
   getPost,
   updatePost,
-  // addLike,
+  addLike,
 } from '../firebase/firestore/firestore-add.js';
 
 let postDescription;
@@ -25,7 +25,7 @@ const addPost = (e) => {
   postDescription = e.target.closest('form')
       .querySelector('#postDescription').value;
   // console.log(postDescription);
-  postLike = ['like1'];
+  postLike = [];
   console.log(postDescription, postLike, postUser);
   console.log(postLike);
   savePost(postDescription, postLike, postUser);
@@ -55,12 +55,19 @@ const timeline = () => {
 
   let allPosts;
   let showAllPosts;
+  let allLikes;
 
   const timelineFuntion = async ()=>{
     await onGetPosts((querySnapshot) => {
       allPosts = '';
       querySnapshot.forEach((doc) => {
         // console.log(doc.id);
+        const likes = doc.data().like.length;
+        if (likes == 0) {
+          allLikes = '';
+        } else {
+          allLikes = doc.data().like.length;
+        };
 
         allPosts += `
       <form class="postForm">
@@ -68,7 +75,7 @@ const timeline = () => {
         ${doc.data().description}</textarea>
         <div>
           <span class='postsLike' data-like="${doc.id}">
-          ${doc.data().like}</span>        
+          ${allLikes}</span>        
           <i class="fas fa-heart btnLike" data-id="${doc.id}"></i>
 
         </div>
@@ -85,26 +92,31 @@ const timeline = () => {
       // like
       const btnLike = divElemt.querySelectorAll('.btnLike');
 
+
       btnLike.forEach((btn) => {
         btn.addEventListener('click', async (e) => {
           e.preventDefault();
 
           const likeID = e.target.dataset.id;
-          const likeContent = divElemt.querySelector(`[data-like="${likeID}"]`);
+          // const likeContent = divElemt
+          // .querySelector(`[data-like="${likeID}"]`);
           // console.log(likes);
           // console.log(likeID);
           // console.log(likeContent);
-          const doc = await getPost(e.target.dataset.id);
+          const doc = await getPost(likeID);
           const dataLikes = doc.data().like;
-          console.log(dataLikes);
+          // console.log(dataLikes);
           const totalLikes = dataLikes;
-          console.log(totalLikes);
-
-          const totalLikesLength = totalLikes.push(postUser);
-          console.log(totalLikesLength);
-          likeContent.textContent = totalLikesLength;
-
-          // await addLike(likeID, totalLikesLength);
+          // console.log(totalLikes);
+          if (totalLikes.includes(postUser) == false) {
+            const totalLikesLength = totalLikes.push(postUser);
+            console.log(totalLikesLength);
+            // likeContent.textContent = totalLikesLength;
+            await addLike(likeID, totalLikes);
+          } else {
+            console.log(
+                ' El usuario', postUser, 'ya dio like');
+          }
         });
       });
 
