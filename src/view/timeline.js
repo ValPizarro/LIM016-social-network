@@ -1,28 +1,34 @@
 import {saveTask} from '../firebase/firestore/firestore-add.js';
-import { onGetTasks, delateTask, getTask,updateTask } from '../firebase/firestore/firestore-add.js';
+import {
+  onGetTasks,
+  delateTask,
+  getTask,
+  updateTask,
+  // addLike,
+} from '../firebase/firestore/firestore-add.js';
 
 let taskDescription;
-//let taskLike; 
+let taskLike;
 let taskUser;
 
- const addPost = (e) => {
+export const currentUser = (UID) => {
+  taskUser = UID;
+  console.log(taskUser);
+};
+currentUser();
+
+
+const addPost = (e) => {
   e.preventDefault();
 
-  // console.log(taskTitle);
-  taskDescription = e.target.closest('form').querySelector('#task-description').value;
+  taskDescription = e.target.closest('form')
+      .querySelector('#task-description').value;
   // console.log(taskDescription);
-  //taskLike = [];
-  console.log(taskDescription, taskUser);
-
-  saveTask(taskDescription, taskUser);
-};  
-
-export const currentUser = (UID) =>{
-  taskUser=UID;
-  console.log(taskUser);
-
-};  currentUser();
-
+  taskLike = ['like1'];
+  console.log(taskDescription, taskLike, taskUser);
+  console.log(taskLike);
+  saveTask(taskDescription, taskLike, taskUser);
+};
 
 const timeline = () => {
   const showTimeline = `
@@ -48,19 +54,22 @@ const timeline = () => {
 
   let allPosts;
   let showAllPosts;
-  // let taskForm;
+
   const timelineFuntion = async ()=>{
     await onGetTasks((querySnapshot) => {
       allPosts = '';
       querySnapshot.forEach((doc) => {
         // console.log(doc.id);
 
-      allPosts += `
+        allPosts += `
       <form class="form-publication">
-        <textarea class='publication-description' data-id="${doc.id}" disabled>${doc.data().description}</textarea>
+        <textarea class='publication-description' data-id="${doc.id}" disabled>
+        ${doc.data().description}</textarea>
         <div>
-          <spam class='publication-like' data-like="${doc.id}"> ${doc.data().like}</spam>        
-          <i class="fas fa-heart btn-like" data-like="${doc.id}"></i>
+          <spam class='publication-like' data-like="${doc.id}">
+          ${doc.data().like}</spam>        
+          <i class="fas fa-heart btn-like" data-id="${doc.id}"></i>
+
         </div>
 
         <i class="fas fa-trash-alt btn-delete" data-id="${doc.id}"></i>
@@ -72,24 +81,31 @@ const timeline = () => {
       showAllPosts = document.querySelector('#tasks-container');
       showAllPosts.innerHTML = allPosts;
 
-
       // like
-     // const btnLike = divElemt.querySelectorAll('.btn-like');
+      const btnLike = divElemt.querySelectorAll('.btn-like');
 
- /*      btnLike.forEach((btn) => {
-        btn.addEventListener('click', (e) => {
+      btnLike.forEach((btn) => {
+        btn.addEventListener('click', async (e) => {
           e.preventDefault();
-          console.log('like');
-          let totalLikes = 0;
+
           const likeID = e.target.dataset.id;
-          console.log(likeID);
           const likeContent = divElemt.querySelector(`[data-like="${likeID}"]`);
-          console.log(likeContent);
-          totalLikes++;
-          // eslint-disable-next-line padded-blocks
-          likeContent.textContent = totalLikes;
+          // console.log(likes);
+          // console.log(likeID);
+          // console.log(likeContent);
+          const doc = await getTask(e.target.dataset.id);
+          const dataLike = doc.data().like;
+          console.log(dataLike);
+          const totalLikes = dataLike;
+          console.log(totalLikes);
+
+          const totalLikesLength = totalLikes.push(taskUser);
+          console.log(totalLikesLength);
+          likeContent.textContent = totalLikesLength;
+
+          // await addLike(likeID, totalLikesLength);
         });
-      });  */
+      });
 
       // para eliminar
       const btnDelete = divElemt.querySelectorAll('.btn-delete');
@@ -101,7 +117,7 @@ const timeline = () => {
         // console.log(e.currentTarget.dataset.id)
         });
       });
-      
+
       const btnEdit=divElemt.querySelectorAll('.btn-edit');
 
       let textAreaID;
@@ -111,39 +127,36 @@ const timeline = () => {
         btn.addEventListener('click', async (e) => {
           e.preventDefault();
           const doc = await getTask(e.target.dataset.id);
-          const task = doc.data()
-           //console.log(task);
+          const task = doc.data();
+          console.log(task);
           textAreaID =e.target.dataset.id;
-           //console.log(textAreaID);
+          // console.log(textAreaID);
           textAreaEdit = divElemt.querySelector(`[data-id="${textAreaID}"]`);
           // console.log(textAreaEdit.value);
 
-          textAreaEdit.disabled=false; 
-    
-          //console.log(textAreaEdit);
+          textAreaEdit.disabled=false;
+
+          // console.log(textAreaEdit);
         });
       });
 
       const btnActualizar=divElemt.querySelectorAll('.btn-save');
       btnActualizar.forEach((btn)=>{
-        btn.addEventListener('click',async (e)=>{
+        btn.addEventListener('click', async (e)=>{
           e.preventDefault();
-          let btnActualizarId=e.target.dataset.id;
-          //console.log(btnActualizarId);
-          let textAreaEdit=divElemt.querySelector(`[data-id="${btnActualizarId}"]`);
-          //console.log(textAreaEdit.dataset.id, textAreaEdit.value);
-          await updateTask(textAreaEdit.dataset.id,textAreaEdit.value);
-          //console.log(textAreaEdit.dataset.id,textAreaEdit.value);
-          if(textAreaEdit.disabled=false){
-           }else{
-              textAreaEdit.disabled=true;
-           }
-        })
-
-      })
-
-
-
+          const btnActualizarId=e.target.dataset.id;
+          // console.log(btnActualizarId);
+          const textAreaEdit = divElemt
+              .querySelector(`[data-id="${btnActualizarId}"]`);
+          // console.log(textAreaEdit.dataset.id, textAreaEdit.value);
+          await updateTask(textAreaEdit.dataset.id, textAreaEdit.value);
+          // console.log(textAreaEdit.dataset.id,textAreaEdit.value);
+          if (textAreaEdit.disabled=false) {
+          } else {
+            textAreaEdit.disabled=true;
+          }
+        });
+      });
     });
   };
 
