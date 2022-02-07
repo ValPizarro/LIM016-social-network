@@ -11,14 +11,14 @@ import {
 
 // import {query, getDocs} from '../configuraciones.js';
 
-export const saveTask = (description, like, user ) =>
+export const savePost = (description, like, user ) =>
   addDoc(collection(db, 'post'), {description, like, user});
 
-export const onGetTasks = (callback) =>
+export const onGetPosts = (callback) =>
   onSnapshot(collection(db, 'post'), callback);
-export const delateTask = async (id) => await deleteDoc(doc(db, 'post', id));
-export const getTask = (id) => getDoc(doc(db, 'post', id));
-export const updateTask = async (id, valor) =>{
+export const delatePost = async (id) => await deleteDoc(doc(db, 'post', id));
+export const getPost = (id) => getDoc(doc(db, 'post', id));
+export const updatePost = async (id, valor) =>{
   await updateDoc(doc(db, 'post', id), {
     description: valor,
   });
