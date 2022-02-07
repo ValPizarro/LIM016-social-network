@@ -23,8 +23,10 @@ export const updatePost = async (id, valor) =>{
     description: valor,
   });
 };
-export const addLike = async (likeID, arrayLikes) =>
-  await updateDoc(likeID, {like: arrayLikes});
+export const addLike = async (id, arrayLikes) =>
+  await updateDoc(doc(db, 'post', id), {
+    like: arrayLikes,
+  });
 
 // export const saveProfile = (uid, name, nickname, email ) => {
 //   addDoc(collection(db, 'profile'), {

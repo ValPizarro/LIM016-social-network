@@ -5,7 +5,7 @@ import {
   delatePost,
   getPost,
   updatePost,
-  // addLike,
+  addLike,
 } from '../firebase/firestore/firestore-add.js';
 
 let postDescription;
@@ -55,12 +55,14 @@ const timeline = () => {
 
   let allPosts;
   let showAllPosts;
+  let allLikes;
 
   const timelineFuntion = async ()=>{
     await onGetPosts((querySnapshot) => {
       allPosts = '';
       querySnapshot.forEach((doc) => {
         // console.log(doc.id);
+        allLikes = doc.data().like;
 
         allPosts += `
       <form class="postForm">
@@ -68,7 +70,7 @@ const timeline = () => {
         ${doc.data().description}</textarea>
         <div>
           <span class='postsLike' data-like="${doc.id}">
-          ${doc.data().like}</span>        
+          ${allLikes.length}</span>        
           <i class="fas fa-heart btnLike" data-id="${doc.id}"></i>
 
         </div>
@@ -85,26 +87,28 @@ const timeline = () => {
       // like
       const btnLike = divElemt.querySelectorAll('.btnLike');
 
+      let likeID;
+      let likeContent;
+
       btnLike.forEach((btn) => {
         btn.addEventListener('click', async (e) => {
           e.preventDefault();
 
-          const likeID = e.target.dataset.id;
-          const likeContent = divElemt.querySelector(`[data-like="${likeID}"]`);
+          likeID = e.target.dataset.id;
+          likeContent = divElemt.querySelector(`[data-like="${likeID}"]`);
           // console.log(likes);
-          // console.log(likeID);
-          // console.log(likeContent);
+          console.log(likeID);
+          console.log(likeContent);
           const doc = await getPost(e.target.dataset.id);
           const dataLikes = doc.data().like;
           console.log(dataLikes);
           const totalLikes = dataLikes;
-          console.log(totalLikes);
+          // console.log(totalLikes);
 
           const totalLikesLength = totalLikes.push(postUser);
           console.log(totalLikesLength);
           likeContent.textContent = totalLikesLength;
-
-          // await addLike(likeID, totalLikesLength);
+          await addLike(likeID, totalLikes);
         });
       });
 
