@@ -1,7 +1,7 @@
 
 import {
   savePost,
-  onGetPosts ,
+  onGetPosts,
   delatePost,
   getPost,
   updatePost,
