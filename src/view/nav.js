@@ -18,7 +18,7 @@ const showSignOut = () => {
   // console.log('click search');
 };
 
-const Nav = () => {
+export const Nav = () => {
   const showNav = `
     <nav class="tab-nav-container">
       <div class="tab">
