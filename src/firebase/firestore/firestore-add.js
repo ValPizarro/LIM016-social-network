@@ -16,7 +16,7 @@ export const savePost = (description, like, user ) =>
 
 export const onGetPosts = (callback) =>
   onSnapshot(collection(db, 'post'), callback);
-export const delatePost = async (id) => await deleteDoc(doc(db, 'post', id));
+export const deletePost = async (id) => await deleteDoc(doc(db, 'post', id));
 export const getPost = (id) => getDoc(doc(db, 'post', id));
 export const updatePost = async (id, valor) =>{
   await updateDoc(doc(db, 'post', id), {

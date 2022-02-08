@@ -1,5 +1,5 @@
 import {auth, provider, signInWithPopup} from '../configuraciones.js';
-// import {profileUser} from './auth_get_user_profile.js';
+import {onAuth} from './auth_state_listener.js';
 
 
 export const googleAuth = () => {
@@ -8,7 +8,7 @@ export const googleAuth = () => {
         console.log('Nombre:', result.user.displayName);
         console.log('Email:', result.user.email);
         mailVerificado('Verficado:', result.user.emailVerified);
-        profileUser(provider);
+        onAuth(provider);
       })
       .catch((error) => {
         console.log(error.code);

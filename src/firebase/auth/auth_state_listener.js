@@ -8,8 +8,9 @@ export const onAuth = () => {
   return onAuthStateChanged(auth, (user) => {
     if (user) {
       const uidUser = user.uid;
-      profileUser(currentUser);
+
       currentUser(uidUser);
+      profileUser(currentUser);
     } else {
       console.log('El usuario se desconecto');
       backSignIn();

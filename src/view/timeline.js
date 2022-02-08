@@ -2,7 +2,7 @@
 import {
   savePost,
   onGetPosts,
-  delatePost,
+  deletePost,
   getPost,
   updatePost,
   addLike,
@@ -14,7 +14,7 @@ let postUser;
 
 export const currentUser = (UID) => {
   postUser = UID;
-  console.log(postUser);
+  // console.log(postUser);
 };
 currentUser();
 
@@ -27,7 +27,6 @@ const addPost = (e) => {
   // console.log(postDescription);
   postLike = [];
   console.log(postDescription, postLike, postUser);
-  console.log(postLike);
   savePost(postDescription, postLike, postUser);
 };
 
@@ -39,7 +38,7 @@ const timeline = () => {
       <label for="description">Description:</label>
       <textarea id="postDescription" rows="3" 
       placeholder="¿Tienes alguna recomendación?" ></textarea>
-      <button id="btnSave">Save</button>
+      <button id="btnSave">Guardar</button>
     </form>
     <div id="postsContainer"></div>
   </div>
@@ -108,6 +107,7 @@ const timeline = () => {
           // console.log(dataLikes);
           const totalLikes = dataLikes;
           // console.log(totalLikes);
+
           if (totalLikes.includes(postUser) == false) {
             const totalLikesLength = totalLikes.push(postUser);
             console.log(totalLikesLength);
@@ -126,12 +126,13 @@ const timeline = () => {
       btnDelete.forEach((btn) => {
         btn.addEventListener('click', async (e) => {
           e.preventDefault();
-          await delatePost(e.target.dataset.id);
+          await deletePost(e.target.dataset.id);
         // console.log(e.currentTarget.dataset.id)
         });
       });
 
-      const btnEdit=divElemt.querySelectorAll('.btnEdit');
+
+      const btnEdit = divElemt.querySelectorAll('.btnEdit');
 
       let btnEditID;
       let textAreaEdit;
@@ -139,29 +140,40 @@ const timeline = () => {
       btnEdit.forEach((btn) => {
         btn.addEventListener('click', async (e) => {
           e.preventDefault();
-          btnEditID =e.target.dataset.id;
+          btnEditID = e.target.dataset.id;
           // console.log(btnEditID);
           textAreaEdit = divElemt.querySelector(`[data-id="${btnEditID}"]`);
-          // console.log(textAreaEdit.value);
-          textAreaEdit.disabled=false;
-          // console.log(textAreaEdit);
+
+          const doc = await getPost(btnEditID);
+          const dataUser = doc.data().user;
+
+          console.log(dataUser);
+          console.log(postUser);
+
+          if (postUser == dataUser) {
+            console.log('El post es tuyo');
+            textAreaEdit.disabled = false;
+          } else {
+            console.log('El post NO es tuyo');
+          }
         });
       });
 
-      const btnUpdate=divElemt.querySelectorAll('.btnUpdate');
+      const btnUpdate = divElemt.querySelectorAll('.btnUpdate');
+
       btnUpdate.forEach((btn)=>{
-        btn.addEventListener('click', async (e)=>{
+        btn.addEventListener('click', async (e) => {
           e.preventDefault();
-          const btnUpdateId=e.target.dataset.id;
-          // console.log(btnUpdateId);
+          const btnUpdateID = e.target.dataset.id;
+          // console.log(btnUpdateID);
           const textAreaEdit = divElemt
-              .querySelector(`[data-id="${btnUpdateId}"]`);
+              .querySelector(`[data-id="${btnUpdateID}"]`);
           // console.log(textAreaEdit.dataset.id, textAreaEdit.value);
-          await updatePost(textAreaEdit.dataset.id, textAreaEdit.value);
-          // console.log(textAreaEdit.dataset.id,textAreaEdit.value);
-          if (textAreaEdit.disabled=false) {
-          } else {
-            textAreaEdit.disabled=true;
+          const doc = await getPost(btnEditID);
+          const dataUser = doc.data().user;
+
+          if (postUser == dataUser) {
+            await updatePost(textAreaEdit.dataset.id, textAreaEdit.value);
           }
         });
       });
@@ -173,26 +185,3 @@ const timeline = () => {
 };
 
 export default timeline;
-
-
-// const querySnapshot=await getTastks()
-// {}
-// console.log(querySnapshot);
-
-/*   let allPosts
-  const funcion = async()=>{
-    const querySnapshot=await getTastks()
-    //console.log(querySnapshot);
-    querySnapshot.forEach(doc => {
-
-      let title=doc.data().Title;
-      let Descripción=doc.data().Descripción;
-      console.log(doc.data());
-      allPosts += template(title,Descripción);
-
-    });
-    const showAllPosts=document.querySelector('#postsContainer');
-    showAllPosts.innerHTML=allPosts;
-  }
-  funcion();
-return divElemt; */
