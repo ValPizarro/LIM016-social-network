@@ -16,15 +16,17 @@ export const savePost = (description, like, user ) =>
 
 export const onGetPosts = (callback) =>
   onSnapshot(collection(db, 'post'), callback);
-export const delatePost = async (id) => await deleteDoc(doc(db, 'post', id));
+export const deletePost = async (id) => await deleteDoc(doc(db, 'post', id));
 export const getPost = (id) => getDoc(doc(db, 'post', id));
 export const updatePost = async (id, valor) =>{
   await updateDoc(doc(db, 'post', id), {
     description: valor,
   });
 };
-export const addLike = async (likeID, arrayLikes) =>
-  await updateDoc(likeID, {like: arrayLikes});
+export const addLike = async (id, arrayLikes) =>
+  await updateDoc(doc(db, 'post', id), {
+    like: arrayLikes,
+  });
 
 // export const saveProfile = (uid, name, nickname, email ) => {
 //   addDoc(collection(db, 'profile'), {

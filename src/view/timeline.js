@@ -1,11 +1,11 @@
 
 import {
   savePost,
-  onGetPosts ,
-  delatePost,
+  onGetPosts,
+  deletePost,
   getPost,
   updatePost,
-  // addLike,
+  addLike,
 } from '../firebase/firestore/firestore-add.js';
 
 let postDescription;
@@ -14,7 +14,7 @@ let postUser;
 
 export const currentUser = (UID) => {
   postUser = UID;
-  console.log(postUser);
+  // console.log(postUser);
 };
 currentUser();
 
@@ -25,9 +25,8 @@ const addPost = (e) => {
   postDescription = e.target.closest('form')
       .querySelector('#postDescription').value;
   // console.log(postDescription);
-  postLike = ['like1'];
+  postLike = [];
   console.log(postDescription, postLike, postUser);
-  console.log(postLike);
   savePost(postDescription, postLike, postUser);
 };
 
@@ -39,7 +38,7 @@ const timeline = () => {
       <label for="description">Description:</label>
       <textarea id="postDescription" rows="3" 
       placeholder="¿Tienes alguna recomendación?" ></textarea>
-      <button id="btnSave">Save</button>
+      <button id="btnSave">Guardar</button>
     </form>
     <div id="postsContainer"></div>
   </div>
@@ -55,12 +54,19 @@ const timeline = () => {
 
   let allPosts;
   let showAllPosts;
+  let allLikes;
 
   const timelineFuntion = async ()=>{
     await onGetPosts((querySnapshot) => {
       allPosts = '';
       querySnapshot.forEach((doc) => {
         // console.log(doc.id);
+        const likes = doc.data().like.length;
+        if (likes == 0) {
+          allLikes = '';
+        } else {
+          allLikes = doc.data().like.length;
+        };
 
         allPosts += `
       <form class="postForm">
@@ -68,7 +74,7 @@ const timeline = () => {
         ${doc.data().description}</textarea>
         <div>
           <span class='postsLike' data-like="${doc.id}">
-          ${doc.data().like}</span>        
+          ${allLikes}</span>        
           <i class="fas fa-heart btnLike" data-id="${doc.id}"></i>
 
         </div>
@@ -85,26 +91,32 @@ const timeline = () => {
       // like
       const btnLike = divElemt.querySelectorAll('.btnLike');
 
+
       btnLike.forEach((btn) => {
         btn.addEventListener('click', async (e) => {
           e.preventDefault();
 
           const likeID = e.target.dataset.id;
-          const likeContent = divElemt.querySelector(`[data-like="${likeID}"]`);
+          // const likeContent = divElemt
+          // .querySelector(`[data-like="${likeID}"]`);
           // console.log(likes);
           // console.log(likeID);
           // console.log(likeContent);
-          const doc = await getPost(e.target.dataset.id);
+          const doc = await getPost(likeID);
           const dataLikes = doc.data().like;
-          console.log(dataLikes);
+          // console.log(dataLikes);
           const totalLikes = dataLikes;
-          console.log(totalLikes);
+          // console.log(totalLikes);
 
-          const totalLikesLength = totalLikes.push(postUser);
-          console.log(totalLikesLength);
-          likeContent.textContent = totalLikesLength;
-
-          // await addLike(likeID, totalLikesLength);
+          if (totalLikes.includes(postUser) == false) {
+            const totalLikesLength = totalLikes.push(postUser);
+            console.log(totalLikesLength);
+            // likeContent.textContent = totalLikesLength;
+            await addLike(likeID, totalLikes);
+          } else {
+            console.log(
+                ' El usuario', postUser, 'ya dio like');
+          }
         });
       });
 
@@ -114,12 +126,13 @@ const timeline = () => {
       btnDelete.forEach((btn) => {
         btn.addEventListener('click', async (e) => {
           e.preventDefault();
-          await delatePost(e.target.dataset.id);
+          await deletePost(e.target.dataset.id);
         // console.log(e.currentTarget.dataset.id)
         });
       });
 
-      const btnEdit=divElemt.querySelectorAll('.btnEdit');
+
+      const btnEdit = divElemt.querySelectorAll('.btnEdit');
 
       let btnEditID;
       let textAreaEdit;
@@ -127,29 +140,40 @@ const timeline = () => {
       btnEdit.forEach((btn) => {
         btn.addEventListener('click', async (e) => {
           e.preventDefault();
-          btnEditID =e.target.dataset.id;
+          btnEditID = e.target.dataset.id;
           // console.log(btnEditID);
           textAreaEdit = divElemt.querySelector(`[data-id="${btnEditID}"]`);
-          // console.log(textAreaEdit.value);
-          textAreaEdit.disabled=false;
-          // console.log(textAreaEdit);
+
+          const doc = await getPost(btnEditID);
+          const dataUser = doc.data().user;
+
+          console.log(dataUser);
+          console.log(postUser);
+
+          if (postUser == dataUser) {
+            console.log('El post es tuyo');
+            textAreaEdit.disabled = false;
+          } else {
+            console.log('El post NO es tuyo');
+          }
         });
       });
 
-      const btnUpdate=divElemt.querySelectorAll('.btnUpdate');
+      const btnUpdate = divElemt.querySelectorAll('.btnUpdate');
+
       btnUpdate.forEach((btn)=>{
-        btn.addEventListener('click', async (e)=>{
+        btn.addEventListener('click', async (e) => {
           e.preventDefault();
-          const btnUpdateId=e.target.dataset.id;
-          // console.log(btnUpdateId);
+          const btnUpdateID = e.target.dataset.id;
+          // console.log(btnUpdateID);
           const textAreaEdit = divElemt
-              .querySelector(`[data-id="${btnUpdateId}"]`);
+              .querySelector(`[data-id="${btnUpdateID}"]`);
           // console.log(textAreaEdit.dataset.id, textAreaEdit.value);
-          await updatePost(textAreaEdit.dataset.id, textAreaEdit.value);
-          // console.log(textAreaEdit.dataset.id,textAreaEdit.value);
-          if (textAreaEdit.disabled=false) {
-          } else {
-            textAreaEdit.disabled=true;
+          const doc = await getPost(btnEditID);
+          const dataUser = doc.data().user;
+
+          if (postUser == dataUser) {
+            await updatePost(textAreaEdit.dataset.id, textAreaEdit.value);
           }
         });
       });
@@ -161,26 +185,3 @@ const timeline = () => {
 };
 
 export default timeline;
-
-
-// const querySnapshot=await getTastks()
-// {}
-// console.log(querySnapshot);
-
-/*   let allPosts
-  const funcion = async()=>{
-    const querySnapshot=await getTastks()
-    //console.log(querySnapshot);
-    querySnapshot.forEach(doc => {
-
-      let title=doc.data().Title;
-      let Descripción=doc.data().Descripción;
-      console.log(doc.data());
-      allPosts += template(title,Descripción);
-
-    });
-    const showAllPosts=document.querySelector('#postsContainer');
-    showAllPosts.innerHTML=allPosts;
-  }
-  funcion();
-return divElemt; */
