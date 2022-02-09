@@ -11,6 +11,7 @@ import {
 let postDescription;
 let postLike;
 let postUser;
+let cleanPost;
 
 export const currentUser = (UID) => {
   postUser = UID;
@@ -24,19 +25,20 @@ const addPost = (e) => {
 
   postDescription = e.target.closest('form')
       .querySelector('#postDescription').value;
-  // console.log(postDescription);
   postLike = [];
   const postDescriptionVerified = postDescription.replace(/\s+/g, '');
-  console.log(postDescriptionVerified);
+  // console.log(postDescriptionVerified);
 
   if (postDescriptionVerified !== '') {
     savePost(postDescription, postLike, postUser);
+    cleanPost.reset();
   };
 };
 
+
 export const timeline = () => {
   const showTimeline = `
-  <form class="postForm">
+  <form id="form" class="postForm">
     
     <div class="postUser">
       <div class="boxPerfil">
@@ -47,7 +49,9 @@ export const timeline = () => {
     <textarea id="postDescription" class="postDescription"
     placeholder="¿Tienes alguna recomendación?" ></textarea>
     <div class="btnPost">
-      <button id="btnPhoto" class="btnPhoto"><i class="fal fa-image"></i>Foto</button>
+      <button id="btnPhoto" class="btnPhoto">
+        <i class="fal fa-image"></i>Foto
+      </button>
       <button id="btnSave" class="btnSave">Guardar</button>
     </div>
     
@@ -59,6 +63,8 @@ export const timeline = () => {
   divElemt.setAttribute('class', 'containerPost');
   divElemt.innerHTML = showTimeline;
   divElemt.querySelector('#btnSave').addEventListener('click', addPost);
+
+  cleanPost = divElemt.querySelector('#form');
 
   let allPosts;
   let showAllPosts;
@@ -89,14 +95,17 @@ export const timeline = () => {
               </div>
               <p class="user">Lana del Rey</p> 
             </div>
-            <textarea id="postDescription" class="postDescription" placeholder="¿Tienes alguna recomendación?" data-id="${doc.id}">${doc.data().description}</textarea>
+            <textarea id="postDescription" class="postDescription"
+              data-id="${doc.id}" disabled>
+                ${doc.data().description}</textarea>
             <div class="divBtbUpdate">
               <button class='btnUpdate' data-id="${doc.id}"> Guardar</button>
             </div>
           </div>
           <div class="iconPost">
             <div class="divbtnLike">
-              <span class='postsLike' data-like="${doc.id}">${allLikes}</span>   
+              <span class='postsLike'
+                data-like="${doc.id}">${allLikes}</span>   
               <i class="fas fa-heart btnLike" data-id="${doc.id}"></i>
             </div>
             <i class="fas fa-trash-alt btnDelete" data-id="${doc.id}"></i>
@@ -212,5 +221,3 @@ export const timeline = () => {
   timelineFuntion();
   return divElemt;
 };
-
-export default timeline;
