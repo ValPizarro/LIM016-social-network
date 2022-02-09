@@ -11,22 +11,31 @@ import {
 
 // import {query, getDocs} from '../configuraciones.js';
 
-export const savePost = (description, like, user ) =>
-  addDoc(collection(db, 'post'), {description, like, user});
+export const savePost = (description, like, user) => {
+  return addDoc(collection(db, 'post'), {description, like, user});
+};
+export const onGetPosts = (callback) => {
+  return onSnapshot(collection(db, 'post'), callback);
+};
 
-export const onGetPosts = (callback) =>
-  onSnapshot(collection(db, 'post'), callback);
-export const deletePost = async (id) => await deleteDoc(doc(db, 'post', id));
-export const getPost = (id) => getDoc(doc(db, 'post', id));
-export const updatePost = async (id, valor) =>{
-  await updateDoc(doc(db, 'post', id), {
+export const deletePost = (id) => {
+  return deleteDoc(doc(db, 'post', id));
+};
+
+export const getPost = (id) => {
+  return getDoc(doc(db, 'post', id));
+};
+
+export const updatePost = (id, valor) => {
+  return updateDoc(doc(db, 'post', id), {
     description: valor,
   });
 };
-export const addLike = async (id, arrayLikes) =>
-  await updateDoc(doc(db, 'post', id), {
+export const addLike = (id, arrayLikes) => {
+  return updateDoc(doc(db, 'post', id), {
     like: arrayLikes,
   });
+};
 
 // export const saveProfile = (uid, name, nickname, email ) => {
 //   addDoc(collection(db, 'profile'), {
