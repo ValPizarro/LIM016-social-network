@@ -26,8 +26,12 @@ const addPost = (e) => {
       .querySelector('#postDescription').value;
   // console.log(postDescription);
   postLike = [];
-  console.log(postDescription, postLike, postUser);
-  savePost(postDescription, postLike, postUser);
+  const postDescriptionVerified = postDescription.replace(/\s+/g, '');
+  console.log(postDescriptionVerified);
+
+  if (postDescriptionVerified !== '') {
+    savePost(postDescription, postLike, postUser);
+  };
 };
 
 export const timeline = () => {
@@ -176,10 +180,15 @@ export const timeline = () => {
                 .querySelector(`[data-id="${btnUpdateID}"]`);
             const doc = await getPost(btnEditID);
             const dataUser = doc.data().user;
-
+            const textEditVerified = textAreaEdit.value.replace(/\s+/g, '');
+            console.log(textEditVerified);
             if (postUser == dataUser) {
+              if (textEditVerified !== '') {
+                await updatePost(textAreaEdit.dataset.id, textAreaEdit.value);
+              } else {
+                alert('ups, el campo esta vacio');
+              };
               // console.log(textAreaEdit.dataset.id, textAreaEdit.value);
-              await updatePost(textAreaEdit.dataset.id, textAreaEdit.value);
             }
           });
         });
