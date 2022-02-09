@@ -50,12 +50,12 @@ export const addLike = (id, arrayLikes) => {
 
 // export const getTastks = () => getDocs(query(collection(db, 'post')));
 
-export const saveUser = async (email, password, name, nickname) => {
-  const docRef = await addDoc(collection(db, 'user'), {
-    email,
-    password,
-    name,
-    nickname,
-  });
-  console.log('Documento escrito con su ID: ', docRef.id);
-};
+// export const saveUser = async (email, password, name, nickname) => {
+//   const docRef = await addDoc(collection(db, 'user'), {
+//     email,
+//     password,
+//     name,
+//     nickname,
+//   });
+//   console.log('Documento escrito con su ID: ', docRef.id);
+// };
