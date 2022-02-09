@@ -348,4 +348,176 @@ html{
 
 
 
+/* pubicacion */
+
+
+
+.imagen{
+  height:20px ;
+  width:20px ;
+}
+.containerPost{
+/*   --T68779821: 0 1px 2px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); */
+  background: #EAE7EB;
+  border:solid 0.1px #C8D2D9;
+  width: 100%;
+  height:100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+}
+.postForm{
+  --T68779821: 0 1px 2px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  background: white;
+  margin: 10px 0px;
+  width: 100%;
+  min-width: 150px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.postUser{
+  width:100% ;
+  flex-direction: row;
+  display: flex;
+  justify-content: center;
+}
+.postDescription{
+  border: solid 0.01px #C8D2D9;
+  margin: 10px 0px;
+  display: flex;
+  justify-content: center;
+  width:50% ;
+  padding: 10px;
+  border-radius: 10px;
+
+  max-width: 90%;
+  min-width: 90%;
+  height: 100%;
+  overflow: hidden;
+  resize: none;
+}
+.btnPost{
+  margin-bottom: 10px;
+  max-width: 90%;
+  min-width: 90%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+}
+.btnPhoto, .btnSave{
+  background:#724BB7;
+  border-radius: 8px;
+  width:48% ;
+  height:25px ;
+  color: white;
+  font-size: 0.7rem;
+  border: solid 0px ;
+}
+
+.perfil{
+  width: 100%;
+  height:100%;
+  border-radius: 100%;
+}
+.postUser {
+  margin-top: 10px;
+  max-width: 90%;
+  min-width:90% ;
+  width: 100%;
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+}
+
+.user{
+  padding: 0px 30px;
+  width: 90%;
+  display: flex;
+}
+.boxPerfil{
+  display: flex;
+  justify-content: center;
+  width: 10%;
+  height: 40px;
+}
+
+#postsContainer {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+}
+.divRow {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.btnLike,.btnDelete,.btnEdit {
+  margin:  40% 0%;
+  color: #653CAD;
+  height:100% ;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.iconPost {
+    height: 100%;
+    width: 5%;
+    display: flex;
+    flex-direction: column;
+}
+.postSection {
+    width: 80%;
+}
+.btnUpdate {
+    margin-bottom: 2%;
+    /* margin: 1% 0%; */
+    background: #724BB7;
+    border-radius: 8px;
+    width: 48%;
+    height: 25px;
+    color: white;
+    font-size: 0.7rem;
+    border: solid 0px;
+}
+.divBtbUpdate {
+    display: flex;
+    justify-content: flex-end;
+    width: 90%;
+}
+
+@media (min-width: 600px) {
+  .postForm {
+    width: 70%;
+    border-radius: 8px;
+    
+    }  
+}
+@media (min-width: 800px) {
+  .containerPost {
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    }   
+}
+
+
 

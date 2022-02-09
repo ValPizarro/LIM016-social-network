@@ -32,19 +32,24 @@ const addPost = (e) => {
 
 export const timeline = () => {
   const showTimeline = `
-  <div>
-      <h2> Publicaciones</h2>
-      <form class="postForm">
-        <label for="description">Description:</label>
-        <textarea id="postDescription" rows="3" 
-        placeholder="¿Tienes alguna recomendación?" ></textarea>
-        <button id="btnSave">Guardar</button>
-      </form>
-      <div id="postsContainer"></div>
-  </div>
+  <form class="postForm">
+    
+    <div class="postUser">
+      <div class="boxPerfil">
+        <img class="perfil" src="https://i.pinimg.com/564x/be/61/99/be6199c2dcbda4e08f6f6fbb9c038db8.jpg" alt="">
+      </div>
+      <p class="user">Lana del Rey</p>        
+    </div>
+    <textarea id="postDescription" class="postDescription"
+    placeholder="¿Tienes alguna recomendación?" ></textarea>
+    <div class="btnPost">
+      <button id="btnPhoto" class="btnPhoto"><i class="fal fa-image"></i>Foto</button>
+      <button id="btnSave" class="btnSave">Guardar</button>
+    </div>
+    
 
-  <div id="
-  "> </div>
+  </form>
+  <div id="postsContainer"></div>
 `;
   const divElemt = document.createElement('div');
   divElemt.setAttribute('class', 'containerPost');
@@ -72,18 +77,28 @@ export const timeline = () => {
 
           allPosts += `
       <form class="postForm">
-        <textarea class='postDescription' data-id="${doc.id}" disabled>
-        ${doc.data().description}</textarea>
-        <div>
-          <span class='postsLike' data-like="${doc.id}">
-          ${allLikes}</span>        
-          <i class="fas fa-heart btnLike" data-id="${doc.id}"></i>
-
+        <div class="divRow">
+          <div class="postSection">
+            <div class="postUser">
+              <div class="boxPerfil">
+                <img class="perfil" src="https://i.pinimg.com/564x/be/61/99/be6199c2dcbda4e08f6f6fbb9c038db8.jpg" alt="">
+              </div>
+              <p class="user">Lana del Rey</p> 
+            </div>
+            <textarea id="postDescription" class="postDescription" placeholder="¿Tienes alguna recomendación?" data-id="${doc.id}">${doc.data().description}</textarea>
+            <div class="divBtbUpdate">
+              <button class='btnUpdate' data-id="${doc.id}"> Guardar</button>
+            </div>
+          </div>
+          <div class="iconPost">
+            <div class="divbtnLike">
+              <span class='postsLike' data-like="${doc.id}">${allLikes}</span>   
+              <i class="fas fa-heart btnLike" data-id="${doc.id}"></i>
+            </div>
+            <i class="fas fa-trash-alt btnDelete" data-id="${doc.id}"></i>
+            <i class="fas fa-pencil-alt btnEdit" data-id="${doc.id}"></i>
+          </div>
         </div>
-
-        <i class="fas fa-trash-alt btnDelete" data-id="${doc.id}"></i>
-        <i class="fas fa-pencil-alt btnEdit" data-id="${doc.id}"></i>
-        <button class='btnUpdate' data-id="${doc.id}"> Guardar</button>
       </form>
       `;
         });
