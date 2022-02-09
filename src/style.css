@@ -133,7 +133,6 @@ html{
   right: 10px; 
   font-size: 20px
 }
-
 .form-control.error i.fa-times-circle {
   visibility: visible;
   color: #FE6F5E;
@@ -151,13 +150,13 @@ html{
   font-family: 'Rubik', sans-serif;
 }
 .button {
-  height:36px ;
+  height:36px;
+  padding: 10px;
   margin-bottom: 20px;
   padding-bottom: 20px;
   border-radius: 8px;
   color: #ffff;
   width: 266px;
-  padding: 10px;
   font-size: 14px;
   border: solid 1px var(--color-5);
   background-color: var(--color-5);
@@ -187,10 +186,6 @@ html{
   align-items: center;
   font-family: 'Poppins', sans-serif;
   }
-.google{
-  height: 30px;
-  width: 30px;
-}
 .formRegister{
   padding: 0px 40px;
   font-size: 15px;
@@ -316,7 +311,6 @@ html{
   border: 0px solid #EAE2F8;
   border-radius: 50px;
   box-sizing: border-box;
-  font-family: Comic Sans MS;
   font-size: 15px;
   color: #8662C7;
   outline: none;
@@ -346,10 +340,7 @@ html{
 }
 
 
-
-
 /* pubicacion */
-
 
 
 .imagen{
@@ -384,12 +375,7 @@ html{
   align-items: center;
   flex-direction: column;
 }
-.postUser{
-  width:100% ;
-  flex-direction: row;
-  display: flex;
-  justify-content: center;
-}
+
 .postDescription{
   border: solid 0.01px #C8D2D9;
   margin: 10px 0px;

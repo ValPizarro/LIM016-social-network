@@ -52,7 +52,7 @@ export const timeline = () => {
       <button id="btnPhoto" class="btnPhoto">
         <i class="fal fa-image"></i>Foto
       </button>
-      <button id="btnSave" class="btnSave">Guardar</button>
+      <button id="btnSave" class="btnSave">Publicar</button>
     </div>
     
 
@@ -83,7 +83,7 @@ export const timeline = () => {
             allLikes = '';
           } else {
             allLikes = doc.data().like.length;
-          };
+          }
 
           allPosts += `
       <form class="postForm">
@@ -121,7 +121,6 @@ export const timeline = () => {
         // like
         const btnLike = divElemt.querySelectorAll('.btnLike');
 
-
         btnLike.forEach((btn) => {
           btn.addEventListener('click', async (e) => {
             e.preventDefault();
@@ -134,12 +133,14 @@ export const timeline = () => {
             // console.log(totalLikes);
 
             if (totalLikes.includes(postUser) == false) {
-              const totalLikesLength = totalLikes.push(postUser);
-              console.log(totalLikesLength);
+              totalLikes.push(postUser);
+              // console.log(totalLikesLength);
               await addLike(likeID, totalLikes);
             } else {
-              console.log(
-                  ' El usuario', postUser, 'ya dio like');
+              console.log('El usuario', postUser, 'ya dio like');
+              const dislike = totalLikes.filter((user) => user !== postUser);
+              // console.log(dislike);
+              await addLike(likeID, dislike);
             }
           });
         });
@@ -159,11 +160,9 @@ export const timeline = () => {
               if (confirm('¿Desea eliminar esta publicación?')) {
                 await deletePost(btnDeleteID);
               }
-            };
-          },
-          );
+            }
+          });
         });
-
 
         const btnEdit = divElemt.querySelectorAll('.btnEdit');
 
@@ -199,8 +198,9 @@ export const timeline = () => {
             e.preventDefault();
             const btnUpdateID = e.target.dataset.id;
             // console.log(btnUpdateID);
-            const textAreaEdit = divElemt
-                .querySelector(`[data-id="${btnUpdateID}"]`);
+            const textAreaEdit = divElemt.querySelector(
+                `[data-id="${btnUpdateID}"]`,
+            );
             const doc = await getPost(btnEditID);
             const dataUser = doc.data().user;
             const textEditVerified = textAreaEdit.value.replace(/\s+/g, '');
@@ -210,13 +210,13 @@ export const timeline = () => {
                 await updatePost(textAreaEdit.dataset.id, textAreaEdit.value);
               } else {
                 alert('ups, el campo esta vacio');
-              };
+              }
               // console.log(textAreaEdit.dataset.id, textAreaEdit.value);
             }
           });
         });
       });
-    };
+    }
   };
   timelineFuntion();
   return divElemt;
