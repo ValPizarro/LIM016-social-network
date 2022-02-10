@@ -9,11 +9,11 @@ export const onAuth = () => {
   return onAuthStateChanged(auth, (user) => {
     if (user !== null) {
       const uidUser = user.uid;
-      // const name = user.displayName;
-      const email = user.email;
-      // const photoURL = user.photoURL;
+      const name = user.displayName;
+      // const email = user.email;
+      const photoURL = user.photoURL;
       // // const emailVerified = user.emailVerified;
-      currentUser(uidUser, email);
+      currentUser(uidUser, name, photoURL);
       showHome(currentUser);
       timeline();
       nav(uidUser);

@@ -10,3 +10,4 @@ export const doc = jest.fn((db, collection, docID) => Promise.resolve({}));
 export const db = jest.fn({});
 
 export const updateDoc = jest.fn({});
+

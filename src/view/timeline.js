@@ -6,19 +6,26 @@ import {
   getPost,
   updatePost,
   addLike,
+  // onGetUser,
 } from '../firebase/firestore/firestore-add.js';
 
 let postDescription;
 let postLike;
 let postUser;
-let postEmail;
 let cleanPost;
+let userName;
+let userPhoto;
 
-export const currentUser = (UID, email) => {
+export const currentUser = (UID, name, photo) => {
   postUser = UID;
-  postEmail = email;
+  userName = name;
+  userPhoto = photo;
 };
 currentUser();
+
+// export const dataUser = async (UID, name, photo) => {
+//   await onGetUser((querySnapshot) => {
+//   });};
 
 
 const addPost = (e) => {
@@ -31,7 +38,7 @@ const addPost = (e) => {
   // console.log(postDescriptionVerified);
 
   if (postDescriptionVerified !== '') {
-    savePost(postDescription, postLike, postUser);
+    savePost(postDescription, postLike, postUser, userName, userPhoto);
     cleanPost.reset();
   };
 };
@@ -43,9 +50,9 @@ export const timeline = () => {
     
     <div class="postUser">
       <div class="boxPerfil">
-        <img class="perfil" src="https://i.pinimg.com/564x/be/61/99/be6199c2dcbda4e08f6f6fbb9c038db8.jpg" alt="">
+        <img class="perfil" src="${userPhoto}" alt="">
       </div>
-      <p class="user">${postEmail}</p>        
+      <p class="user">${userName}</p>        
     </div>
     <textarea id="postDescription" class="postDescription"
     placeholder="¿Tienes alguna recomendación?" ></textarea>
@@ -92,9 +99,9 @@ export const timeline = () => {
           <div class="postSection">
             <div class="postUser">
               <div class="boxPerfil">
-                <img class="perfil" src="https://i.pinimg.com/564x/be/61/99/be6199c2dcbda4e08f6f6fbb9c038db8.jpg" alt="">
+                <img class="perfil" src="${doc.data().photo}" alt="">
               </div>
-              <p class="user">Lana del Rey</p> 
+              <p class="user">${doc.data().name}</p> 
             </div>
             <textarea id="postDescription" class="postDescription"
               data-id="${doc.id}" disabled>
