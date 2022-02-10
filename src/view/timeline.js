@@ -11,6 +11,7 @@ import {
 let postDescription;
 let postLike;
 let postUser;
+let cleanPost;
 
 export const currentUser = (UID) => {
   postUser = UID;
@@ -24,15 +25,20 @@ const addPost = (e) => {
 
   postDescription = e.target.closest('form')
       .querySelector('#postDescription').value;
-  // console.log(postDescription);
   postLike = [];
-  console.log(postDescription, postLike, postUser);
-  savePost(postDescription, postLike, postUser);
+  const postDescriptionVerified = postDescription.replace(/\s+/g, '');
+  // console.log(postDescriptionVerified);
+
+  if (postDescriptionVerified !== '') {
+    savePost(postDescription, postLike, postUser);
+    cleanPost.reset();
+  };
 };
+
 
 export const timeline = () => {
   const showTimeline = `
-  <form class="postForm">
+  <form id="form" class="postForm">
     
     <div class="postUser">
       <div class="boxPerfil">
@@ -43,8 +49,10 @@ export const timeline = () => {
     <textarea id="postDescription" class="postDescription"
     placeholder="¿Tienes alguna recomendación?" ></textarea>
     <div class="btnPost">
-      <button id="btnPhoto" class="btnPhoto"><i class="fal fa-image"></i>Foto</button>
-      <button id="btnSave" class="btnSave">Guardar</button>
+      <button id="btnPhoto" class="btnPhoto">
+        <i class="fal fa-image"></i>Foto
+      </button>
+      <button id="btnSave" class="btnSave">Publicar</button>
     </div>
     
 
@@ -55,6 +63,8 @@ export const timeline = () => {
   divElemt.setAttribute('class', 'containerPost');
   divElemt.innerHTML = showTimeline;
   divElemt.querySelector('#btnSave').addEventListener('click', addPost);
+
+  cleanPost = divElemt.querySelector('#form');
 
   let allPosts;
   let showAllPosts;
@@ -73,7 +83,7 @@ export const timeline = () => {
             allLikes = '';
           } else {
             allLikes = doc.data().like.length;
-          };
+          }
 
           allPosts += `
       <form class="postForm">
@@ -85,14 +95,17 @@ export const timeline = () => {
               </div>
               <p class="user">Lana del Rey</p> 
             </div>
-            <textarea id="postDescription" class="postDescription"  data-id="${doc.id}" disab>${doc.data().description}</textarea>
+            <textarea id="postDescription" class="postDescription"
+              data-id="${doc.id}" disabled>
+                ${doc.data().description}</textarea>
             <div class="divBtbUpdate">
               <button class='btnUpdate' data-id="${doc.id}"> Guardar</button>
             </div>
           </div>
           <div class="iconPost">
             <div class="divbtnLike">
-              <span class='postsLike' data-like="${doc.id}">${allLikes}</span>   
+              <span class='postsLike'
+                data-like="${doc.id}">${allLikes}</span>   
               <i class="fas fa-heart btnLike" data-id="${doc.id}"></i>
             </div>
             <i class="fas fa-trash-alt btnDelete" data-id="${doc.id}"></i>
@@ -108,7 +121,6 @@ export const timeline = () => {
         // like
         const btnLike = divElemt.querySelectorAll('.btnLike');
 
-
         btnLike.forEach((btn) => {
           btn.addEventListener('click', async (e) => {
             e.preventDefault();
@@ -121,12 +133,14 @@ export const timeline = () => {
             // console.log(totalLikes);
 
             if (totalLikes.includes(postUser) == false) {
-              const totalLikesLength = totalLikes.push(postUser);
-              console.log(totalLikesLength);
+              totalLikes.push(postUser);
+              // console.log(totalLikesLength);
               await addLike(likeID, totalLikes);
             } else {
-              console.log(
-                  ' El usuario', postUser, 'ya dio like');
+              console.log('El usuario', postUser, 'ya dio like');
+              const dislike = totalLikes.filter((user) => user !== postUser);
+              // console.log(dislike);
+              await addLike(likeID, dislike);
             }
           });
         });
@@ -146,11 +160,9 @@ export const timeline = () => {
               if (confirm('¿Desea eliminar esta publicación?')) {
                 await deletePost(btnDeleteID);
               }
-            };
-          },
-          );
+            }
+          });
         });
-
 
         const btnEdit = divElemt.querySelectorAll('.btnEdit');
 
@@ -186,22 +198,26 @@ export const timeline = () => {
             e.preventDefault();
             const btnUpdateID = e.target.dataset.id;
             // console.log(btnUpdateID);
-            const textAreaEdit = divElemt
-                .querySelector(`[data-id="${btnUpdateID}"]`);
+            const textAreaEdit = divElemt.querySelector(
+                `[data-id="${btnUpdateID}"]`,
+            );
             const doc = await getPost(btnEditID);
             const dataUser = doc.data().user;
-
+            const textEditVerified = textAreaEdit.value.replace(/\s+/g, '');
+            console.log(textEditVerified);
             if (postUser == dataUser) {
+              if (textEditVerified !== '') {
+                await updatePost(textAreaEdit.dataset.id, textAreaEdit.value);
+              } else {
+                alert('ups, el campo esta vacio');
+              }
               // console.log(textAreaEdit.dataset.id, textAreaEdit.value);
-              await updatePost(textAreaEdit.dataset.id, textAreaEdit.value);
             }
           });
         });
       });
-    };
+    }
   };
   timelineFuntion();
   return divElemt;
 };
-
-export default timeline;

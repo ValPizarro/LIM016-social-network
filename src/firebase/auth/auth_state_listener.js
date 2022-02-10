@@ -1,7 +1,7 @@
 import {auth, onAuthStateChanged} from '../configuraciones.js';
 // import {profileUser} from './auth_get_user_profile.js';
 import {backSignIn} from '../../view/signup.js';
-import {currentUser} from '../../view/timeline.js';
+import {currentUser, timeline} from '../../view/timeline.js';
 import {showHome} from '../../view/signin.js';
 
 export const onAuth = () => {
@@ -14,6 +14,7 @@ export const onAuth = () => {
       // // const emailVerified = user.emailVerified;
       currentUser(uidUser);
       showHome(currentUser);
+      timeline();
     } else {
       console.log('El usuario se desconecto');
       backSignIn();
