@@ -11,11 +11,12 @@ import {
 let postDescription;
 let postLike;
 let postUser;
+let postEmail;
 let cleanPost;
 
-export const currentUser = (UID) => {
+export const currentUser = (UID, email) => {
   postUser = UID;
-  // console.log(postUser);
+  postEmail = email;
 };
 currentUser();
 
@@ -44,7 +45,7 @@ export const timeline = () => {
       <div class="boxPerfil">
         <img class="perfil" src="https://i.pinimg.com/564x/be/61/99/be6199c2dcbda4e08f6f6fbb9c038db8.jpg" alt="">
       </div>
-      <p class="user">Lana del Rey</p>        
+      <p class="user">${postEmail}</p>        
     </div>
     <textarea id="postDescription" class="postDescription"
     placeholder="¿Tienes alguna recomendación?" ></textarea>

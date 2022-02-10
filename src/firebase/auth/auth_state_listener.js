@@ -10,10 +10,10 @@ export const onAuth = () => {
     if (user !== null) {
       const uidUser = user.uid;
       // const name = user.displayName;
-      // const email = user.email;
+      const email = user.email;
       // const photoURL = user.photoURL;
       // // const emailVerified = user.emailVerified;
-      currentUser(uidUser);
+      currentUser(uidUser, email);
       showHome(currentUser);
       timeline();
       nav(uidUser);
