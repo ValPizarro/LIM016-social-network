@@ -6,7 +6,7 @@ import {
   getDoc,
   doc,
   onSnapshot,
-  updateDoc,
+  // updateDoc,
 } from '../configuraciones.js';
 
 // import {query, getDocs} from '../configuraciones.js';
@@ -33,16 +33,17 @@ export const getPost = (id) => {
   return getDoc(doc(db, 'posts', id));
 };
 
-export const updatePost = (id, valor) => {
-  return updateDoc(doc(db, 'posts', id), {
-    description: valor,
-  });
-};
-export const addLike = (id, arrayLikes) => {
-  return updateDoc(doc(db, 'posts', id), {
-    like: arrayLikes,
-  });
-};
+// export const updatePost = (id, valor) => {
+//   return updateDoc(doc(db, 'posts', id), {
+//     description: valor,
+//   });
+// };
+
+// export const addLike = (id, arrayLikes) => {
+//   return updateDoc(doc(db, 'posts', id), {
+//     like: arrayLikes,
+//   });
+// };
 
 // export const saveProfile = (uid, name, nickname, email ) => {
 //   addDoc(collection(db, 'profile'), {

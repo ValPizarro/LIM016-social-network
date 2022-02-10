@@ -1,13 +1,12 @@
-
 import {
   savePost,
   onGetPosts,
   deletePost,
   getPost,
-  updatePost,
-  addLike,
+  // addLike,
   // onGetUser,
 } from '../firebase/firestore/firestore-add.js';
+import {updatePost, addLike} from '../firebase/firestore/fb-test.js';
 
 let postDescription;
 let postLike;

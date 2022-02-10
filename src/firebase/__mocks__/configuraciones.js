@@ -9,5 +9,18 @@ export const doc = jest.fn((db, collection, docID) => Promise.resolve({}));
 
 export const db = jest.fn({});
 
-export const updateDoc = jest.fn({});
+export const updateDoc = jest.fn((theDoc, obj) => Promise.resolve(obj));
 
+export const addDoc = jest.fn();
+
+export const collection = jest.fn((db, obj) => Promise.resolve({}));
+
+// export const savePost = (description, like, name, photo, user) => {
+//   return addDoc(collection(db, 'posts'), {
+//     description,
+//     like,
+//     name,
+//     photo,
+//     user,
+//   });
+// };
