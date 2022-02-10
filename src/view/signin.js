@@ -58,10 +58,6 @@ const SignUp = () => {
   window.location.hash = '#/signUp';
 };
 
-export const onBtn = () => {
-  console.log('btn');
-};
-
 export const registerUser = (e) => {
   e.preventDefault();
 

@@ -3,6 +3,7 @@ import {auth, onAuthStateChanged} from '../configuraciones.js';
 import {backSignIn} from '../../view/signup.js';
 import {currentUser, timeline} from '../../view/timeline.js';
 import {showHome} from '../../view/signin.js';
+import nav from '../../view/nav.js';
 
 export const onAuth = () => {
   return onAuthStateChanged(auth, (user) => {
@@ -15,6 +16,7 @@ export const onAuth = () => {
       currentUser(uidUser);
       showHome(currentUser);
       timeline();
+      nav(uidUser);
     } else {
       console.log('El usuario se desconecto');
       backSignIn();
