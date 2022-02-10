@@ -6,36 +6,44 @@ import {
   getDoc,
   doc,
   onSnapshot,
-  updateDoc,
+  // updateDoc,
 } from '../configuraciones.js';
 
 // import {query, getDocs} from '../configuraciones.js';
 
-export const savePost = (description, like, user) => {
-  return addDoc(collection(db, 'post'), {description, like, user});
+export const savePost = (description, like, name, photo, user) => {
+  return addDoc(collection(db, 'posts'), {
+    description,
+    like,
+    name,
+    photo,
+    user,
+  });
 };
+
 export const onGetPosts = (callback) => {
-  return onSnapshot(collection(db, 'post'), callback);
+  return onSnapshot(collection(db, 'posts'), callback);
 };
 
 export const deletePost = (id) => {
-  return deleteDoc(doc(db, 'post', id));
+  return deleteDoc(doc(db, 'posts', id));
 };
 
 export const getPost = (id) => {
-  return getDoc(doc(db, 'post', id));
+  return getDoc(doc(db, 'posts', id));
 };
 
-export const updatePost = (id, valor) => {
-  return updateDoc(doc(db, 'post', id), {
-    description: valor,
-  });
-};
-export const addLike = (id, arrayLikes) => {
-  return updateDoc(doc(db, 'post', id), {
-    like: arrayLikes,
-  });
-};
+// export const updatePost = (id, valor) => {
+//   return updateDoc(doc(db, 'posts', id), {
+//     description: valor,
+//   });
+// };
+
+// export const addLike = (id, arrayLikes) => {
+//   return updateDoc(doc(db, 'posts', id), {
+//     like: arrayLikes,
+//   });
+// };
 
 // export const saveProfile = (uid, name, nickname, email ) => {
 //   addDoc(collection(db, 'profile'), {
@@ -50,12 +58,14 @@ export const addLike = (id, arrayLikes) => {
 
 // export const getTastks = () => getDocs(query(collection(db, 'post')));
 
-// export const saveUser = async (email, password, name, nickname) => {
-//   const docRef = await addDoc(collection(db, 'user'), {
-//     email,
-//     password,
-//     name,
-//     nickname,
-//   });
-//   console.log('Documento escrito con su ID: ', docRef.id);
-// };
+export const saveUser = (displayname, email, name) => {
+  return addDoc(collection(db, 'users'), {
+    displayname,
+    email,
+    name,
+  });
+};
+
+export const onGetUser = (callback) => {
+  return onSnapshot(collection(db, 'users'), callback);
+};
