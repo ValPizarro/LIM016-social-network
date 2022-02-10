@@ -85,7 +85,7 @@ export const timeline = () => {
               </div>
               <p class="user">Lana del Rey</p> 
             </div>
-            <textarea id="postDescription" class="postDescription" placeholder="¿Tienes alguna recomendación?" data-id="${doc.id}">${doc.data().description}</textarea>
+            <textarea id="postDescription" class="postDescription"  data-id="${doc.id}" disab>${doc.data().description}</textarea>
             <div class="divBtbUpdate">
               <button class='btnUpdate' data-id="${doc.id}"> Guardar</button>
             </div>
