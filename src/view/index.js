@@ -6,7 +6,7 @@ import Different from './404.js';
 import UpdateUser from './updateUser.js';
 import Nav from './nav.js';
 import {timeline} from './timeline.js';
-import Search from './search.js';
+// import Search from './search.js';
 import SignOut from './signout.js';
 
 
@@ -18,7 +18,7 @@ const components = {
   profile: Profile,
   update: UpdateUser,
   timeLine: timeline,
-  search: Search,
+  // search: Search,
   different: Different,
   signOut: SignOut,
 };

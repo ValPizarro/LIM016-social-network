@@ -1,6 +1,4 @@
 import {signOutUser} from '../firebase/auth/auth_sign_out.js';
-// import {auth} from '../firebase/configuraciones.js';
-// import {signOut} from '../firebase/configuraciones.js';
 
 const signOutPage = () => {
   const showSignOut = ` 

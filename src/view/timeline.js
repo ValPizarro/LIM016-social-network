@@ -144,7 +144,6 @@ export const timeline = () => {
               // console.log(totalLikesLength);
               await addLike(likeID, totalLikes);
             } else {
-              console.log('El usuario', postUser, 'ya dio like');
               const dislike = totalLikes.filter((user) => user !== postUser);
               // console.log(dislike);
               await addLike(likeID, dislike);
@@ -186,14 +185,10 @@ export const timeline = () => {
             const doc = await getPost(btnEditID);
             const dataUser = doc.data().user;
 
-            console.log(dataUser);
-            console.log(postUser);
-
             if (postUser == dataUser) {
-              console.log('El post es tuyo');
               textAreaEdit.disabled = false;
             } else {
-              console.log('El post NO es tuyo');
+              console.warn('El post NO es tuyo');
             }
           });
         });

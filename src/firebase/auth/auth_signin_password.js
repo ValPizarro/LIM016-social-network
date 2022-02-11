@@ -10,9 +10,6 @@ export const signIn = (email, password) => {
         onAuth(user);
       })
       .catch((error) => {
-        const errorCode = error.code;
-        // const errorMessage = error.message;
-        // console.log('Error', errorCode);
-        showError(errorCode);
+        showError(error.code);
       });
 };
