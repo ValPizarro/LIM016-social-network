@@ -58,10 +58,6 @@ const SignUp = () => {
   window.location.hash = '#/signUp';
 };
 
-export const onBtn = () => {
-  console.log('btn');
-};
-
 export const registerUser = (e) => {
   e.preventDefault();
 
@@ -87,18 +83,26 @@ export const showError = (error) => {
   };
 
   const typeError = () => {
-    if (error === 'auth/internal-error') {
-      setErrorInput(password, 'Ingrese contraseña');
-    } else if (error === 'auth/wrong-password') {
-      setErrorInput(password, 'Contraseña incorrecta');
-    } else if (error === 'auth/invalid-email') {
-      setErrorInput(email, 'Correo electrónico invalido');
-    } else if (error === 'auth/user-not-found') {
-      setErrorInput(email, 'No se encuentra registrado');
-    } else if (error !== '') {
-      setErrorInput(email, 'El correo o contraseña es incorrecta');
-    } else {
-      console.log('Error no definido:', error);
+    switch (error) {
+      case 'auth/internal-error':
+        setErrorInput(password, 'Ingrese contraseña');
+        break;
+      case 'auth/wrong-password':
+        setErrorInput(password, 'Contraseña incorrecta');
+        break;
+      case 'auth/invalid-email':
+        setErrorInput(email, 'Correo electrónico invalido');
+        break;
+      case 'auth/user-not-found':
+        setErrorInput(email, 'No se encuentra registrado');
+        break;
+      case 'auth/too-many-requests':
+        setErrorInput(password,
+            'Toma un descanso y vuelve a intentarlo');
+        break;
+      default:
+        setErrorInput(email, 'lo sentimos, se ha producido un error');
+        break;
     }
   }; typeError();
 };
