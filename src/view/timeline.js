@@ -1,22 +1,30 @@
-
 import {
   savePost,
   onGetPosts,
   deletePost,
   getPost,
-  updatePost,
-  addLike,
+  // addLike,
+  // onGetUser,
 } from '../firebase/firestore/firestore-add.js';
+import {updatePost, addLike} from '../firebase/firestore/fb-test.js';
 
 let postDescription;
 let postLike;
 let postUser;
+let cleanPost;
+let userName;
+let userPhoto;
 
-export const currentUser = (UID) => {
+export const currentUser = (UID, name, photo) => {
   postUser = UID;
-  // console.log(postUser);
+  userName = name;
+  userPhoto = photo;
 };
 currentUser();
+
+// export const dataUser = async (UID, name, photo) => {
+//   await onGetUser((querySnapshot) => {
+//   });};
 
 
 const addPost = (e) => {
@@ -24,33 +32,46 @@ const addPost = (e) => {
 
   postDescription = e.target.closest('form')
       .querySelector('#postDescription').value;
-  // console.log(postDescription);
   postLike = [];
-  console.log(postDescription, postLike, postUser);
-  savePost(postDescription, postLike, postUser);
+  const postDescriptionVerified = postDescription.replace(/\s+/g, '');
+  // console.log(postDescriptionVerified);
+
+  if (postDescriptionVerified !== '') {
+    savePost(postDescription, postLike, postUser, userName, userPhoto);
+    cleanPost.reset();
+  };
 };
+
 
 export const timeline = () => {
   const showTimeline = `
-  <div >
-    <h2> Publicaciones</h2>
-    <form class="postForm">
-      <label for="description">Description:</label>
-      <textarea id="postDescription" rows="3" 
-      placeholder="¿Tienes alguna recomendación?" ></textarea>
-      <button id="btnSave">Guardar</button>
-    </form>
-    <div id="postsContainer"></div>
-  </div>
+  <form id="form" class="postForm">
+    
+    <div class="postUser">
+      <div class="boxPerfil">
+        <img class="perfil" src="${userPhoto}" alt="">
+      </div>
+      <p class="user">${userName}</p>        
+    </div>
+    <textarea id="postDescription" class="postDescription"
+    placeholder="¿Tienes alguna recomendación?" ></textarea>
+    <div class="btnPost">
+      <button id="btnPhoto" class="btnPhoto">
+        <i class="fal fa-image"></i>Foto
+      </button>
+      <button id="btnSave" class="btnSave">Publicar</button>
+    </div>
+    
 
-  <div id="showAllPosts"> </div>
-  </div>
-
+  </form>
+  <div id="postsContainer"></div>
 `;
   const divElemt = document.createElement('div');
-  divElemt.setAttribute('class', 'flexSection');
+  divElemt.setAttribute('class', 'containerPost');
   divElemt.innerHTML = showTimeline;
   divElemt.querySelector('#btnSave').addEventListener('click', addPost);
+
+  cleanPost = divElemt.querySelector('#form');
 
   let allPosts;
   let showAllPosts;
@@ -69,22 +90,35 @@ export const timeline = () => {
             allLikes = '';
           } else {
             allLikes = doc.data().like.length;
-          };
+          }
 
           allPosts += `
       <form class="postForm">
-        <textarea class='postDescription' data-id="${doc.id}" disabled>
-        ${doc.data().description}</textarea>
-        <div>
-          <span class='postsLike' data-like="${doc.id}">
-          ${allLikes}</span>        
-          <i class="fas fa-heart btnLike" data-id="${doc.id}"></i>
-
+        <div class="divRow">
+          <div class="postSection">
+            <div class="postUser">
+              <div class="boxPerfil">
+                <img class="perfil" src="${doc.data().photo}" alt="">
+              </div>
+              <p class="user">${doc.data().name}</p> 
+            </div>
+            <textarea id="postDescription" class="postDescription"
+              data-id="${doc.id}" disabled>
+                ${doc.data().description}</textarea>
+            <div class="divBtbUpdate">
+              <button class='btnUpdate' data-id="${doc.id}"> Guardar</button>
+            </div>
+          </div>
+          <div class="iconPost">
+            <div class="divbtnLike">
+              <span class='postsLike'
+                data-like="${doc.id}">${allLikes}</span>   
+              <i class="fas fa-heart btnLike" data-id="${doc.id}"></i>
+            </div>
+            <i class="fas fa-trash-alt btnDelete" data-id="${doc.id}"></i>
+            <i class="fas fa-pencil-alt btnEdit" data-id="${doc.id}"></i>
+          </div>
         </div>
-
-        <i class="fas fa-trash-alt btnDelete" data-id="${doc.id}"></i>
-        <i class="fas fa-pencil-alt btnEdit" data-id="${doc.id}"></i>
-        <button class='btnUpdate' data-id="${doc.id}"> Guardar</button>
       </form>
       `;
         });
@@ -93,7 +127,6 @@ export const timeline = () => {
 
         // like
         const btnLike = divElemt.querySelectorAll('.btnLike');
-
 
         btnLike.forEach((btn) => {
           btn.addEventListener('click', async (e) => {
@@ -107,12 +140,14 @@ export const timeline = () => {
             // console.log(totalLikes);
 
             if (totalLikes.includes(postUser) == false) {
-              const totalLikesLength = totalLikes.push(postUser);
-              console.log(totalLikesLength);
+              totalLikes.push(postUser);
+              // console.log(totalLikesLength);
               await addLike(likeID, totalLikes);
             } else {
-              console.log(
-                  ' El usuario', postUser, 'ya dio like');
+              console.log('El usuario', postUser, 'ya dio like');
+              const dislike = totalLikes.filter((user) => user !== postUser);
+              // console.log(dislike);
+              await addLike(likeID, dislike);
             }
           });
         });
@@ -132,11 +167,9 @@ export const timeline = () => {
               if (confirm('¿Desea eliminar esta publicación?')) {
                 await deletePost(btnDeleteID);
               }
-            };
-          },
-          );
+            }
+          });
         });
-
 
         const btnEdit = divElemt.querySelectorAll('.btnEdit');
 
@@ -172,22 +205,26 @@ export const timeline = () => {
             e.preventDefault();
             const btnUpdateID = e.target.dataset.id;
             // console.log(btnUpdateID);
-            const textAreaEdit = divElemt
-                .querySelector(`[data-id="${btnUpdateID}"]`);
+            const textAreaEdit = divElemt.querySelector(
+                `[data-id="${btnUpdateID}"]`,
+            );
             const doc = await getPost(btnEditID);
             const dataUser = doc.data().user;
-
+            const textEditVerified = textAreaEdit.value.replace(/\s+/g, '');
+            console.log(textEditVerified);
             if (postUser == dataUser) {
+              if (textEditVerified !== '') {
+                await updatePost(textAreaEdit.dataset.id, textAreaEdit.value);
+              } else {
+                alert('ups, el campo esta vacio');
+              }
               // console.log(textAreaEdit.dataset.id, textAreaEdit.value);
-              await updatePost(textAreaEdit.dataset.id, textAreaEdit.value);
             }
           });
         });
       });
-    };
+    }
   };
   timelineFuntion();
   return divElemt;
 };
-
-export default timeline;
