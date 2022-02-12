@@ -37,7 +37,7 @@ const addPost = (e) => {
   // console.log(postDescriptionVerified);
 
   if (postDescriptionVerified !== '') {
-    savePost(postDescription, postLike, postUser, userName, userPhoto);
+    savePost(postDescription, postLike, userName, userPhoto, postUser);
     cleanPost.reset();
   };
 };
