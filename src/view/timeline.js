@@ -161,6 +161,7 @@ export const timeline = () => {
 
             const doc = await getPost(btnDeleteID);
             const dataUser = doc.data().user;
+            console.log(postUser, dataUser, btnDeleteID);
 
             if (postUser == dataUser) {
               if (confirm('¿Desea eliminar esta publicación?')) {
