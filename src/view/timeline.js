@@ -37,7 +37,7 @@ const addPost = (e) => {
   // console.log(postDescriptionVerified);
 
   if (postDescriptionVerified !== '') {
-    savePost(postDescription, postLike, postUser, userName, userPhoto);
+    savePost(postDescription, postLike, userName, userPhoto, postUser);
     cleanPost.reset();
   };
 };
@@ -209,6 +209,7 @@ export const timeline = () => {
             console.log(textEditVerified);
             if (postUser == dataUser) {
               if (textEditVerified !== '') {
+                console.log(textAreaEdit.dataset.id, textAreaEdit.value);
                 await updatePost(textAreaEdit.dataset.id, textAreaEdit.value);
               } else {
                 alert('ups, el campo esta vacio');
