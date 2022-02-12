@@ -2,20 +2,20 @@ import {
   db,
   doc,
   updateDoc,
-  collection,
-  addDoc,
+  // collection,
+  // addDoc,
 } from '../configuraciones.js';
 
-export const savePost = async (description, like, name, photo, user) => {
-  const realCollection = await collection(db, 'posts');
-  return addDoc(realCollection, {
-    description,
-    like,
-    name,
-    photo,
-    user,
-  });
-};
+// export const savePost = async (description, like, name, photo, user) => {
+//   const realCollection = await collection(db, 'posts');
+//   return addDoc(realCollection, {
+//     description,
+//     like,
+//     name,
+//     photo,
+//     user,
+//   });
+// };
 
 export const updatePost = async (id, valor) => {
   const realUpdate = await doc(db, 'posts', id);

@@ -6,6 +6,6 @@ export const signOutUser = () => {
         console.log('El Usuario cerró sesión');
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error.code);
       });
 };

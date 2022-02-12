@@ -38,7 +38,6 @@ const addPost = (e) => {
 
   if (postDescriptionVerified !== '') {
     savePost(postDescription, postLike, userName, userPhoto, postUser);
-
     cleanPost.reset();
   };
 };
@@ -57,9 +56,7 @@ export const timeline = () => {
     <textarea id="postDescription" class="postDescription"
     placeholder="¿Tienes alguna recomendación?" ></textarea>
     <div class="btnPost">
-      <button id="btnPhoto" class="btnPhoto">
-        <i class="fal fa-image"></i>Foto
-      </button>
+
       <button id="btnSave" class="btnSave">Publicar</button>
     </div>
     
@@ -145,7 +142,6 @@ export const timeline = () => {
               // console.log(totalLikesLength);
               await addLike(likeID, totalLikes);
             } else {
-              console.log('El usuario', postUser, 'ya dio like');
               const dislike = totalLikes.filter((user) => user !== postUser);
               // console.log(dislike);
               await addLike(likeID, dislike);
@@ -163,13 +159,11 @@ export const timeline = () => {
 
             const doc = await getPost(btnDeleteID);
             const dataUser = doc.data().user;
-            console.log(postUser,dataUser,btnDeleteID);
+            console.log(postUser, dataUser, btnDeleteID);
 
             if (postUser == dataUser) {
-
               if (confirm('¿Desea eliminar esta publicación?')) {
                 await deletePost(btnDeleteID);
-
               }
             }
           });
@@ -183,21 +177,17 @@ export const timeline = () => {
         btnEdit.forEach((btn) => {
           btn.addEventListener('click', async (e) => {
             e.preventDefault();
+
             btnEditID = e.target.dataset.id;
-            // console.log(btnEditID);
             textAreaEdit = divElemt.querySelector(`[data-id="${btnEditID}"]`);
 
             const doc = await getPost(btnEditID);
             const dataUser = doc.data().user;
 
-            console.log(dataUser);
-            console.log(postUser);
-
             if (postUser == dataUser) {
-              console.log('El post es tuyo');
               textAreaEdit.disabled = false;
             } else {
-              console.log('El post NO es tuyo');
+              console.warn('El post NO es tuyo');
             }
           });
         });
@@ -207,15 +197,15 @@ export const timeline = () => {
         btnUpdate.forEach((btn) => {
           btn.addEventListener('click', async (e) => {
             e.preventDefault();
+
             const btnUpdateID = e.target.dataset.id;
-            // console.log(btnUpdateID);
             const textAreaEdit = divElemt.querySelector(
                 `[data-id="${btnUpdateID}"]`,
             );
             const doc = await getPost(btnEditID);
             const dataUser = doc.data().user;
             const textEditVerified = textAreaEdit.value.replace(/\s+/g, '');
-            console.log(textEditVerified);
+
             if (postUser == dataUser) {
               if (textEditVerified !== '') {
                 await updatePost(textAreaEdit.dataset.id, textAreaEdit.value);

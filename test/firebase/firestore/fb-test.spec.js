@@ -8,8 +8,8 @@ jest.mock('../../../src/firebase/configuraciones.js');
 
 // describe('savePost', () => {
 //   it('Guarda el post', async () => {
-//     const result = await savePost();
-//     expect(result).toStrictEqual();
+//     const result = await savePost('valor');
+//     expect(result).toStrictEqual('valor');
 //   });
 //   it('No guarda el post', () => {});
 // });

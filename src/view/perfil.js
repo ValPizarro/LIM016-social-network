@@ -6,7 +6,7 @@ const update= () => {
 };
 
 
-export const profile = (name, email, photo) => {
+const profile = (name, email, photo) => {
   const showProfile = ` 
   <div>
     <h2> Perfil</h2>
