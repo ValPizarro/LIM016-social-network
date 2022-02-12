@@ -12,8 +12,6 @@ const signOutPage = () => {
 
   divElemt.querySelector('#btnSignOut')
       .addEventListener('click', signOutUser);
-  // divElemt.querySelector('#btnSignOut')
-  //     .addEventListener('click', signOut(auth));
 
   return divElemt;
 };

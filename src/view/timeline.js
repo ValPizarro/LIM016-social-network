@@ -56,9 +56,7 @@ export const timeline = () => {
     <textarea id="postDescription" class="postDescription"
     placeholder="¿Tienes alguna recomendación?" ></textarea>
     <div class="btnPost">
-      <button id="btnPhoto" class="btnPhoto">
-        <i class="fal fa-image"></i>Foto
-      </button>
+
       <button id="btnSave" class="btnSave">Publicar</button>
     </div>
     
@@ -179,8 +177,8 @@ export const timeline = () => {
         btnEdit.forEach((btn) => {
           btn.addEventListener('click', async (e) => {
             e.preventDefault();
+
             btnEditID = e.target.dataset.id;
-            // console.log(btnEditID);
             textAreaEdit = divElemt.querySelector(`[data-id="${btnEditID}"]`);
 
             const doc = await getPost(btnEditID);
@@ -199,18 +197,17 @@ export const timeline = () => {
         btnUpdate.forEach((btn) => {
           btn.addEventListener('click', async (e) => {
             e.preventDefault();
+
             const btnUpdateID = e.target.dataset.id;
-            // console.log(btnUpdateID);
             const textAreaEdit = divElemt.querySelector(
                 `[data-id="${btnUpdateID}"]`,
             );
             const doc = await getPost(btnEditID);
             const dataUser = doc.data().user;
             const textEditVerified = textAreaEdit.value.replace(/\s+/g, '');
-            console.log(textEditVerified);
+
             if (postUser == dataUser) {
               if (textEditVerified !== '') {
-                console.log(textAreaEdit.dataset.id, textAreaEdit.value);
                 await updatePost(textAreaEdit.dataset.id, textAreaEdit.value);
               } else {
                 alert('ups, el campo esta vacio');

@@ -1,16 +1,13 @@
 const showHome = () => {
   window.location.hash = '#/home';
-  // console.log('click home');
 };
 
 const showProfile = () => {
   window.location.hash = '#/profile';
-  // console.log('click perfil');
 };
 
 const showSignOut = () => {
   window.location.hash = '#/signOut';
-  // console.log('click search');
 };
 
 const nav = () => {
