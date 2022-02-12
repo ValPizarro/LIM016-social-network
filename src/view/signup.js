@@ -75,9 +75,6 @@ async function registerUserNew(e) {
   const name = e.target.closest('form').querySelector('#name').value;
   const displayname = e.target.closest('form').querySelector('#nickname').value;
 
-  const user = await
-  createUser(email, password);
-  saveUser(displayname, email, name);
-
-  console.log('Usuario creado:', user);
+  await createUser(email, password);
+  await saveUser(displayname, email, name);
 };

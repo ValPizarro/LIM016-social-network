@@ -1,21 +1,29 @@
 import {onAuth} from './auth_state_listener.js';
-import {auth, createUserWithEmailAndPassword} from '../configuraciones.js';
+import {
+  auth, createUserWithEmailAndPassword,
+  sendEmailVerification,
+} from '../configuraciones.js';
 import {showError} from '../../view/signin.js';
 
 export const createUser = (email, password) => {
   return createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        const uid = userCredential.user.uid;
-        const correo = userCredential.user.email;
-        const correoVerificado = userCredential.user.emailVerified;
+        console.log(user);
+        userVerification();
         onAuth();
-        console.log(user, correo, uid, correoVerificado);
       })
       .catch((error) => {
         const errorCode = error.code;
-        // const errorMessage = error.message;
-        // console.log('Error', errorCode);
+        const errorMessage = error.message;
+        console.log('Error', errorMessage);
         showError(errorCode);
+      });
+};
+
+export const userVerification = () => {
+  return sendEmailVerification(auth.currentUser)
+      .them(() => {
+        backSignIn();
       });
 };

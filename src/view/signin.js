@@ -83,7 +83,6 @@ export const showError = (error) => {
   };
 
   const typeError = () => {
-    console.error(error);
     switch (error) {
       case 'auth/internal-error':
         setErrorInput(password, 'Ingrese contraseña');

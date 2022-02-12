@@ -15,8 +15,8 @@ let cleanPost;
 let userName;
 let userPhoto;
 
-export const currentUser = (UID, name, photo) => {
-  postUser = UID;
+export const currentUser = (user, name, photo) => {
+  postUser = user;
   userName = name;
   userPhoto = photo;
 };
