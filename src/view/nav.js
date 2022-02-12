@@ -50,7 +50,6 @@ const nav = () => {
     <nav class="tab-nav-container">
       <div class="tab">
         <i id="home" class="fas fa-home fasNav"></i>
- 
       </div>
       <div class="tab">
         <div class="boxSearch">

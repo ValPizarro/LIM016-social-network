@@ -18,7 +18,7 @@ export const savePost = async (description, like, name, photo, user) => {
 };
 
 export const updatePost = async (id, valor) => {
-  const realUpdate = await doc(db, 'post', id);
+  const realUpdate = await doc(db, 'posts', id);
   return updateDoc( realUpdate, {
     description: valor,
   });
