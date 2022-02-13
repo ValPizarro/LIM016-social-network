@@ -26,7 +26,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Rubik', sans-serif;
 }
 html{
   font-size: 62.5%;
@@ -46,16 +45,17 @@ html{
 .SingUpBox, .updateBoX, .postBox{
   background-color: white;
   border-radius: 8px ;
-  box-shadow: 0 2px 5px rgba(253, 213, 213, 0.4); 
+  box-shadow: 0 2px 5px rgb(151 148 148 / 80%);
   width: 350px;
   max-width: 100%;
   overflow: hidden;
 }
-.SingUpBox>p
-{
-  font-size: 25px;
-  padding: 20px 10px;
+.SingUpBox>p{
+  font-family: 'Poppins', sans-serif;
+  padding: 10px 10px;
   text-align: center;
+  font-size: 4rem;
+  font-weight: bold;
 }
 .formLogIn, .formProfile{
   display: flex;
@@ -181,10 +181,10 @@ html{
 .SingUpBox>h1{
   font-size: 40px;
   display: flex;
-  margin: 12px 0px;
   justify-content: center;
   align-items: center;
   font-family: 'Poppins', sans-serif;
+  margin-top: 15px;
   }
 .formRegister{
   padding: 0px 40px;
@@ -285,58 +285,47 @@ html{
   border-bottom: 0.1px solid #EAE2F8;
   width: 100%;
   display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }
 .tab {
-    width: 25%;
-    height: 100%;
-    display: flex;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: nowrap;
-    flex-direction: row;
-    border-radius: 50px;
-    cursor: pointer;
-    padding: 0 20px;
-    margin: 0 10px;
-}
-.boxSearch{
-    position: absolute;
-}
-.inputSearch {
-  padding: 10px;
-  width: 60px;
-  height: 40px;
-  background: none;
-  border: 0px solid #EAE2F8;
-  border-radius: 50px;
-  box-sizing: border-box;
-  font-size: 15px;
-  color: #8662C7;
-  outline: none;
-  transition: .5s;
-}
-.boxSearch:hover .inputSearch{
-  width: 200px;
-  background: #EAE2F8;
-  border-radius: 10px;
-}
-.fa-search{
-  position: absolute;
-  top: 50%;
-  right: 15px;
-  transform: translate(-50%,-50%);
+  width: 15%;
+  height: 100%;
   display: flex;
+  align-content: center;
   justify-content: center;
-  transition: .2s;
+  align-items: center;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  border-radius: 50px;
+  cursor: pointer;
+
 }
-.boxSearch:hover .fa-search{
-  opacity: 0;
-  z-index: -1;
+.tabTitle{
+  width:30% ;
+  height: 100%;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  border-radius: 50px;
+  cursor: pointer;
+
+}
+.tabTitle >p{
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.8rem;
 }
 .fasNav{
   color:#724BB7;/*iconos*/
-  font-size: 25px;
+  font-size: 20px;
 }
 
 
@@ -377,6 +366,7 @@ html{
 }
 
 .postDescription{
+  font-family: 'Oxygen', sans-serif;
   border: solid 0.01px #C8D2D9;
   margin: 10px 0px;
   display: flex;
@@ -384,7 +374,7 @@ html{
   width:50% ;
   padding: 10px;
   border-radius: 10px;
-
+  text-align: left;
   max-width: 90%;
   min-width: 90%;
   height: 100%;
@@ -406,7 +396,7 @@ html{
   width:48% ;
   height:25px ;
   color: white;
-  font-size: 0.7rem;
+  font-size: 1rem;
   border: solid 0px ;
 }
 
@@ -428,6 +418,8 @@ html{
 }
 
 .user{
+  font-family: 'Oxygen', sans-serif;
+  font-size: 1.5rem;
   padding: 0px 30px;
   width: 90%;
   display: flex;
@@ -456,6 +448,8 @@ html{
     align-items: center;
 }
 .btnLike,.btnDelete,.btnEdit {
+  display: flex;
+  justify-content: center;
   margin:  40% 0%;
   color: #653CAD;
   height:100% ;
@@ -464,16 +458,29 @@ html{
   align-items: center;
   justify-content: center;
 }
-.iconPost {
+i.fas.fa-trash-alt.btnDelete.iconPost {
+  display: flex;
+  align-items: center;
+}
+i.fas.fa-pencil-alt.btnEdit.iconPost {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.iconPosts {
     height: 100%;
     width: 5%;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 .postSection {
     width: 80%;
 }
 .btnUpdate {
+ 
     margin-bottom: 2%;
     /* margin: 1% 0%; */
     background: #724BB7;
@@ -481,7 +488,7 @@ html{
     width: 48%;
     height: 25px;
     color: white;
-    font-size: 0.7rem;
+    font-size: 1rem;
     border: solid 0px;
 }
 .divBtbUpdate {
@@ -489,13 +496,37 @@ html{
     justify-content: flex-end;
     width: 90%;
 }
+.iconPost{
+  font-size: 15px;
+}
+.divbtnLike {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
 
 @media (min-width: 600px) {
   .postForm {
     width: 70%;
     border-radius: 8px;
-    
     }  
+    .tabTitle >p{
+      font-size: 2.5rem;
+ }
+  .fasNav {
+     font-size: 24px;
+ } 
+ .iconPost{
+  font-size: 18px;
+  }
+  .btnUpdate,.btnPhoto, .btnSave {
+    font-size: 1.2rem;
+  }
+  
 }
 @media (min-width: 800px) {
   .containerPost {
@@ -503,6 +534,12 @@ html{
     margin-left: auto;
     margin-right: auto;
     }   
+    .tabTitle >p{
+      font-size: 3rem;
+  }
+   .fasNav {
+      font-size: 25px;
+  }
 }
 
 
