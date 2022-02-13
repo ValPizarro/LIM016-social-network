@@ -3,12 +3,9 @@ import {auth, signOut} from '../configuraciones.js';
 export const signOutUser = () => {
   return signOut(auth)
       .then(() => {
-        window.location.hash = '#/signIn';
-        ;
+        console.log('El Usuario cerró sesión');
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log('Error', errorMessage, errorCode);
+        console.error(error.code);
       });
 };

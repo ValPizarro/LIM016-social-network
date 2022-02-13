@@ -26,7 +26,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Rubik', sans-serif;
 }
 html{
   font-size: 62.5%;
@@ -43,20 +42,22 @@ html{
   align-content: center;
   justify-content: center;
 } 
-.SingUpBox{
+.SingUpBox, .updateBoX, .postBox{
   background-color: white;
   border-radius: 8px ;
-  box-shadow: 0 2px 5px rgba(253, 213, 213, 0.4); 
+  box-shadow: 0 2px 5px rgb(151 148 148 / 80%);
   width: 350px;
   max-width: 100%;
   overflow: hidden;
 }
 .SingUpBox>p{
-  font-size: 25px;
-  padding: 20px 10px;
+  font-family: 'Poppins', sans-serif;
+  padding: 10px 10px;
   text-align: center;
+  font-size: 4rem;
+  font-weight: bold;
 }
-.formLogIn {
+.formLogIn, .formProfile{
   display: flex;
   flex-direction: column;
   padding: 20px 40px;
@@ -98,12 +99,12 @@ html{
   height: 30px;
   width: 30px;
 }
-.form-control {
+.form-control, .formProfileControl {
   margin-bottom: 10px;
   padding-bottom: 20px;
   position: relative;
 }
-.form-control input {
+.form-control>input{
   border: 0px solid var(--color-5);
   border-radius: 8px;
   font-size: 14px;
@@ -113,19 +114,24 @@ html{
   outline-color: #EAE2F8;
   background: #EAE2F8;
 }
-.form-control input::placeholder{
- color: #A081D9;
+.formProfileControl>input{
+  border-radius: 8px;
+  font-size: 14px;
+  height: 36px;
+  width: 266px;
+  padding: 10px;
+  outline-color: #EAE2F8;
 }
-.form-control i {
+
+/* .form-control>input::placeholder{
+ color: #A081D9;
+} */
+.form-control>i {
   visibility: hidden; 
   position: absolute;
   top: 10px;
   right: 10px; 
   font-size: 20px
-}
-.form-control.success i.fa-check-circle {
-  visibility: visible;
-  color: #2ecc71;
 }
 .form-control.error i.fa-times-circle {
   visibility: visible;
@@ -144,13 +150,13 @@ html{
   font-family: 'Rubik', sans-serif;
 }
 .button {
-  height:36px ;
+  height:36px;
+  padding: 10px;
   margin-bottom: 20px;
   padding-bottom: 20px;
   border-radius: 8px;
   color: #ffff;
   width: 266px;
-  padding: 10px;
   font-size: 14px;
   border: solid 1px var(--color-5);
   background-color: var(--color-5);
@@ -164,7 +170,7 @@ html{
     height: 120px;
     width: 150px;
 }
-.formRegister p{
+.formRegister>p,.updateBoX>h2 {
   font-size: 15px;
   text-decoration: none;
   display: flex;
@@ -175,15 +181,11 @@ html{
 .SingUpBox>h1{
   font-size: 40px;
   display: flex;
-  margin: 12px 0px;
   justify-content: center;
   align-items: center;
   font-family: 'Poppins', sans-serif;
+  margin-top: 15px;
   }
-.google{
-  height: 30px;
-  width: 30px;
-}
 .formRegister{
   padding: 0px 40px;
   font-size: 15px;
@@ -244,6 +246,11 @@ html{
   justify-content: center;
   font-size: 15px;
 }
+.formProfileControl>label{
+  display: flex;
+  justify-content: left;
+  font-size: 15px;
+}
 .SignUpBox>h4{
   color: var(--neutral-9);
   font-size: 30px;
@@ -278,57 +285,262 @@ html{
   border-bottom: 0.1px solid #EAE2F8;
   width: 100%;
   display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }
 .tab {
-    width: 25%;
-    height: 100%;
-    display: flex;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: nowrap;
-    flex-direction: row;
-    border-radius: 50px;
-    cursor: pointer;
-    padding: 0 20px;
-    margin: 0 10px;
-}
-.boxSearch{
-    position: absolute;
-}
-.inputSearch {
-  padding: 10px;
-  width: 60px;
-  height: 40px;
-  background: none;
-  border: 0px solid #EAE2F8;
-  border-radius: 50px;
-  box-sizing: border-box;
-  font-family: Comic Sans MS;
-  font-size: 15px;
-  color: #8662C7;
-  outline: none;
-  transition: .5s;
-}
-.boxSearch:hover .inputSearch{
-  width: 200px;
-  background: #EAE2F8;
-  border-radius: 10px;
-}
-.fa-search{
-  position: absolute;
-  top: 50%;
-  right: 15px;
-  transform: translate(-50%,-50%);
+  width: 15%;
+  height: 100%;
   display: flex;
+  align-content: center;
   justify-content: center;
-  transition: .2s;
+  align-items: center;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  border-radius: 50px;
+  cursor: pointer;
+
 }
-.boxSearch:hover .fa-search{
-  opacity: 0;
-  z-index: -1;
+.tabTitle{
+  width:30% ;
+  height: 100%;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  border-radius: 50px;
+  cursor: pointer;
+
+}
+.tabTitle >p{
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.8rem;
 }
 .fasNav{
   color:#724BB7;/*iconos*/
-  font-size: 25px;
+  font-size: 20px;
 }
+
+
+/* pubicacion */
+
+
+.imagen{
+  height:20px ;
+  width:20px ;
+}
+.containerPost{
+/*   --T68779821: 0 1px 2px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); */
+  background: #EAE7EB;
+  border:solid 0.1px #C8D2D9;
+  width: 100%;
+  height:100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+}
+.postForm{
+  --T68779821: 0 1px 2px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  background: white;
+  margin: 10px 0px;
+  width: 100%;
+  min-width: 150px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.postDescription{
+  font-family: 'Oxygen', sans-serif;
+  border: solid 0.01px #C8D2D9;
+  margin: 10px 0px;
+  display: flex;
+  justify-content: center;
+  width:50% ;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: left;
+  max-width: 90%;
+  min-width: 90%;
+  height: 100%;
+  overflow: hidden;
+  resize: none;
+}
+.btnPost{
+  margin-bottom: 10px;
+  max-width: 90%;
+  min-width: 90%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding: 5px;
+}
+.btnPhoto, .btnSave{
+  background:#724BB7;
+  border-radius: 8px;
+  width:28% ;
+  height:25px ;
+  color: white;
+  font-size: 1rem;
+  border: solid 0px ;
+}
+
+.perfil{
+  width: 100%;
+  height:100%;
+  border-radius: 100%;
+}
+.postUser {
+  margin-top: 10px;
+  max-width: 90%;
+  min-width:90% ;
+  width: 100%;
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+}
+
+.user{
+  font-family: 'Oxygen', sans-serif;
+  font-size: 1.5rem;
+  padding: 0px 30px;
+  width: 90%;
+  display: flex;
+}
+.boxPerfil{
+  display: flex;
+  justify-content: center;
+  width: 10%;
+  height: 40px;
+}
+
+#postsContainer {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+}
+.divRow {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.btnLike,.btnDelete,.btnEdit {
+  display: flex;
+  justify-content: center;
+  margin:  40% 0%;
+  color: #653CAD;
+  height:100% ;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+i.fas.fa-trash-alt.btnDelete.iconPost {
+  display: flex;
+  align-items: center;
+}
+i.fas.fa-pencil-alt.btnEdit.iconPost {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.iconPosts {
+    height: 100%;
+    width: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.postSection {
+    width: 80%;
+}
+.btnUpdate {
+ 
+    margin-bottom: 2%;
+    /* margin: 1% 0%; */
+    background: #724BB7;
+    border-radius: 8px;
+    width: 28%;
+    height: 25px;
+    color: white;
+    font-size: 1rem;
+    border: solid 0px;
+}
+.divBtbUpdate {
+    display: flex;
+    justify-content: flex-end;
+    width: 90%;
+}
+.iconPost{
+  font-size: 15px;
+}
+.divbtnLike {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+
+@media (min-width: 600px) {
+  .postForm {
+    width: 70%;
+    border-radius: 8px;
+    }  
+    .tabTitle >p{
+      font-size: 2.5rem;
+ }
+  .fasNav {
+     font-size: 24px;
+ } 
+ .iconPost{
+  font-size: 18px;
+  }
+  .btnUpdate,.btnPhoto, .btnSave {
+    font-size: 1.2rem;
+  }
+  
+}
+@media (min-width: 800px) {
+  .containerPost {
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    }   
+    .tabTitle >p{
+      font-size: 3rem;
+  }
+   .fasNav {
+      font-size: 25px;
+  }
+}
+
+
+

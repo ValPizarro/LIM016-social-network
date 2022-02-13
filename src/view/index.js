@@ -1,14 +1,12 @@
 import Welcome from './welcome.js';
 import SignIn from './signin.js';
 import SignUp from './signup.js';
-import Profile from './perfil.js';
+import {profile} from './perfil.js';
 import Different from './404.js';
 import UpdateUser from './updateUser.js';
 import Nav from './nav.js';
-import Timeline from './timeline.js';
-import Search from './search.js';
+import {timeline} from './timeline.js';
 import SignOut from './signout.js';
-
 
 
 const components = {
@@ -16,10 +14,9 @@ const components = {
   signIn: SignIn,
   signUp: SignUp,
   nav: Nav,
-  profile: Profile,
+  profile: profile,
   update: UpdateUser,
-  timeLine: Timeline,
-  search: Search,
+  timeLine: timeline,
   different: Different,
   signOut: SignOut,
 };
