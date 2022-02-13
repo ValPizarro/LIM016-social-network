@@ -8,8 +8,9 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   sendEmailVerification,
+  updateProfile,
 } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js';
-import {getFirestore, collection, getDocs, getDoc, addDoc, query, onSnapshot, deleteDoc, doc, updateDoc} from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js';
+import {getFirestore, collection, getDocs, getDoc, addDoc, query, orderBy, onSnapshot, deleteDoc, doc, updateDoc} from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyCYMriyYLnj7mjwQ990OLhGaxulpUI6ONE',
@@ -38,6 +39,7 @@ export {
   signOut,
   signInWithPopup,
   sendEmailVerification,
+  updateProfile,
   db,
   collection,
   getDocs,
@@ -47,6 +49,7 @@ export {
   deleteDoc,
   doc,
   query,
+  orderBy,
   updateDoc,
 };
 

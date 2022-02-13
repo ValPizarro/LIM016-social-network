@@ -3,8 +3,7 @@ import {
   onGetPosts,
   deletePost,
   getPost,
-  // addLike,
-  // onGetUser,
+  getPosts,
 } from '../firebase/firestore/firestore-add.js';
 import {updatePost, addLike} from '../firebase/firestore/fb-test.js';
 
@@ -22,11 +21,6 @@ export const currentUser = (user, name, photo) => {
 };
 currentUser();
 
-// export const dataUser = async (UID, name, photo) => {
-//   await onGetUser((querySnapshot) => {
-//   });};
-
-
 const addPost = (e) => {
   e.preventDefault();
 
@@ -35,9 +29,14 @@ const addPost = (e) => {
   postLike = [];
   const postDescriptionVerified = postDescription.replace(/\s+/g, '');
   // console.log(postDescriptionVerified);
+  const date = new Date();
+  const postDate = date.toISOString();
+
+  // console.log(date.toISOString());
 
   if (postDescriptionVerified !== '') {
-    savePost(postDescription, postLike, userName, userPhoto, postUser);
+    savePost(
+        postDate, postDescription, postLike, userName, userPhoto, postUser);
     cleanPost.reset();
   };
 };
@@ -79,9 +78,13 @@ export const timeline = () => {
     if (postUser == null) {
       alert('Inicia sesión para disfrutar de nuestro contenido');
     } else {
-      await onGetPosts((querySnapshot) => {
+      const posts = await getPosts();
+
+      console.log(posts);
+
+      await onGetPosts((callback) => {
         allPosts = '';
-        querySnapshot.forEach((doc) => {
+        callback.forEach((doc) => {
           // console.log(doc.id);
           const likes = doc.data().like.length;
           if (likes == 0) {

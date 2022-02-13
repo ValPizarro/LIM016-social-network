@@ -1,6 +1,7 @@
 import {createUser} from '../firebase/auth/auth_signup_password.js';
 import {googleAuth} from '../firebase/auth/auth_google_signin_popup.js';
 import {saveUser} from '../firebase/firestore/firestore-add.js';
+import {updateUser} from '../firebase/auth/auth_profile.js';
 
 
 export const backSignIn = () => {
@@ -64,17 +65,52 @@ const SignUp = () => {
 
 export default SignUp;
 
-/**
- * @param{evento} e
-*/
-async function registerUserNew(e) {
+export const registerUserNew = async (e) => {
   e.preventDefault();
 
   const email = e.target.closest('form').querySelector('#email').value;
   const password = e.target.closest('form').querySelector('#password').value;
   const name = e.target.closest('form').querySelector('#name').value;
-  const displayname = e.target.closest('form').querySelector('#nickname').value;
+  const displayName = e.target.closest('form').querySelector('#nickname').value;
 
-  await createUser(email, password);
-  await saveUser(displayname, email, name);
+  if (email === '' && password === '' &&
+    name === '' && displayName === '') {
+    alert('Ups, debes completar el formulario');
+  } else if (name === '' || displayName === '') {
+    alert('Ups, debes completar todo el formulario');
+  } else {
+    await createUser(email, password);
+    await updateUser(name);
+    await saveUser(displayName, email, name);
+  };
 };
+
+export const showErrorRegister = (error) => {
+  const setErrorInput = (input, errorMessage) => {
+    const formControl = input.parentElement;
+    const small = formControl.querySelector('small');
+
+    small.innerText = errorMessage;
+    formControl.classList.add('error');
+
+    formControl.addEventListener('keyup', () => {
+      formControl.classList.remove('error');
+    });
+  };
+
+  switch (error) {
+    case 'auth/internal-error':
+      setErrorInput(password, 'Ingrese contraseña');
+      break;
+    case 'auth/weak-password':
+      setErrorInput(password, 'Debe tener mínimo 6 caracteres');
+      break;
+    case 'auth/invalid-email':
+      setErrorInput(email, 'Correo electrónico invalido');
+      break;
+    case 'auth/email-already-in-use':
+      setErrorInput(email, 'El correo ya se encuentra registrado');
+      break;
+  }
+};
+

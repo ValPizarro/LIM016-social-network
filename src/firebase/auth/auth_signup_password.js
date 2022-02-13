@@ -3,7 +3,7 @@ import {
   auth, createUserWithEmailAndPassword,
   sendEmailVerification,
 } from '../configuraciones.js';
-import {showError} from '../../view/signin.js';
+import {showErrorRegister} from '../../view/signup.js';
 import {backSignIn} from '../../view/signup.js';
 
 
@@ -20,9 +20,7 @@ export const createUser = (email, password) => {
       })
       .catch((error) => {
         const errorCode = error.code;
-        const errorMessage = error.message;
-        console.error(errorMessage);
-        showError(errorCode);
+        showErrorRegister(errorCode);
       });
 };
 
