@@ -3,8 +3,7 @@ import {
   onGetPosts,
   deletePost,
   getPost,
-  // addLike,
-  // onGetUser,
+  getPosts,
 } from '../firebase/firestore/firestore-add.js';
 import {updatePost, addLike} from '../firebase/firestore/fb-test.js';
 
@@ -15,17 +14,12 @@ let cleanPost;
 let userName;
 let userPhoto;
 
-export const currentUser = (UID, name, photo) => {
-  postUser = UID;
+export const currentUser = (user, name, photo) => {
+  postUser = user;
   userName = name;
   userPhoto = photo;
 };
 currentUser();
-
-// export const dataUser = async (UID, name, photo) => {
-//   await onGetUser((querySnapshot) => {
-//   });};
-
 
 const addPost = (e) => {
   e.preventDefault();
@@ -35,10 +29,14 @@ const addPost = (e) => {
   postLike = [];
   const postDescriptionVerified = postDescription.replace(/\s+/g, '');
   // console.log(postDescriptionVerified);
+  const date = new Date();
+  const postDate = date.toISOString();
+
+  // console.log(date.toISOString());
 
   if (postDescriptionVerified !== '') {
-    savePost(postDescription, postLike, userName, userPhoto, postUser);
-
+    savePost(
+        postDate, postDescription, postLike, userName, userPhoto, postUser);
     cleanPost.reset();
   };
 };
@@ -57,9 +55,7 @@ export const timeline = () => {
     <textarea id="postDescription" class="postDescription"
     placeholder="¿Tienes alguna recomendación?" ></textarea>
     <div class="btnPost">
-      <button id="btnPhoto" class="btnPhoto">
-        <i class="fal fa-image"></i>Foto
-      </button>
+
       <button id="btnSave" class="btnSave">Publicar</button>
     </div>
     
@@ -82,9 +78,13 @@ export const timeline = () => {
     if (postUser == null) {
       alert('Inicia sesión para disfrutar de nuestro contenido');
     } else {
-      await onGetPosts((querySnapshot) => {
+      const posts = await getPosts();
+
+      console.log(posts);
+
+      await onGetPosts((callback) => {
         allPosts = '';
-        querySnapshot.forEach((doc) => {
+        callback.forEach((doc) => {
           // console.log(doc.id);
           const likes = doc.data().like.length;
           if (likes == 0) {
@@ -147,7 +147,6 @@ export const timeline = () => {
               // console.log(totalLikesLength);
               await addLike(likeID, totalLikes);
             } else {
-              console.log('El usuario', postUser, 'ya dio like');
               const dislike = totalLikes.filter((user) => user !== postUser);
               // console.log(dislike);
               await addLike(likeID, dislike);
@@ -165,13 +164,11 @@ export const timeline = () => {
 
             const doc = await getPost(btnDeleteID);
             const dataUser = doc.data().user;
-            console.log(postUser,dataUser,btnDeleteID);
+            console.log(postUser, dataUser, btnDeleteID);
 
             if (postUser == dataUser) {
-
               if (confirm('¿Desea eliminar esta publicación?')) {
                 await deletePost(btnDeleteID);
-
               }
             }
           });
@@ -185,21 +182,17 @@ export const timeline = () => {
         btnEdit.forEach((btn) => {
           btn.addEventListener('click', async (e) => {
             e.preventDefault();
+
             btnEditID = e.target.dataset.id;
-            // console.log(btnEditID);
             textAreaEdit = divElemt.querySelector(`[data-id="${btnEditID}"]`);
 
             const doc = await getPost(btnEditID);
             const dataUser = doc.data().user;
 
-            console.log(dataUser);
-            console.log(postUser);
-
             if (postUser == dataUser) {
-              console.log('El post es tuyo');
               textAreaEdit.disabled = false;
             } else {
-              console.log('El post NO es tuyo');
+              console.warn('El post NO es tuyo');
             }
           });
         });
@@ -209,15 +202,15 @@ export const timeline = () => {
         btnUpdate.forEach((btn) => {
           btn.addEventListener('click', async (e) => {
             e.preventDefault();
+
             const btnUpdateID = e.target.dataset.id;
-            // console.log(btnUpdateID);
             const textAreaEdit = divElemt.querySelector(
                 `[data-id="${btnUpdateID}"]`,
             );
             const doc = await getPost(btnEditID);
             const dataUser = doc.data().user;
             const textEditVerified = textAreaEdit.value.replace(/\s+/g, '');
-            console.log(textEditVerified);
+
             if (postUser == dataUser) {
               if (textEditVerified !== '') {
                 await updatePost(textAreaEdit.dataset.id, textAreaEdit.value);

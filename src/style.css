@@ -387,13 +387,13 @@ html{
   min-width: 90%;
   height: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   padding: 5px;
 }
 .btnPhoto, .btnSave{
   background:#724BB7;
   border-radius: 8px;
-  width:48% ;
+  width:28% ;
   height:25px ;
   color: white;
   font-size: 1rem;
@@ -485,7 +485,7 @@ i.fas.fa-pencil-alt.btnEdit.iconPost {
     /* margin: 1% 0%; */
     background: #724BB7;
     border-radius: 8px;
-    width: 48%;
+    width: 28%;
     height: 25px;
     color: white;
     font-size: 1rem;

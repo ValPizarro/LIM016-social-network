@@ -6,7 +6,11 @@ const update= () => {
 };
 
 
-export const profile = (name, email, photo) => {
+export const profile = (user) => {
+  console.log(user);
+  const nameProfile = user.name;
+  const emailProfile = user.email;
+
   const showProfile = ` 
   <div>
     <h2> Perfil</h2>
@@ -15,9 +19,8 @@ export const profile = (name, email, photo) => {
     <button id="btnEditProfile" class="button">Editar perfil</button>
   </div>
   <div>
-    <p>${name}</p>
-    <p>${email}</p>
-    <p>${photo}</p>
+    <p>${nameProfile}</p>
+    <p>${emailProfile}</p>
   </div>`;
   const divElemt = document.createElement('div');
   divElemt.setAttribute('class', 'flexSection');
@@ -29,5 +32,3 @@ export const profile = (name, email, photo) => {
 
   return divElemt;
 };
-
-export default profile;

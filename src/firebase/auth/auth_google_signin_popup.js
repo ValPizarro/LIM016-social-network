@@ -11,14 +11,15 @@ export const googleAuth = () => {
         onAuth(provider);
       })
       .catch((error) => {
-        console.log(error.code);
+        console.error(error.code);
+
         manejarErrores(error.code);
       });
 };
 
 const manejarErrores = (errorCode) => {
   if (errorCode === 'auth/popup-closed-by-user') {
-    console.log('El usuario cerró la ventana');
+    console.error('El usuario cerró la ventana');
   }
 };
 

@@ -4,15 +4,19 @@ import {
   db,
   deleteDoc,
   getDoc,
+  getDocs,
   doc,
   onSnapshot,
+  query,
+  orderBy,
   // updateDoc,
 } from '../configuraciones.js';
 
 // import {query, getDocs} from '../configuraciones.js';
 
-export const savePost = (description, like, name, photo, user) => {
-  return addDoc(collection(db, 'posts'), {
+export const savePost = (date, description, like, name, photo, user) => {
+  return addDoc(collection(db, 'post'), {
+    date,
     description,
     like,
     name,
@@ -22,16 +26,21 @@ export const savePost = (description, like, name, photo, user) => {
 };
 
 export const onGetPosts = (callback) => {
-  return onSnapshot(collection(db, 'posts'), callback);
+  return onSnapshot(collection(db, 'post'), callback);
 };
 
 export const deletePost = (id) => {
-  return deleteDoc(doc(db, 'posts', id));
+  return deleteDoc(doc(db, 'post', id));
+};
+
+export const getPosts = () => {
+  return getDocs(query(collection(db, 'post'), orderBy('date', 'desc')));
 };
 
 export const getPost = (id) => {
-  return getDoc(doc(db, 'posts', id));
+  return getDoc(doc(db, 'post', id));
 };
+
 
 // export const updatePost = (id, valor) => {
 //   return updateDoc(doc(db, 'posts', id), {

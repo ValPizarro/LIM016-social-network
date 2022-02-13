@@ -31,11 +31,6 @@ const changeView = (route) => {
       container.appendChild(components.profile());
       break;
     }
-/*     case '#/search': {
-      navegador.appendChild(components.nav());
-      container.appendChild(components.search());
-      break;
-    } */
     case '#/update': {
       navegador.appendChild(components.nav());
       container.appendChild(components.update());
