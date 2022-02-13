@@ -34,11 +34,11 @@ export const deletePost = (id) => {
 };
 
 export const getPosts = () => {
-  return getDocs(query(collection(db, 'posts'), orderBy('date', 'desc')));
+  return getDocs(query(collection(db, 'post'), orderBy('date', 'desc')));
 };
 
 export const getPost = (id) => {
-  return getDoc(doc(db, 'posts', id));
+  return getDoc(doc(db, 'post', id));
 };
 
 
