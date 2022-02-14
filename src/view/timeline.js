@@ -79,8 +79,9 @@ export const timeline = () => {
       alert('Inicia sesión para disfrutar de nuestro contenido');
     } else {
       const posts = await getPosts();
-
+      const postsData = posts.docs;
       console.log(posts);
+      console.log(postsData);
 
       await onGetPosts((callback) => {
         allPosts = '';
