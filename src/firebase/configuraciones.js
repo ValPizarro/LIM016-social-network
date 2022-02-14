@@ -10,7 +10,7 @@ import {
   sendEmailVerification,
   updateProfile,
 } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js';
-import {getFirestore, collection, getDocs, getDoc, addDoc, query, orderBy, onSnapshot, deleteDoc, doc, updateDoc} from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js';
+import {getFirestore, collection, getDocs, getDoc, addDoc, query, orderBy, onSnapshot, deleteDoc, doc, updateDoc, where} from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyCYMriyYLnj7mjwQ990OLhGaxulpUI6ONE',
@@ -51,6 +51,7 @@ export {
   query,
   orderBy,
   updateDoc,
+  where,
 };
 
 

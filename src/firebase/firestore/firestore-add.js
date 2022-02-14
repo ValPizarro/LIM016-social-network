@@ -8,6 +8,7 @@ import {
   doc,
   onSnapshot,
   query,
+  // where,
   orderBy,
   // updateDoc,
 } from '../configuraciones.js';
@@ -34,11 +35,18 @@ export const deletePost = (id) => {
 };
 
 export const getPosts = () => {
-  return getDocs(query(collection(db, 'post'), orderBy('date', 'desc')));
+  return getDocs(collection(db, 'post'));
 };
 
 export const getPost = (id) => {
   return getDoc(doc(db, 'post', id));
+};
+
+export const getPostByUser = () => {
+  const posts = collection(db, 'post');
+  return query(posts, orderBy('date', 'desc'));
+
+  // query(posts, where('user', '==', 'user'), orderBy('date', 'desc'));
 };
 
 
