@@ -4,6 +4,7 @@ import {
   deletePost,
   getPost,
   getPosts,
+  getPostByUser,
 } from '../firebase/firestore/firestore-add.js';
 import {updatePost, addLike} from '../firebase/firestore/fb-test.js';
 
@@ -79,8 +80,17 @@ export const timeline = () => {
       alert('Inicia sesión para disfrutar de nuestro contenido');
     } else {
       const posts = await getPosts();
-
+      const postsData = posts.docs;
       console.log(posts);
+      console.log(postsData);
+
+      const postsByUser = await getPostByUser();
+      console.log(postsByUser);
+      const querySnapshot = await getPosts(postsByUser);
+      querySnapshot.forEach((doc) => {
+        // doc.data() is never undefined for query doc snapshots
+        console.log(doc.id, ' => ', doc.data());
+      });
 
       await onGetPosts((callback) => {
         allPosts = '';
@@ -110,14 +120,18 @@ export const timeline = () => {
               <button class='btnUpdate' data-id="${doc.id}"> Guardar</button>
             </div>
           </div>
-          <div class="iconPost">
+          <div class="iconPosts">
+          
+            <i class="fas fa-trash-alt btnDelete iconPost"
+            data-id="${doc.id}"></i>
+            <i class="fas fa-pencil-alt btnEdit iconPost"
+            data-id="${doc.id}"></i>
             <div class="divbtnLike">
+              <i class="fas fa-heart btnLike iconPost" data-id="${doc.id}"></i>
               <span class='postsLike'
                 data-like="${doc.id}">${allLikes}</span>   
-              <i class="fas fa-heart btnLike" data-id="${doc.id}"></i>
             </div>
-            <i class="fas fa-trash-alt btnDelete" data-id="${doc.id}"></i>
-            <i class="fas fa-pencil-alt btnEdit" data-id="${doc.id}"></i>
+
           </div>
         </div>
       </form>
