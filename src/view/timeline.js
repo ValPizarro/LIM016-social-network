@@ -111,14 +111,16 @@ export const timeline = () => {
               <button class='btnUpdate' data-id="${doc.id}"> Guardar</button>
             </div>
           </div>
-          <div class="iconPost">
+          <div class="iconPosts">
+          
+            <i class="fas fa-trash-alt btnDelete iconPost" data-id="${doc.id}"></i>
+            <i class="fas fa-pencil-alt btnEdit iconPost" data-id="${doc.id}"></i>
             <div class="divbtnLike">
+              <i class="fas fa-heart btnLike iconPost" data-id="${doc.id}"></i>
               <span class='postsLike'
                 data-like="${doc.id}">${allLikes}</span>   
-              <i class="fas fa-heart btnLike" data-id="${doc.id}"></i>
             </div>
-            <i class="fas fa-trash-alt btnDelete" data-id="${doc.id}"></i>
-            <i class="fas fa-pencil-alt btnEdit" data-id="${doc.id}"></i>
+
           </div>
         </div>
       </form>
@@ -220,6 +222,12 @@ export const timeline = () => {
             }
           });
         });
+
+        
+
+
+
+
       });
     }
   };
