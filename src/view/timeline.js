@@ -31,9 +31,11 @@ const addPost = (e) => {
   const postDescriptionVerified = postDescription.replace(/\s+/g, '');
   // console.log(postDescriptionVerified);
   const date = new Date();
-  const postDate = date.toISOString();
+  // const postDate = date.toISOString();
 
-  // console.log(date.toISOString());
+  const postDate = date.getTime();
+
+  console.log(postDate);
 
   if (postDescriptionVerified !== '') {
     savePost(
@@ -81,15 +83,16 @@ export const timeline = () => {
     } else {
       const posts = await getPosts();
       const postsData = posts.docs;
-      console.log(posts);
+      // console.log(posts);
       console.log(postsData);
 
       const postsByUser = await getPostByUser();
       console.log(postsByUser);
       const querySnapshot = await getPosts(postsByUser);
       querySnapshot.forEach((doc) => {
-        // doc.data() is never undefined for query doc snapshots
-        console.log(doc.id, ' => ', doc.data());
+        if (postUser == doc.data().user) {
+          console.log(doc.id, ' => ', doc.data());
+        }
       });
 
       await onGetPosts((callback) => {

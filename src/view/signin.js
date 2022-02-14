@@ -1,12 +1,8 @@
 import {googleAuth} from '../firebase/auth/auth_google_signin_popup.js';
 import {signIn} from '../firebase/auth/auth_signin_password.js';
 
-export const showHome = (user) => {
-  if (user !== null) {
-    window.location.hash = '#/home';
-  } else {
-    alert('Inicia sesión para disfrutar de nuestro contenido');
-  }
+export const showHome = () => {
+  window.location.hash = '#/home';
 };
 
 const SignIn = () => {
