@@ -12,12 +12,10 @@
 * [8. Pistas, tips y lecturas complementarias](#8-pistas-tips-y-lecturas-complementarias)
 
 ## 1. Preámbulo
-
 * Vista Desktop
-<p align="center"> 
-<img width="350" height="200"src="src/img/iconos/desktop1.png">
+<p align center> 
+<img width="200" height="200"src="src/img/desktop1.png">
 </p>
-
 Hay redes sociales de todo tipo y para todo tipo de intereses. Por ejemplo,
 en una ronda de financiamiento con inversionistas, se presentó una red social
 para químicos en la que los usuarios podían publicar artículos sobre sus
