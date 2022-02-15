@@ -15,7 +15,7 @@
 
 * Vista Desktop
 <p align="center"> 
-<img width="350" height="200"src="src/img/desktop1.png">
+<img width="350" height="200"src="src/img/iconos/desktop1.png">
 </p>
 
 Hay redes sociales de todo tipo y para todo tipo de intereses. Por ejemplo,
