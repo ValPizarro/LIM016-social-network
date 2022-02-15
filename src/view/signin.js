@@ -64,7 +64,7 @@ export const registerUser = (e) => {
 };
 
 export const showError = (error) => {
-  console.log(error);
+  console.error(error);
 
   const setErrorInput = (input, errorMessage) => {
     const formControl = input.parentElement;
@@ -97,7 +97,7 @@ export const showError = (error) => {
             'Toma un descanso y vuelve a intentarlo');
         break;
       default:
-        setErrorInput(email, 'lo sentimos, se ha producido un error');
+        setErrorInput(email, 'Lo sentimos, se ha producido un error');
         break;
     }
   }; typeError();

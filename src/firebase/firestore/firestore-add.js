@@ -13,8 +13,6 @@ import {
   // updateDoc,
 } from '../configuraciones.js';
 
-// import {query, getDocs} from '../configuraciones.js';
-
 export const savePost = (date, description, like, name, photo, user) => {
   return addDoc(collection(db, 'post'), {
     date,
@@ -48,16 +46,25 @@ export const getPostByUser = () => {
   return query(posts, where('date', '==', true));
 };
 
-export const saveUser = (displayname, email, name) => {
+export const saveUser = (displayname, email, name, user) => {
   return addDoc(collection(db, 'users'), {
     displayname,
     email,
     name,
+    user,
   });
 };
 
 export const onGetUser = (callback) => {
   return onSnapshot(collection(db, 'users'), callback);
+};
+
+export const updateUser = async (id, displayname, name) => {
+  const realProfile = await doc(db, 'users', id);
+  return updateDoc(realProfile, {
+    displayname,
+    name,
+  });
 };
 
 export const getUser = (id) => {

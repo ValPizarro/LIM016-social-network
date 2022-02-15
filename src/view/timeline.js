@@ -46,6 +46,11 @@ const addPost = (e) => {
 
 
 export const timeline = () => {
+  if (userPhoto == null) {
+    userPhoto = './img/avatar.png';
+  } else {
+    userPhoto;
+  }
   const showTimeline = `
   <form id="form" class="postForm">
     

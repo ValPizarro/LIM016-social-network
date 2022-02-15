@@ -1,8 +1,9 @@
 import {auth, onAuthStateChanged} from '../configuraciones.js';
-import {profileUser} from './auth_get_user_profile.js';
 import {currentUser} from '../../view/timeline.js';
 import {showHome} from '../../view/signin.js';
-import {profile} from '../../view/perfil.js';
+import {currentUserProfile} from '../../view/profile.js';
+import {currentUpdateUser} from '../../view/updateUser.js';
+
 
 export const onAuth = () => {
   return onAuthStateChanged(auth, (user) => {
@@ -10,11 +11,11 @@ export const onAuth = () => {
       const uid = user.uid;
       const name = user.displayName;
       const photo = user.photoURL;
-      // const emailVerified = user.emailVerified;
+      const email = user.email;
       currentUser(uid, name, photo);
-      showHome(user);
-      profileUser(user);
-      profile();
+      showHome();
+      currentUserProfile(uid, name, photo);
+      currentUpdateUser(uid, email);
     }
   });
 };
