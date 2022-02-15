@@ -13,8 +13,8 @@
 
 ## 1. Preámbulo
 * Vista Desktop
- <p align center> 
-<img width="200" height="200" src="src/img/avatar.png">
+<p align center> 
+<img width="200" height="200" src="src/img/canva1.png">
 </p>
 
 Hay redes sociales de todo tipo y para todo tipo de intereses. Por ejemplo,
