@@ -1,5 +1,5 @@
-# Creando una Red Social
-
+# Queer Place
+Queer Place es una red social que tiene como finalidad crear una comunidad segura para aquellas personas que busquen recomendaciones acerca de lugares y servicios inclusivos y libres de discriminación. 
 ## Índice
 
 * [1. Preámbulo](#1-preámbulo)
