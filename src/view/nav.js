@@ -12,10 +12,14 @@ const showSignOut = () => {
 
 const nav = () => {
   const showNav = `
+
     <nav class="tab-nav-container">
+      <div class="tabTitle">
+        <p>Queer Place</p>
+      </div>
       <div class="tab">
         <i id="home" class="fas fa-home fasNav"></i>
-      </div>
+      </div>  
       <div class="tab">
         <i id="profile" class="fas fa-user fasNav"></i>
       </div>

@@ -3,8 +3,8 @@ import {
   onGetPosts,
   deletePost,
   getPost,
-  // addLike,
-  // onGetUser,
+  getPosts,
+  getPostByUser,
 } from '../firebase/firestore/firestore-add.js';
 import {updatePost, addLike} from '../firebase/firestore/fb-test.js';
 
@@ -15,17 +15,12 @@ let cleanPost;
 let userName;
 let userPhoto;
 
-export const currentUser = (UID, name, photo) => {
-  postUser = UID;
+export const currentUser = (user, name, photo) => {
+  postUser = user;
   userName = name;
   userPhoto = photo;
 };
 currentUser();
-
-// export const dataUser = async (UID, name, photo) => {
-//   await onGetUser((querySnapshot) => {
-//   });};
-
 
 const addPost = (e) => {
   e.preventDefault();
@@ -35,15 +30,27 @@ const addPost = (e) => {
   postLike = [];
   const postDescriptionVerified = postDescription.replace(/\s+/g, '');
   // console.log(postDescriptionVerified);
+  const date = new Date();
+  // const postDate = date.toISOString();
+
+  const postDate = date.getTime();
+
+  console.log(postDate);
 
   if (postDescriptionVerified !== '') {
-    savePost(postDescription, postLike, userName, userPhoto, postUser);
+    savePost(
+        postDate, postDescription, postLike, userName, userPhoto, postUser);
     cleanPost.reset();
   };
 };
 
 
 export const timeline = () => {
+  if (userPhoto == null) {
+    userPhoto = './img/avatar.png';
+  } else {
+    userPhoto;
+  }
   const showTimeline = `
   <form id="form" class="postForm">
     
@@ -79,9 +86,23 @@ export const timeline = () => {
     if (postUser == null) {
       alert('Inicia sesión para disfrutar de nuestro contenido');
     } else {
-      await onGetPosts((querySnapshot) => {
+      const posts = await getPosts();
+      const postsData = posts.docs;
+      // console.log(posts);
+      console.log(postsData);
+
+      const postsByUser = await getPostByUser();
+      console.log(postsByUser);
+      const querySnapshot = await getPosts(postsByUser);
+      querySnapshot.forEach((doc) => {
+        if (postUser == doc.data().user) {
+          console.log(doc.id, ' => ', doc.data());
+        }
+      });
+
+      await onGetPosts((callback) => {
         allPosts = '';
-        querySnapshot.forEach((doc) => {
+        callback.forEach((doc) => {
           // console.log(doc.id);
           const likes = doc.data().like.length;
           if (likes == 0) {
@@ -107,14 +128,18 @@ export const timeline = () => {
               <button class='btnUpdate' data-id="${doc.id}"> Guardar</button>
             </div>
           </div>
-          <div class="iconPost">
+          <div class="iconPosts">
+          
+            <i class="fas fa-trash-alt btnDelete iconPost"
+            data-id="${doc.id}"></i>
+            <i class="fas fa-pencil-alt btnEdit iconPost"
+            data-id="${doc.id}"></i>
             <div class="divbtnLike">
+              <i class="fas fa-heart btnLike iconPost" data-id="${doc.id}"></i>
               <span class='postsLike'
                 data-like="${doc.id}">${allLikes}</span>   
-              <i class="fas fa-heart btnLike" data-id="${doc.id}"></i>
             </div>
-            <i class="fas fa-trash-alt btnDelete" data-id="${doc.id}"></i>
-            <i class="fas fa-pencil-alt btnEdit" data-id="${doc.id}"></i>
+
           </div>
         </div>
       </form>

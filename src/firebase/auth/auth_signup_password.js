@@ -1,21 +1,46 @@
+import {
+  auth,
+  createUserWithEmailAndPassword,
+  sendEmailVerification,
+  updateProfile,
+} from '../configuraciones.js';
+import {showErrorRegister} from '../../view/signup.js';
+import {backSignIn} from '../../view/signup.js';
+import {saveUser} from '../firestore/firestore-add.js';
 import {onAuth} from './auth_state_listener.js';
-import {auth, createUserWithEmailAndPassword} from '../configuraciones.js';
-import {showError} from '../../view/signin.js';
+
 
 export const createUser = (email, password) => {
   return createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        const user = userCredential.user;
-        const uid = userCredential.user.uid;
-        const correo = userCredential.user.email;
-        const correoVerificado = userCredential.user.emailVerified;
-        onAuth();
-        console.log(user, correo, uid, correoVerificado);
+        const userID = userCredential.user.uid;
+        const displayName =userCredential.user.displayName;
+        const email = userCredential.user.email;
+        const photoURL = userCredential.user.photoURL;
+        saveUser(displayName, email, photoURL, userID);
+        userVerification()
+            .then(() => {
+              alert('Correo de verificación enviado');
+              backSignIn();
+            });
       })
       .catch((error) => {
         const errorCode = error.code;
-        // const errorMessage = error.message;
-        // console.log('Error', errorCode);
-        showError(errorCode);
+        showErrorRegister(errorCode);
       });
+};
+
+export const userVerification = () => {
+  return sendEmailVerification(auth.currentUser);
+};
+
+export const updateUserName = (name) => {
+  return updateProfile(auth.currentUser, {
+    displayName: name,
+  }).then(() => {
+    onAuth();
+  }).catch((error) => {
+    console.error(error.code);
+    alert('Lo sentimos, se ha producido un error');
+  });
 };
