@@ -55,10 +55,9 @@ Para el diseño del prototipo inicial se empleó la herramienta Canva.
 </p>
 
 *Perfil de usuario*
-<p align center> 
+<p align center>
 <img width="500" height="350" src="src/img/canva2.png">
-</p> 
-
+</p>
 
 * Vista Mobile
 
@@ -103,4 +102,4 @@ Después de ya realizar el primer prototipo en Canva, procedimos a realizar el d
 
 * [Valeria Pizarro](https://github.com/ValPizarro)
 * [Eliane Rivera](https://github.com/ElianeRiveraCastillo22)
-* [Dolly Ochoa](https://github.com/DollyPilar) 
+* [Dolly Ochoa](https://github.com/DollyPilar)
