@@ -72,6 +72,7 @@ Después de ya realizar el primer prototipo en Canva, procedimos a realizar el d
 </p> 
 
 ## 5.	Tecnologías empleadas
+<pre>
 •	HTML
 •	CSS
 •	JavaScript
@@ -79,10 +80,12 @@ Después de ya realizar el primer prototipo en Canva, procedimos a realizar el d
 •	Firebase
 •	Eslint
 •	Jest
+</pre>
 ## 6. Producto final
 
 
 ## 7. Creadoras
+<pre>
 [Valeria Pizarro](https://github.com/ValPizarro)
 [Eliane Rivera](https://github.com/ElianeRiveraCastillo22)
-[Dolly Ochoa](https://github.com/DollyPilar)
+[Dolly Ochoa](https://github.com/DollyPilar) </pre>
