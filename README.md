@@ -46,6 +46,7 @@ d) ¿Cuándo utilizan o utilizarían el producto?
 En base a los resultados obtenidos, diseñamos los siguientes prototipos:
 ### 4.1	Prototipo de baja fidelidad
 Para el diseño del prototipo inicial se empleó la herramienta Canva.
+
 * Vista Desktop
 *Timeline*
 <p align center> 
