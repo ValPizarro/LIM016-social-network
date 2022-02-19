@@ -20,25 +20,12 @@ const SignUp = () => {
             <small></small>
         </div>
         <div class="form-control">
-          <input type="text" id="name"  class="input"
-            placeholder="  Nombre completo">
-            <i class="far fa-times-circle"></i>
-            <small></small>
-        </div>
-        <div class="form-control">
-          <input type="text" id="nickname" class="input"
-             placeholder="  Nombre de usuario">
-            <i class="far fa-times-circle"></i>
-            <small></small>
-        </div>
-        <div class="form-control">
           <input id="password" class="input" type="password"
            placeholder="  Contraseña">
             <i class="far fa-times-circle"></i>
             <small></small>
         </div>
-
-        <button id="btnCheckIn" class="button">Registrarte</button>
+        <button id="btnCheckIn" class="button">Continuar</button>
         <p>¿Tienes cuenta?</p>
         <a  id="SignIn" class="loginInCheckIn">Entrar</a>
         <img class="imgRegistration" src="./img/CB2.png" alt="img">
@@ -68,14 +55,9 @@ export const registerUserNew = async (e) => {
 
   const email = e.target.closest('form').querySelector('#email').value;
   const password = e.target.closest('form').querySelector('#password').value;
-  const name = e.target.closest('form').querySelector('#name').value;
-  const displayName = e.target.closest('form').querySelector('#nickname').value;
 
-  if (email === '' && password === '' &&
-    name === '' && displayName === '') {
+  if (email === '' && password === '') {
     alert('Ups, debes completar el formulario');
-  } else if (name === '' || displayName === '') {
-    alert('Ups, debes completar todo el formulario');
   } else {
     await createUser(email, password);
   };
