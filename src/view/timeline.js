@@ -3,8 +3,6 @@ import {
   onGetPosts,
   deletePost,
   getPost,
-  getPosts,
-  getPostByUser,
 } from '../firebase/firestore/firestore-add.js';
 import {updatePost, addLike} from '../firebase/firestore/fb-test.js';
 
@@ -29,9 +27,7 @@ const addPost = (e) => {
       .querySelector('#postDescription').value;
   postLike = [];
   const postDescriptionVerified = postDescription.replace(/\s+/g, '');
-  // console.log(postDescriptionVerified);
   const date = new Date();
-  // const postDate = date.toISOString();
 
   const postDate = date.getTime();
 
@@ -53,12 +49,12 @@ export const timeline = () => {
   }
   const showTimeline = `
   <form id="form" class="postForm">
-    
+
     <div class="postUser">
       <div class="boxPerfil">
         <img class="perfil" src="${userPhoto}" alt="">
       </div>
-      <p class="user">${userName}</p>        
+      <p class="user">${userName}</p>
     </div>
     <textarea id="postDescription" class="postDescription"
     placeholder="¿Tienes alguna recomendación?" ></textarea>
@@ -66,7 +62,7 @@ export const timeline = () => {
       
       <button id="btnSave" class="btnSave">Publicar</button>
     </div>
-    
+
 
   </form>
   <div id="postsContainer"></div>
@@ -86,24 +82,9 @@ export const timeline = () => {
     if (postUser == null) {
       alert('Inicia sesión para disfrutar de nuestro contenido');
     } else {
-      const posts = await getPosts();
-      const postsData = posts.docs;
-      // console.log(posts);
-      console.log(postsData);
-
-      const postsByUser = await getPostByUser();
-      console.log(postsByUser);
-      const querySnapshot = await getPosts(postsByUser);
-      querySnapshot.forEach((doc) => {
-        if (postUser == doc.data().user) {
-          console.log(doc.id, ' => ', doc.data());
-        }
-      });
-
       await onGetPosts((callback) => {
         allPosts = '';
         callback.forEach((doc) => {
-          // console.log(doc.id);
           const likes = doc.data().like.length;
           if (likes == 0) {
             allLikes = '';
@@ -119,7 +100,7 @@ export const timeline = () => {
               <div class="boxPerfil">
                 <img class="perfil" src="${doc.data().photo}" alt="">
               </div>
-              <p class="user">${doc.data().name}</p> 
+              <p class="user">${doc.data().name}</p>
             </div>
             <textarea id="postDescription" class="postDescription"
               data-id="${doc.id}" disabled>
@@ -129,7 +110,7 @@ export const timeline = () => {
             </div>
           </div>
           <div class="iconPosts">
-          
+
             <i class="fas fa-trash-alt btnDelete iconPost"
             data-id="${doc.id}"></i>
             <i class="fas fa-pencil-alt btnEdit iconPost"
@@ -137,7 +118,7 @@ export const timeline = () => {
             <div class="divbtnLike">
               <i class="fas fa-heart btnLike iconPost" data-id="${doc.id}"></i>
               <span class='postsLike'
-                data-like="${doc.id}">${allLikes}</span>   
+                data-like="${doc.id}">${allLikes}</span>
             </div>
 
           </div>
@@ -158,17 +139,13 @@ export const timeline = () => {
             const likeID = e.target.dataset.id;
             const doc = await getPost(likeID);
             const dataLikes = doc.data().like;
-            // console.log(dataLikes);
             const totalLikes = dataLikes;
-            // console.log(totalLikes);
 
             if (totalLikes.includes(postUser) == false) {
               totalLikes.push(postUser);
-              // console.log(totalLikesLength);
               await addLike(likeID, totalLikes);
             } else {
               const dislike = totalLikes.filter((user) => user !== postUser);
-              // console.log(dislike);
               await addLike(likeID, dislike);
             }
           });
@@ -237,7 +214,6 @@ export const timeline = () => {
               } else {
                 alert('ups, el campo esta vacio');
               }
-              // console.log(textAreaEdit.dataset.id, textAreaEdit.value);
             }
           });
         });
