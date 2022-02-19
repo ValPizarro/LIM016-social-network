@@ -85,7 +85,7 @@ Después de ya realizar el primer prototipo en Canva, procedimos a realizar el d
 
 
 ## 7. Creadoras
-<pre>
+
 [Valeria Pizarro](https://github.com/ValPizarro)
 [Eliane Rivera](https://github.com/ElianeRiveraCastillo22)
-[Dolly Ochoa](https://github.com/DollyPilar) </pre>
+[Dolly Ochoa](https://github.com/DollyPilar) 
