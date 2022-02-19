@@ -64,12 +64,12 @@ Después de ya realizar el primer prototipo en Canva, procedimos a realizar el d
 * Vista Mobile
 *Welcome, login and register
 <p align center> 
-<img width="350" height="200" src="src/img/figma1.JPG">
+<img width="500" height="350" src="src/img/figma1.JPG">
 </p> 
 
 *Timeline and profile*
 <p align center> 
-<img width="350" height="200" src="src/img/figma2.JPG">
+<img width="500" height="350" src="src/img/figma2.JPG">
 </p> 
 
 ## 5.	Tecnologías empleadas
