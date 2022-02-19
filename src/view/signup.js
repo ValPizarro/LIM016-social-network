@@ -14,30 +14,30 @@ const SignUp = () => {
       <form id="formRegister" class="formRegister">
         <a class="loginInGoogle" id="btnStartGoogle"><img class="google" src="https://brandlogos.net/wp-content/uploads/2015/09/google-favicon-vector-400x400.png" alt="google"> iniciar sesión con google</a>
         <div class="form-control">
-          <input id="email" class="input" type="email" 
+          <input id="email" class="input" type="email"
           placeholder=" Correo electrónico">
             <i class="far fa-times-circle"></i>
             <small></small>
-        </div> 
+        </div>
         <div class="form-control">
-          <input type="text" id="name"  class="input" 
+          <input type="text" id="name"  class="input"
             placeholder="  Nombre completo">
             <i class="far fa-times-circle"></i>
             <small></small>
-        </div> 
+        </div>
         <div class="form-control">
           <input type="text" id="nickname" class="input"
              placeholder="  Nombre de usuario">
             <i class="far fa-times-circle"></i>
             <small></small>
-        </div> 
+        </div>
         <div class="form-control">
           <input id="password" class="input" type="password"
            placeholder="  Contraseña">
             <i class="far fa-times-circle"></i>
             <small></small>
-        </div> 
-        
+        </div>
+
         <button id="btnCheckIn" class="button">Registrarte</button>
         <p>¿Tienes cuenta?</p>
         <a  id="SignIn" class="loginInCheckIn">Entrar</a>
@@ -109,4 +109,3 @@ export const showErrorRegister = (error) => {
       break;
   }
 };
-
