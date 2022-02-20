@@ -8,7 +8,7 @@ const updateUserProfile = () => {
         <form id="formRegister" class="formRegister">
 
           <div>
-          <p>¿Cuál es tu nombre?</p></div>
+          <p>¿Con qué nombre te identificas?</p></div>
 
           <div class="form-control">
             <input id="name" class="input" type="text"
