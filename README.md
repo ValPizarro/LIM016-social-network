@@ -24,7 +24,7 @@ b) ¿Cuáles son los objetivos de estos usuarios en relación con el producto?
 *	Poder dar like, editar y eliminar un post
 *	Poder acceder a esta red social por medio del celular y no solo desde la pc o laptop.
 
-c) ¿Cuáles son las secciones más relevantes que quieren ver en la red social?  
+c) ¿Cuáles son las secciones más relevantes que quieren ver en la red social?
 *	Sección de publicaciones
 *	Edición de perfil
 *	Perfil de usuario
