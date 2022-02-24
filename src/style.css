@@ -227,6 +227,7 @@ html{
   margin: 12px 0px;
   justify-content: center;
   align-items: center;
+  font-family: 'Clicker Script', sans-serif;
 }
 .SingUpBox {
   display: flex;
