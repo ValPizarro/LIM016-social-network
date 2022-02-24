@@ -3,8 +3,8 @@
 * [1. Queer Place](#1-queer-place)
 * [2. Estudio de usuario](#2-estudio-de-usuario)
 * [3. Historias de usuario](#3-historias-de-usuario)
-* [4. Diseño de la interfaz de usuario](#4-diseño-de-la-interfaz-de-usuario)
-* [5. Tecnologías empleadas](#5-tecnologias-empleadas)
+* [4. Diseño de la interfaz de usuario](#4-diseno-de-la-interfaz-de-usuario)
+* [5. Tecnologías empleadas](#5-tecnologías-empleadas)
 * [6. Producto final](#6-producto-final)
 * [7. Creadoras](#7-creadoras)
 
@@ -40,6 +40,7 @@ d) ¿Cuándo utilizan o utilizarían el producto?
 | HU 4 | Como usuario, quiero un interfaz ordenada e intuitiva para tener una mejor experiencia durante la navegación. |
 | HU 5 | Como usuario, quiero editar mis recomendaciones y poder corregir una publicación específica. |
 | HU 6 | Como usuario, quiero poder indicar que me gusta una publicación mediante un botón like. |
+
 ## 4. Diseño de la interfaz de usuario
 En base a los resultados obtenidos, diseñamos los siguientes prototipos:
 ### 4.1	Prototipo de baja fidelidad
@@ -76,27 +77,35 @@ Después de ya realizar el primer prototipo en Canva, procedimos a realizar el d
 
 *Welcome, login and register*
 <p align center> 
-<img width="450" height="270" src="src/img/figma1.JPG">
+<img width="500" height="350" src="src/img/figma1.JPG">
 </p> 
 
 #### *Timeline and profile*
 <p align center> 
-<img width="450" height="270" src="src/img/figma2.JPG">
+<img width="500" height="350" src="src/img/figma2.JPG">
 </p> 
 
+
 ## 5. Tecnologías empleadas
-<pre>
-•	HTML
-•	CSS
-•	JavaScript
-•	Figma
-•	Firebase
-•	Eslint
-•	Jest
-</pre>
+
+*	HTML
+*	CSS
+*	JavaScript
+*	Figma
+*	Firebase
+*	Eslint
+*	Jest
 
 ## 6. Producto final
+#### *Bienvenida e inicio de sesión*
+<p align center> 
+<img width="500" height="380" src="src/img/figma3.png">
+</p> 
 
+### *Timeline*
+<p align center> 
+<img width="500" height="380" src="src/img/figma4.png">
+</p> 
 
 ## 7. Creadoras
 
