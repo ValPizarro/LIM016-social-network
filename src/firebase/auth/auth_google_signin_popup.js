@@ -1,21 +1,25 @@
-import {auth, provider, signInWithPopup} from './configuraciones.js';
+import {auth, provider, signInWithPopup} from '../configuraciones.js';
+import {onAuth} from './auth_state_listener.js';
+
 
 export const googleAuth = () => {
   return signInWithPopup(auth, provider)
       .then((result) => {
         console.log('Nombre:', result.user.displayName);
         console.log('Email:', result.user.email);
-        mailVerificado('Verfica2:', result.user.emailVerified);
+        mailVerificado('Verficado:', result.user.emailVerified);
+        onAuth(provider);
       })
       .catch((error) => {
-        console.log(error.code);
+        console.error(error.code);
+
         manejarErrores(error.code);
       });
 };
 
 const manejarErrores = (errorCode) => {
   if (errorCode === 'auth/popup-closed-by-user') {
-    console.log('El usuario cerró la ventana');
+    console.error('El usuario cerró la ventana');
   }
 };
 

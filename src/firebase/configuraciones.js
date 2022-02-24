@@ -1,6 +1,17 @@
 import {initializeApp} from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js';
-import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, GoogleAuthProvider, signInWithPopup} from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js';
-// [START auth_signup_password_modular]
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut,
+  GoogleAuthProvider,
+  signInWithPopup,
+  sendEmailVerification,
+  updateProfile,
+} from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js';
+import {getFirestore, collection, getDocs, getDoc, addDoc, query, orderBy, onSnapshot, deleteDoc, doc, updateDoc, where} from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js';
+
 
 const firebaseConfig = {
   apiKey: 'AIzaSyCYMriyYLnj7mjwQ990OLhGaxulpUI6ONE',
@@ -14,13 +25,35 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-console.log(app);
 const auth = getAuth(app);
-
 const provider = new GoogleAuthProvider(app);
-
+// Init Services FireStore
+const db = getFirestore(app);
+// inizializacion de store
 
 export {
-  app, auth, provider, createUserWithEmailAndPassword,
-  signInWithEmailAndPassword, onAuthStateChanged, signOut, signInWithPopup,
+  // Authentication
+  app,
+  auth,
+  provider,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut,
+  signInWithPopup,
+  sendEmailVerification,
+  updateProfile,
+  // Firestore
+  db,
+  collection,
+  getDocs,
+  getDoc,
+  addDoc,
+  updateDoc,
+  onSnapshot,
+  deleteDoc,
+  doc,
+  query,
+  where,
+  orderBy,
 };
