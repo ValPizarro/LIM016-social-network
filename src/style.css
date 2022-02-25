@@ -186,6 +186,7 @@ html{
   justify-content: center;
   align-items: center;
   margin-top: 15px;
+  font-family: 'Clicker Script', sans-serif;
 }
 .formRegister{
   padding: 0px 40px;
@@ -264,6 +265,10 @@ html{
   background-color: var(--color-1);
   border:solid var(--neutal-2);
   color: var(--color-10);
+}
+
+.hide{
+  display: none;
 }
 
 @media (min-width:450px){

@@ -107,8 +107,9 @@ export const timeline = () => {
             <textarea id="postDescription" class="postDescription"
               data-id="${doc.id}" disabled>
                 ${doc.data().description}</textarea>
-            <div class="divBtbUpdate">
-              <button class='btnUpdate' data-id="${doc.id}"> Guardar</button>
+            <div class="divBtbUpdate ">
+              <button class='btnUpdate'
+               data-id="${doc.id}"> Guardar</button>
             </div>
           </div>
           <div class="iconPosts">
@@ -184,7 +185,6 @@ export const timeline = () => {
 
             btnEditID = e.target.dataset.id;
             textAreaEdit = divElemt.querySelector(`[data-id="${btnEditID}"]`);
-
             const doc = await getPost(btnEditID);
             const dataUser = doc.data().user;
 
@@ -204,9 +204,9 @@ export const timeline = () => {
 
             const btnUpdateID = e.target.dataset.id;
             const textAreaEdit = divElemt.querySelector(
-                `[data-id="${btnUpdateID}"]`,
-            );
-            const doc = await getPost(btnEditID);
+                `[data-id="${btnUpdateID}"]`);
+
+            const doc = await getPost(btnUpdateID);
             const dataUser = doc.data().user;
             const textEditVerified = textAreaEdit.value.replace(/\s+/g, '');
 
